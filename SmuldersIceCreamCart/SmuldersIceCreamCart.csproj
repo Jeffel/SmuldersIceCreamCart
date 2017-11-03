@@ -59,6 +59,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="Users\Customer.cs" />
+    <Compile Include="Users\Employee.cs" />
+    <Compile Include="Users\Schedule.cs" />
+    <Compile Include="Users\User.cs" />
     <EmbeddedResource Include="CustomerMainView.resx">
       <DependentUpon>CustomerMainView.cs</DependentUpon>
     </EmbeddedResource>

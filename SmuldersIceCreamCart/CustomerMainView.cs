@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmuldersIceCreamCart.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,13 @@ namespace SmuldersIceCreamCart
 {
     public partial class CustomerMainView : Form
     {
-        string Username { get; set; }
+        User Viewer { get; set; } //Until we have a user class to store their info, this will suffice.
 
-        public CustomerMainView(string username)
+        public CustomerMainView(User user)
         {
+
             //Setup from Input Stuff.
-            Username = username;
+            Viewer = user;
 
             //Get stuff from SQL to store somewhere to get ready.
             //TODO           
@@ -26,7 +28,13 @@ namespace SmuldersIceCreamCart
             InitializeComponent();
 
             //Setup the form items now that they're ready and we have the data.
-            usernameLabel.Text = Username;
+            usernameLabel.Text = Viewer.Username;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.DialogResult = DialogResult.Yes;
+            Close();
         }
     }
 }
