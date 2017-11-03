@@ -43,7 +43,7 @@
             this.flowLayoutPanel1.Controls.Add(this.logoutLabel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(1754, 50);
             this.flowLayoutPanel1.TabIndex = 3;
@@ -103,6 +103,7 @@
             this.ClientSize = new System.Drawing.Size(1754, 1079);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "EmployeeMainView";
             this.Text = "EmployeeMainView";
             this.flowLayoutPanel1.ResumeLayout(false);

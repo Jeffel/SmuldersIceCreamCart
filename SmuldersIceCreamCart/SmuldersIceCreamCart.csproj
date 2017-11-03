@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateAccountView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccountView.Designer.cs">
+      <DependentUpon>CreateAccountView.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerMainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     <Compile Include="Users\Employee.cs" />
     <Compile Include="Users\Schedule.cs" />
     <Compile Include="Users\User.cs" />
+    <EmbeddedResource Include="CreateAccountView.resx">
+      <DependentUpon>CreateAccountView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerMainView.resx">
       <DependentUpon>CustomerMainView.cs</DependentUpon>
     </EmbeddedResource>

@@ -71,8 +71,20 @@ namespace SmuldersIceCreamCart
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            //Stuff to create an account. Likely another form popover window dialog with all the form items the DB needs.
-            MessageBox.Show("Create account not yet implemented.", "Create Account");
+            CreateAccountView createacctView = new CreateAccountView();
+            //Need to add more to this view to return information about what went wrong for the user.'
+            //It will probably handle the showing of the reason why within itself, but I'm doing it here for now.
+
+            DialogResult result = createacctView.ShowDialog(); //Will answer 'Was account created?'
+
+            if(result == DialogResult.Yes)
+            {
+                loginBox.Text = createacctView.Username;
+            }
+            else
+            {
+                MessageBox.Show("Invalid X item in your new account.", "Not Implemented");
+            }
         }
     }
 }
