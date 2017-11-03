@@ -11,12 +11,13 @@ using System.Windows.Forms;
 
 namespace SmuldersIceCreamCart
 {
-    public partial class CustomerMainView : Form
+    public partial class EmployeeMainView : Form
     {
         User Viewer { get; set; } //Until we have a user class to store their info, this will suffice.
-
-        public CustomerMainView(User user)
+     
+        public EmployeeMainView(User user)
         {
+
             //Setup from Input Stuff.
             Viewer = user;
 
@@ -30,7 +31,7 @@ namespace SmuldersIceCreamCart
             usernameLabel.Text = Viewer.Username;
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void logoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.DialogResult = DialogResult.Yes;
             Close();

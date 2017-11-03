@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerMainView));
             this.usernameLabel = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.logoutLabel = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.manageAccountLabel = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,26 +41,26 @@
             resources.ApplyResources(this.usernameLabel, "usernameLabel");
             this.usernameLabel.Name = "usernameLabel";
             // 
-            // linkLabel1
+            // logoutLabel
             // 
-            resources.ApplyResources(this.linkLabel1, "linkLabel1");
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            resources.ApplyResources(this.logoutLabel, "logoutLabel");
+            this.logoutLabel.Name = "logoutLabel";
+            this.logoutLabel.TabStop = true;
+            this.logoutLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.usernameLabel);
-            this.flowLayoutPanel1.Controls.Add(this.linkLabel2);
-            this.flowLayoutPanel1.Controls.Add(this.linkLabel1);
+            this.flowLayoutPanel1.Controls.Add(this.manageAccountLabel);
+            this.flowLayoutPanel1.Controls.Add(this.logoutLabel);
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // linkLabel2
+            // manageAccountLabel
             // 
-            resources.ApplyResources(this.linkLabel2, "linkLabel2");
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.TabStop = true;
+            resources.ApplyResources(this.manageAccountLabel, "manageAccountLabel");
+            this.manageAccountLabel.Name = "manageAccountLabel";
+            this.manageAccountLabel.TabStop = true;
             // 
             // CustomerMainView
             // 
@@ -78,8 +78,8 @@
         #endregion
 
         private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel logoutLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel manageAccountLabel;
     }
 }

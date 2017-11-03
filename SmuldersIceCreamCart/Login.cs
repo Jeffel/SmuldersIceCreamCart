@@ -34,7 +34,7 @@ namespace SmuldersIceCreamCart
                 //We now want to show the admin/employee form. It doesn't exist yet. 
                 //Lets just show the other one that does exist, but not hide the login so we know!
 
-                CustomerMainView customerView = new CustomerMainView(specialUser);
+                EmployeeMainView customerView = new EmployeeMainView(specialUser);
                 DialogResult result = customerView.ShowDialog(); //Will answer 'Did the user logout?'           
 
                 if (result == DialogResult.Yes)
