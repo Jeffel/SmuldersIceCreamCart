@@ -19,7 +19,22 @@ namespace SmuldersIceCreamCart
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+            string login = loginBox.Text;
+            string password = passwordBox.Text;
 
+            //Placeholder login stuff here.
+            if(login == "Smulder")
+            {
+                //We now want to show the admin/employee form.
+            }
+
+            else if (login == "Peasant")
+            {
+                CustomerMainView customerView = new CustomerMainView(login);
+                Hide();
+                DialogResult result = customerView.ShowDialog();
+                Show();
+            }
         }
     }
 }
