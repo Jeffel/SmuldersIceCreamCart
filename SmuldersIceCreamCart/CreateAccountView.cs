@@ -16,8 +16,18 @@ namespace SmuldersIceCreamCart
         public string Username { get; set; }
 
         public CreateAccountView()
+        { 
+            InitializeComponent();
+        }
+
+        public CreateAccountView(bool Admin)
         {
             InitializeComponent();
+
+            if (Admin)
+            {
+                IsEmployeeCheck.Visible = true;
+            }
         }
 
         private void CreateButton_Click(object sender, EventArgs e)

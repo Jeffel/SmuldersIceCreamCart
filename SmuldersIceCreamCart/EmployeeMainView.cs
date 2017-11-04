@@ -36,5 +36,46 @@ namespace SmuldersIceCreamCart
             this.DialogResult = DialogResult.Yes;
             Close();
         }
+
+        private void CreateAccountsButton_Click(object sender, EventArgs e)
+        {
+            bool create = true;
+            while (create)
+            {
+                CreateAccountView createacctView = new CreateAccountView(true);
+                //Need to add more to this view to return information about what went wrong for the user.
+                //It will probably handle the showing of the reason why within itself, but I'm doing it here for now.
+
+                DialogResult result = createacctView.ShowDialog(); //Will answer 'Was account created?'
+                DialogResult additional = DialogResult.No;
+
+                if (result == DialogResult.Yes)
+                {
+                    additional = MessageBox.Show("Account would have been created if it was implemented.\nCreate another?", "Account Created", MessageBoxButtons.YesNo);
+                }
+                else
+                {
+                    additional = MessageBox.Show("Invalid X item in your new account.\nCreate another?", "Not Implemented", MessageBoxButtons.YesNo);
+                }
+
+                if(additional != DialogResult.Yes)
+                {
+                    create = false;
+                }
+            }           
+        }
+
+        private void manageAccountLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManageAccount acctmgmt = new ManageAccount(Viewer);
+
+            DialogResult result = acctmgmt.ShowDialog();
+
+            if (result == DialogResult.Abort)
+            {
+                this.DialogResult = DialogResult.Yes;
+                Close();
+            }
+        }
     }
 }

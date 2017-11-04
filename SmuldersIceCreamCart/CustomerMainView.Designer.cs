@@ -61,6 +61,7 @@
             resources.ApplyResources(this.manageAccountLabel, "manageAccountLabel");
             this.manageAccountLabel.Name = "manageAccountLabel";
             this.manageAccountLabel.TabStop = true;
+            this.manageAccountLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.manageAccountLabel_LinkClicked);
             // 
             // CustomerMainView
             // 

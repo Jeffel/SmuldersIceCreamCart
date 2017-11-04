@@ -29,7 +29,7 @@ namespace SmuldersIceCreamCart
             if(password == "smulder")
             {
                 //Test User
-                Employee specialUser = new Employee(0, login, "Smulder", "Smulder", "h0tDr4g0n@netscape.com", "5", 
+                Employee specialUser = new Employee(login, "Smulder", "Smulder", "h0tDr4g0n@netscape.com", "5", 
                     new Address(false, "123", "Sesame Street", "New York", "NY", "10023"));
                 //We now want to show the admin/employee form. It doesn't exist yet. 
                 //Lets just show the other one that does exist, but not hide the login so we know!
@@ -48,7 +48,7 @@ namespace SmuldersIceCreamCart
             else if (password == "peasant")
             {
                 //Test User
-                Customer peasant = new Customer(1, login, "Peasant", "Scum", "2poor5icecream@yahoo.com", "(585) 555-1234",
+                Customer peasant = new Customer(login, "Peasant", "Scum", "2poor5icecream@yahoo.com", "(585) 555-1234",
                     new Address(false, "666", "Dirt Road", "Detroit", "MI", "48127"),
                     new Address(true, "1600", "Pennsylvania Avenue", "Washington", "DC", "20500"));
                 CustomerMainView customerView = new CustomerMainView(peasant);
@@ -72,7 +72,7 @@ namespace SmuldersIceCreamCart
         private void createButton_Click(object sender, EventArgs e)
         {
             CreateAccountView createacctView = new CreateAccountView();
-            //Need to add more to this view to return information about what went wrong for the user.'
+            //Need to add more to this view to return information about what went wrong for the user.
             //It will probably handle the showing of the reason why within itself, but I'm doing it here for now.
 
             DialogResult result = createacctView.ShowDialog(); //Will answer 'Was account created?'

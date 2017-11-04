@@ -35,5 +35,18 @@ namespace SmuldersIceCreamCart
             this.DialogResult = DialogResult.Yes;
             Close();
         }
+
+        private void manageAccountLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ManageAccount acctmgmt = new ManageAccount(Viewer);
+
+            DialogResult result = acctmgmt.ShowDialog();
+
+            if(result == DialogResult.Abort)
+            {
+                this.DialogResult = DialogResult.Yes;
+                Close();
+            }
+        }
     }
 }

@@ -13,8 +13,8 @@ namespace SmuldersIceCreamCart.Users
 
         Schedule Schedule { get; set; }
 
-        public Employee(int id, string username, string firstName, string lastName, string email, string phoneNum, Address address) 
-            : base(id, username, firstName, lastName, email, phoneNum, address)
+        public Employee(string username, string firstName, string lastName, string email, string phoneNum, Address address) 
+            : base(username, firstName, lastName, email, phoneNum, address)
         {
             IsAdmin = true;
         }
