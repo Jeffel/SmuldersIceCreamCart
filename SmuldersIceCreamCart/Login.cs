@@ -82,7 +82,7 @@ namespace SmuldersIceCreamCart
             }
             else
             {
-                MessageBox.Show("Invalid X item in your new account.", "Not Implemented");
+                MessageBox.Show("Invalid X item in your new account.\n(Not implemented)", "Not Implemented");
             }
         }
     }

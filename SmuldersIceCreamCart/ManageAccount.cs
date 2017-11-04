@@ -31,9 +31,10 @@ namespace SmuldersIceCreamCart
 
         private void DeleteActButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete your account?\nThis action can not be undone.", "Delete Account", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("(NOT IMPLEMENTED!) Are you sure you want to delete your account?\nThis action can not be undone.", "Delete Account", MessageBoxButtons.YesNo);
             if(result == DialogResult.Yes)
             {
+                //We would do the deletion SQL here.
                 DialogResult = DialogResult.Abort;
                 Close();
             }            
