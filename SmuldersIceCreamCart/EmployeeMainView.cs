@@ -28,7 +28,7 @@ namespace SmuldersIceCreamCart
             InitializeComponent();
 
             //Setup the form items now that they're ready and we have the data.
-            usernameLabel.Text = Viewer.Username;
+            usernameLabel.Text = Viewer.Email;
         }
 
         private void logoutLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

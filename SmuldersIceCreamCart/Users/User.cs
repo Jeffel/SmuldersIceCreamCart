@@ -8,7 +8,6 @@ namespace SmuldersIceCreamCart.Users
 {
     public abstract class User
     {
-        public string Username { get; }
         protected bool IsAdmin { get; set; }
 
         public string FirstName { get; set; }
@@ -19,14 +18,12 @@ namespace SmuldersIceCreamCart.Users
 
         public Address Address { get; set; }
 
-        public User(string username, string firstName, string lastName, string email, string phoneNum, Address address)
+        public User(string email, string firstName, string lastName, string phoneNum)
         {
-            Username = username ?? throw new ArgumentNullException(nameof(username));
             FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             Email = email ?? throw new ArgumentNullException(nameof(email));
             PhoneNum = phoneNum ?? throw new ArgumentNullException(nameof(phoneNum));
-            Address = address ?? throw new ArgumentNullException(nameof(address));
         }
     }
 }
