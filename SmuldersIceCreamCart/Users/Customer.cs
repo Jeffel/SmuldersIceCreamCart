@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Users
 {
-    class Customer : User
+    public class Customer : User
     {
         Address BillingAddress { get; set; }
         //OrderHistory orderHistory { get; set; } //We don't care about or have such things _AT THE MOMENT_
 
-        public Customer(int id, string username, string firstName, string lastName, string email, string phoneNum, Address deliveryAddress, Address billingAddress) 
-            : base(id, username, firstName, lastName, email, phoneNum, deliveryAddress)
+        public Customer(string firstName, string lastName, string email, string phoneNum, Address billingAddress) 
+            : base(email, firstName, lastName, phoneNum)
         {
             BillingAddress = billingAddress;
             IsAdmin = false;
