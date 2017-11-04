@@ -33,18 +33,19 @@ namespace SmuldersIceCreamCart
 
         public LoginType GetLoginType(string email, string password)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM person WHERE email=@email AND password=@password", connection);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT email FROM person WHERE email=@email AND password=@password;", connection);
             cmd.Parameters.Add("email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("password", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Prepare();
             cmd.Parameters[0].Value = email;
             cmd.Parameters[1].Value = password;
             var returned = cmd.ExecuteScalar();
+            
             if (returned is null)
             {
                 return LoginType.NONE;
             }
-            cmd = new NpgsqlCommand("SELECT email FROM employee WHERE email=@email", connection);
+            cmd = new NpgsqlCommand("SELECT email FROM employee WHERE email=@email;", connection);
             cmd.Parameters.Add("email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Prepare();
             cmd.Parameters[0].Value = email;
@@ -60,7 +61,7 @@ namespace SmuldersIceCreamCart
 
         public Employee GetEmployeeFromEmail(string email)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT employee.email, person.first_name, person.last_name, person.phone_number, employee.hours_worked, employee.hourly_wage FROM(employee JOIN person ON employee.email = person.email) WHERE employee.email = @email", connection);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT employee.email, person.first_name, person.last_name, person.phone_number, employee.hours_worked, employee.hourly_wage FROM(employee JOIN person ON employee.email = person.email) WHERE employee.email = @email;", connection);
             cmd.Parameters.Add("email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Prepare();
             cmd.Parameters[0].Value = email;
@@ -70,18 +71,19 @@ namespace SmuldersIceCreamCart
                 return null;
             }
             reader.Read();
-
-            return new Employee(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetFloat(4), reader.GetFloat(5));
+            Employee employee = new Employee(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetFloat(4), reader.GetFloat(5));
+            reader.Close();
+            return employee;
         }
         public Customer GetCustomerFromEmail(string email)
         {
             NpgsqlCommand cmd = new NpgsqlCommand("SELECT customer.email, " +
-                "person.first_name, person.last_name, person.phone_num, customer.billing_address_id, " +
+                "person.first_name, person.last_name, person.phone_number, customer.billing_address_id, " +
                 "address.street_num, address.street_name, address.city, address.state, address.zipcode" +
                 "FROM customer " +
                 "JOIN person ON customer.email=person.email " +
                 "LEFT OUTER JOIN address ON address.id=customer.billing_address_id" +
-                "WHERE person.email=@email", connection);
+                "WHERE person.email=@email;", connection);
             cmd.Parameters.Add("email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Prepare();
             cmd.Parameters[0].Value = email;
@@ -92,7 +94,9 @@ namespace SmuldersIceCreamCart
             }
             reader.Read();
             Address address = new Address(true, reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7), reader.GetString(8));
-            return new Customer(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), address);
+            Customer customer = new Customer(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), address);
+            reader.Close();
+            return customer;
         }
     }
 }
