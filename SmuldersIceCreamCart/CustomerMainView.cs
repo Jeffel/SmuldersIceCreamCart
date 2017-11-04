@@ -48,5 +48,15 @@ namespace SmuldersIceCreamCart
                 Close();
             }
         }
+
+        private void PlaceOrderButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not yet implemented.", "Place Order");
+        }
+
+        private void OrderHistButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not yet implemented.", "Previous Orders");
+        }
     }
 }

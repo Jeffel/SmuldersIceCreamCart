@@ -34,6 +34,7 @@
             this.logoutLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.CreateAccountsButton = new System.Windows.Forms.Button();
+            this.ScheduleButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,17 +67,17 @@
             this.manageAccountLabel.Location = new System.Drawing.Point(82, 0);
             this.manageAccountLabel.Name = "manageAccountLabel";
             this.manageAccountLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.manageAccountLabel.Size = new System.Drawing.Size(89, 18);
+            this.manageAccountLabel.Size = new System.Drawing.Size(61, 18);
             this.manageAccountLabel.TabIndex = 3;
             this.manageAccountLabel.TabStop = true;
-            this.manageAccountLabel.Text = "Manage Account";
+            this.manageAccountLabel.Text = "MyAccount";
             this.manageAccountLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.manageAccountLabel_LinkClicked);
             // 
             // logoutLabel
             // 
             this.logoutLabel.AutoSize = true;
             this.logoutLabel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.logoutLabel.Location = new System.Drawing.Point(177, 0);
+            this.logoutLabel.Location = new System.Drawing.Point(149, 0);
             this.logoutLabel.Name = "logoutLabel";
             this.logoutLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.logoutLabel.Size = new System.Drawing.Size(40, 18);
@@ -105,11 +106,22 @@
             this.CreateAccountsButton.UseVisualStyleBackColor = true;
             this.CreateAccountsButton.Click += new System.EventHandler(this.CreateAccountsButton_Click);
             // 
+            // ScheduleButton
+            // 
+            this.ScheduleButton.Location = new System.Drawing.Point(163, 79);
+            this.ScheduleButton.Name = "ScheduleButton";
+            this.ScheduleButton.Size = new System.Drawing.Size(121, 23);
+            this.ScheduleButton.TabIndex = 6;
+            this.ScheduleButton.Text = "Manage Schedule";
+            this.ScheduleButton.UseVisualStyleBackColor = true;
+            this.ScheduleButton.Click += new System.EventHandler(this.ScheduleButton_Click);
+            // 
             // EmployeeMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(877, 552);
+            this.Controls.Add(this.ScheduleButton);
             this.Controls.Add(this.CreateAccountsButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -132,5 +144,6 @@
         private System.Windows.Forms.LinkLabel logoutLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button CreateAccountsButton;
+        private System.Windows.Forms.Button ScheduleButton;
     }
 }

@@ -77,5 +77,10 @@ namespace SmuldersIceCreamCart
                 Close();
             }
         }
+
+        private void ScheduleButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not yet implemented.", "Schedules");
+        }
     }
 }

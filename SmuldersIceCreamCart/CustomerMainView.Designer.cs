@@ -33,6 +33,9 @@
             this.logoutLabel = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.manageAccountLabel = new System.Windows.Forms.LinkLabel();
+            this.OrderHistButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PlaceOrderButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,16 +66,39 @@
             this.manageAccountLabel.TabStop = true;
             this.manageAccountLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.manageAccountLabel_LinkClicked);
             // 
+            // OrderHistButton
+            // 
+            resources.ApplyResources(this.OrderHistButton, "OrderHistButton");
+            this.OrderHistButton.Name = "OrderHistButton";
+            this.OrderHistButton.UseVisualStyleBackColor = true;
+            this.OrderHistButton.Click += new System.EventHandler(this.OrderHistButton_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // PlaceOrderButton
+            // 
+            resources.ApplyResources(this.PlaceOrderButton, "PlaceOrderButton");
+            this.PlaceOrderButton.Name = "PlaceOrderButton";
+            this.PlaceOrderButton.UseVisualStyleBackColor = true;
+            this.PlaceOrderButton.Click += new System.EventHandler(this.PlaceOrderButton_Click);
+            // 
             // CustomerMainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PlaceOrderButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.OrderHistButton);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CustomerMainView";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +108,8 @@
         private System.Windows.Forms.LinkLabel logoutLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel manageAccountLabel;
+        private System.Windows.Forms.Button OrderHistButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button PlaceOrderButton;
     }
 }
