@@ -31,7 +31,7 @@ namespace SmuldersIceCreamCart
             if (validCurrent)
             {
                 DialogResult = DialogResult.OK;
-                MessageBox.Show("Password change successful.");
+                MessageBox.Show("Password change would have been successful if it were implemented.");
                 Close();
             } else
             {

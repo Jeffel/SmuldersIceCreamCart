@@ -77,13 +77,7 @@ namespace SmuldersIceCreamCart
         }
         public Customer GetCustomerFromEmail(string email)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("SELECT customer.email, " +
-                "person.first_name, person.last_name, person.phone_number, customer.billing_address_id, " +
-                "address.street_num, address.street_name, address.city, address.state, address.zipcode" +
-                "FROM customer " +
-                "JOIN person ON customer.email=person.email " +
-                "LEFT OUTER JOIN address ON address.id=customer.billing_address_id" +
-                "WHERE person.email=@email;", connection);
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT customer.email, person.first_name, person.last_name, person.phone_number, customer.billing_address_id, address.street_num, address.street_name, address.city, address.state, address.zipcode FROM ((customer JOIN person ON customer.email=person.email) LEFT OUTER JOIN address ON address.id=customer.billing_address_id) WHERE person.email=@email;", connection);
             cmd.Parameters.Add("email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Prepare();
             cmd.Parameters[0].Value = email;
