@@ -13,7 +13,7 @@ namespace SmuldersIceCreamCart
 {
     public partial class CustomerMainView : Form
     {
-        User Viewer { get; set; } //Until we have a user class to store their info, this will suffice.
+        User Viewer { get; set; }
 
         public CustomerMainView(User user)
         {
@@ -49,14 +49,49 @@ namespace SmuldersIceCreamCart
             }
         }
 
-        private void PlaceOrderButton_Click(object sender, EventArgs e)
+        private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented.", "Place Order");
+            /*This will eventually enable all the textboxes above the button for editing.
+            It will then switch to a 'save' button which will trigger validation and handle the state switch back
+            based on success or not of the DB info update.
+            */
+            if(UpdateInfoButton.Text == "Update Info")
+            {
+                UpdateInfoButton.Text = "Save";
+                NameTextbox.Enabled = true;
+            }
+            else if(UpdateInfoButton.Text == "Save")
+            {
+                //Do verification and update query here. If success, lock in and switch back to no update mode.
+                UpdateInfoButton.Text = "Update Info";
+                NameTextbox.Enabled = false;
+            }
         }
 
-        private void OrderHistButton_Click(object sender, EventArgs e)
+        private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented.", "Previous Orders");
+            PlaceOrderVIew orderView = new PlaceOrderVIew(Viewer);
+            //We will want a property within this view to get the actual order class item.
+            Hide();
+            DialogResult result = orderView.ShowDialog(); //Will answer 'Did the user logout?'           
+
+            if (result == DialogResult.Yes)
+            {
+                //Order was successfully place.
+            }
+            else if(result == DialogResult.Abort)
+            {
+                //Order was stopped mid-place. 'Saved' as in progress.
+            }
+            else if(result == DialogResult.Cancel)
+            {
+                //Order was cancelled by user before being placed.
+            }
+            else if(result == DialogResult.No)
+            {
+                //Order was not successfully placed. Error.
+            }
+            Show();
         }
     }
 }
