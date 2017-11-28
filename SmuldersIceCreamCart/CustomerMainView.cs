@@ -49,14 +49,23 @@ namespace SmuldersIceCreamCart
             }
         }
 
-        private void PlaceOrderButton_Click(object sender, EventArgs e)
+        private void UpdateInfoButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not yet implemented.", "Place Order");
-        }
-
-        private void OrderHistButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Not yet implemented.", "Previous Orders");
+            /*This will eventually enable all the textboxes above the button for editing.
+            It will then switch to a 'save' button which will trigger validation and handle the state switch back
+            based on success or not of the DB info update.
+            */
+            if(UpdateInfoButton.Text == "Update Info")
+            {
+                UpdateInfoButton.Text = "Save";
+                NameTextbox.Enabled = true;
+            }
+            else if(UpdateInfoButton.Text == "Save")
+            {
+                //Do verification and update query here. If success, lock in and switch back to no update mode.
+                UpdateInfoButton.Text = "Update Info";
+                NameTextbox.Enabled = false;
+            }
         }
     }
 }
