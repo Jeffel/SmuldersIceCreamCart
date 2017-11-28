@@ -89,6 +89,13 @@
     <Compile Include="ManageAccount.Designer.cs">
       <DependentUpon>ManageAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu\SideItem.cs" />
+    <Compile Include="Menu\Sundae.cs" />
+    <Compile Include="Menu\Milkshake.cs" />
+    <Compile Include="Menu\IceCreamScoop.cs" />
+    <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Order\Order.cs" />
+    <Compile Include="Order\OrderItem.cs" />
     <Compile Include="PlaceOrderVIew.cs">
       <SubType>Form</SubType>
     </Compile>
