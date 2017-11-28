@@ -204,5 +204,24 @@ namespace SmuldersIceCreamCart
             Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
             //Pull from this the necessary information.
         }
+
+        private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
+            {
+                EditItemButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+            }
+            else
+            {
+                EditItemButton.Enabled = true;
+                RemoveItemButton.Enabled = true;
+            }
+        }
+
+        private void ValidateOrderItem(object sender, EventArgs e)
+        {
+            //TODO Write this function to enable the add to order button.
+        }
     }
 }

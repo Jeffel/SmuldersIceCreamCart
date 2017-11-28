@@ -206,6 +206,7 @@
             // 
             // EditItemButton
             // 
+            this.EditItemButton.Enabled = false;
             this.EditItemButton.Location = new System.Drawing.Point(174, 55);
             this.EditItemButton.Name = "EditItemButton";
             this.EditItemButton.Size = new System.Drawing.Size(74, 41);
@@ -216,6 +217,7 @@
             // 
             // RemoveItemButton
             // 
+            this.RemoveItemButton.Enabled = false;
             this.RemoveItemButton.Location = new System.Drawing.Point(254, 55);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(118, 41);
@@ -240,6 +242,7 @@
             this.CartListbox.Name = "CartListbox";
             this.CartListbox.Size = new System.Drawing.Size(771, 154);
             this.CartListbox.TabIndex = 16;
+            this.CartListbox.SelectedIndexChanged += new System.EventHandler(this.CartListbox_SelectedIndexChanged);
             // 
             // QuantityLabel
             // 
@@ -307,6 +310,7 @@
             this.FlavorCBox.Size = new System.Drawing.Size(172, 33);
             this.FlavorCBox.TabIndex = 26;
             this.FlavorCBox.Visible = false;
+            this.FlavorCBox.SelectedIndexChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SyrupCBox
             // 
