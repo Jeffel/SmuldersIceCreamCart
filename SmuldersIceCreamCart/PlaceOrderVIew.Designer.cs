@@ -58,6 +58,7 @@
             this.SyrupCBox = new System.Windows.Forms.ComboBox();
             this.SizeCBox = new System.Windows.Forms.ComboBox();
             this.AddOrderButton = new System.Windows.Forms.Button();
+            this.SideItemsListbox = new System.Windows.Forms.ListBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityUD)).BeginInit();
             this.SuspendLayout();
@@ -243,6 +244,7 @@
             this.QuantityLabel.Size = new System.Drawing.Size(98, 25);
             this.QuantityLabel.TabIndex = 17;
             this.QuantityLabel.Text = "Quantity:";
+            this.QuantityLabel.Visible = false;
             // 
             // QuantityUD
             // 
@@ -250,6 +252,7 @@
             this.QuantityUD.Name = "QuantityUD";
             this.QuantityUD.Size = new System.Drawing.Size(120, 31);
             this.QuantityUD.TabIndex = 18;
+            this.QuantityUD.Visible = false;
             // 
             // FlavorLabel
             // 
@@ -259,6 +262,7 @@
             this.FlavorLabel.Size = new System.Drawing.Size(78, 25);
             this.FlavorLabel.TabIndex = 19;
             this.FlavorLabel.Text = "Flavor:";
+            this.FlavorLabel.Visible = false;
             // 
             // SyrupLabel
             // 
@@ -268,6 +272,7 @@
             this.SyrupLabel.Size = new System.Drawing.Size(74, 25);
             this.SyrupLabel.TabIndex = 20;
             this.SyrupLabel.Text = "Syrup:";
+            this.SyrupLabel.Visible = false;
             // 
             // ToppingLabel
             // 
@@ -277,6 +282,7 @@
             this.ToppingLabel.Size = new System.Drawing.Size(96, 25);
             this.ToppingLabel.TabIndex = 21;
             this.ToppingLabel.Text = "Topping:";
+            this.ToppingLabel.Visible = false;
             // 
             // ContainerLabel
             // 
@@ -286,6 +292,7 @@
             this.ContainerLabel.Size = new System.Drawing.Size(111, 25);
             this.ContainerLabel.TabIndex = 22;
             this.ContainerLabel.Text = "Container:";
+            this.ContainerLabel.Visible = false;
             // 
             // SizeLabel
             // 
@@ -295,6 +302,7 @@
             this.SizeLabel.Size = new System.Drawing.Size(60, 25);
             this.SizeLabel.TabIndex = 23;
             this.SizeLabel.Text = "Size:";
+            this.SizeLabel.Visible = false;
             // 
             // ToppingCBox
             // 
@@ -303,6 +311,7 @@
             this.ToppingCBox.Name = "ToppingCBox";
             this.ToppingCBox.Size = new System.Drawing.Size(172, 33);
             this.ToppingCBox.TabIndex = 24;
+            this.ToppingCBox.Visible = false;
             // 
             // ContainerCBox
             // 
@@ -311,6 +320,7 @@
             this.ContainerCBox.Name = "ContainerCBox";
             this.ContainerCBox.Size = new System.Drawing.Size(172, 33);
             this.ContainerCBox.TabIndex = 25;
+            this.ContainerCBox.Visible = false;
             // 
             // FlavorCBox
             // 
@@ -319,6 +329,7 @@
             this.FlavorCBox.Name = "FlavorCBox";
             this.FlavorCBox.Size = new System.Drawing.Size(172, 33);
             this.FlavorCBox.TabIndex = 26;
+            this.FlavorCBox.Visible = false;
             // 
             // SyrupCBox
             // 
@@ -327,6 +338,7 @@
             this.SyrupCBox.Name = "SyrupCBox";
             this.SyrupCBox.Size = new System.Drawing.Size(172, 33);
             this.SyrupCBox.TabIndex = 27;
+            this.SyrupCBox.Visible = false;
             // 
             // SizeCBox
             // 
@@ -335,15 +347,26 @@
             this.SizeCBox.Name = "SizeCBox";
             this.SizeCBox.Size = new System.Drawing.Size(172, 33);
             this.SizeCBox.TabIndex = 28;
+            this.SizeCBox.Visible = false;
             // 
             // AddOrderButton
             // 
-            this.AddOrderButton.Location = new System.Drawing.Point(725, 644);
+            this.AddOrderButton.Location = new System.Drawing.Point(484, 644);
             this.AddOrderButton.Name = "AddOrderButton";
             this.AddOrderButton.Size = new System.Drawing.Size(172, 33);
             this.AddOrderButton.TabIndex = 29;
             this.AddOrderButton.Text = "Add to Order";
             this.AddOrderButton.UseVisualStyleBackColor = true;
+            // 
+            // SideItemsListbox
+            // 
+            this.SideItemsListbox.FormattingEnabled = true;
+            this.SideItemsListbox.ItemHeight = 25;
+            this.SideItemsListbox.Location = new System.Drawing.Point(339, 276);
+            this.SideItemsListbox.Name = "SideItemsListbox";
+            this.SideItemsListbox.Size = new System.Drawing.Size(317, 329);
+            this.SideItemsListbox.TabIndex = 30;
+            this.SideItemsListbox.Visible = false;
             // 
             // PlaceOrderVIew
             // 
@@ -379,6 +402,7 @@
             this.Controls.Add(this.MenuItemsListbox);
             this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.SideItemsListbox);
             this.Name = "PlaceOrderVIew";
             this.Text = "Smulder\'s Ice Cream Service - Place Order";
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -421,5 +445,6 @@
         private System.Windows.Forms.ComboBox SyrupCBox;
         private System.Windows.Forms.ComboBox SizeCBox;
         private System.Windows.Forms.Button AddOrderButton;
+        private System.Windows.Forms.ListBox SideItemsListbox;
     }
 }
