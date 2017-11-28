@@ -17,8 +17,8 @@ namespace SmuldersIceCreamCart.Menu
 
     public abstract class MenuItem
     {
-        string Name { get; set; }
-        double Cost { get; set; }
+        public string Name { get; set; }
+        public double Cost { get; set; }
         string Container { get; set; }
         
         public MenuItem( string name, string container, double cost)

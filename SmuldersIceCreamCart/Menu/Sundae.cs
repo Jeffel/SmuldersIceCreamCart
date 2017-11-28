@@ -21,10 +21,10 @@ namespace SmuldersIceCreamCart.Menu
     */
 
         string Topping { get; set; }
-        Boolean cherry { get; set; }
-        Boolean whipped_cream { get; set; }
+        bool cherry { get; set; }
+        bool whipped_cream { get; set; }
 
-        public Sundae( string Flavour, string Topping, Boolean cherry, Boolean whipped_cream, double cost ) 
+        public Sundae( string Flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
             : base( "Sundae", Flavour, "dish", Size.MEDIUM, cost )
         {
             this.Topping = Topping;

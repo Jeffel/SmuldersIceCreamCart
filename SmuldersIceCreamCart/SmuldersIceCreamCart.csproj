@@ -94,6 +94,8 @@
     <Compile Include="Menu\Milkshake.cs" />
     <Compile Include="Menu\IceCreamScoop.cs" />
     <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="Order\Order.cs" />
+    <Compile Include="Order\OrderItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Address.cs" />
