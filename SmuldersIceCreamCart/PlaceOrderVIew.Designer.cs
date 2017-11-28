@@ -48,17 +48,19 @@
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.QuantityUD = new System.Windows.Forms.NumericUpDown();
             this.FlavorLabel = new System.Windows.Forms.Label();
-            this.SyrupLabel = new System.Windows.Forms.Label();
             this.ToppingLabel = new System.Windows.Forms.Label();
-            this.ContainerLabel = new System.Windows.Forms.Label();
             this.SizeLabel = new System.Windows.Forms.Label();
             this.ToppingCBox = new System.Windows.Forms.ComboBox();
-            this.ContainerCBox = new System.Windows.Forms.ComboBox();
             this.FlavorCBox = new System.Windows.Forms.ComboBox();
             this.SyrupCBox = new System.Windows.Forms.ComboBox();
             this.SizeCBox = new System.Windows.Forms.ComboBox();
             this.AddOrderButton = new System.Windows.Forms.Button();
             this.SideItemsListbox = new System.Windows.Forms.ListBox();
+            this.SyrupLabel = new System.Windows.Forms.Label();
+            this.ContainerLabel = new System.Windows.Forms.Label();
+            this.ContainerCBox = new System.Windows.Forms.ComboBox();
+            this.WhippedCreamCBox = new System.Windows.Forms.CheckBox();
+            this.CherryCBox = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityUD)).BeginInit();
             this.SuspendLayout();
@@ -132,6 +134,7 @@
             this.MenuItemsListbox.Name = "MenuItemsListbox";
             this.MenuItemsListbox.Size = new System.Drawing.Size(285, 329);
             this.MenuItemsListbox.TabIndex = 5;
+            this.MenuItemsListbox.SelectedIndexChanged += new System.EventHandler(this.MenuItemsListbox_SelectedIndexChanged);
             // 
             // MenuItemsLabel
             // 
@@ -209,6 +212,7 @@
             this.EditItemButton.TabIndex = 13;
             this.EditItemButton.Text = "Edit";
             this.EditItemButton.UseVisualStyleBackColor = true;
+            this.EditItemButton.Click += new System.EventHandler(this.EditItemButton_Click);
             // 
             // RemoveItemButton
             // 
@@ -240,7 +244,7 @@
             // QuantityLabel
             // 
             this.QuantityLabel.AutoSize = true;
-            this.QuantityLabel.Location = new System.Drawing.Point(359, 357);
+            this.QuantityLabel.Location = new System.Drawing.Point(693, 283);
             this.QuantityLabel.Name = "QuantityLabel";
             this.QuantityLabel.Size = new System.Drawing.Size(98, 25);
             this.QuantityLabel.TabIndex = 17;
@@ -249,11 +253,12 @@
             // 
             // QuantityUD
             // 
-            this.QuantityUD.Location = new System.Drawing.Point(464, 357);
+            this.QuantityUD.Location = new System.Drawing.Point(798, 283);
             this.QuantityUD.Name = "QuantityUD";
             this.QuantityUD.Size = new System.Drawing.Size(120, 31);
             this.QuantityUD.TabIndex = 18;
             this.QuantityUD.Visible = false;
+            this.QuantityUD.ValueChanged += new System.EventHandler(this.QuantityUD_ValueChanged);
             // 
             // FlavorLabel
             // 
@@ -265,40 +270,20 @@
             this.FlavorLabel.Text = "Flavor:";
             this.FlavorLabel.Visible = false;
             // 
-            // SyrupLabel
-            // 
-            this.SyrupLabel.AutoSize = true;
-            this.SyrupLabel.Location = new System.Drawing.Point(666, 434);
-            this.SyrupLabel.Name = "SyrupLabel";
-            this.SyrupLabel.Size = new System.Drawing.Size(74, 25);
-            this.SyrupLabel.TabIndex = 20;
-            this.SyrupLabel.Text = "Syrup:";
-            this.SyrupLabel.Visible = false;
-            // 
             // ToppingLabel
             // 
             this.ToppingLabel.AutoSize = true;
-            this.ToppingLabel.Location = new System.Drawing.Point(361, 434);
+            this.ToppingLabel.Location = new System.Drawing.Point(373, 357);
             this.ToppingLabel.Name = "ToppingLabel";
             this.ToppingLabel.Size = new System.Drawing.Size(96, 25);
             this.ToppingLabel.TabIndex = 21;
             this.ToppingLabel.Text = "Topping:";
             this.ToppingLabel.Visible = false;
             // 
-            // ContainerLabel
-            // 
-            this.ContainerLabel.AutoSize = true;
-            this.ContainerLabel.Location = new System.Drawing.Point(346, 523);
-            this.ContainerLabel.Name = "ContainerLabel";
-            this.ContainerLabel.Size = new System.Drawing.Size(111, 25);
-            this.ContainerLabel.TabIndex = 22;
-            this.ContainerLabel.Text = "Container:";
-            this.ContainerLabel.Visible = false;
-            // 
             // SizeLabel
             // 
             this.SizeLabel.AutoSize = true;
-            this.SizeLabel.Location = new System.Drawing.Point(680, 523);
+            this.SizeLabel.Location = new System.Drawing.Point(410, 504);
             this.SizeLabel.Name = "SizeLabel";
             this.SizeLabel.Size = new System.Drawing.Size(60, 25);
             this.SizeLabel.TabIndex = 23;
@@ -308,20 +293,11 @@
             // ToppingCBox
             // 
             this.ToppingCBox.FormattingEnabled = true;
-            this.ToppingCBox.Location = new System.Drawing.Point(464, 434);
+            this.ToppingCBox.Location = new System.Drawing.Point(476, 357);
             this.ToppingCBox.Name = "ToppingCBox";
             this.ToppingCBox.Size = new System.Drawing.Size(172, 33);
             this.ToppingCBox.TabIndex = 24;
             this.ToppingCBox.Visible = false;
-            // 
-            // ContainerCBox
-            // 
-            this.ContainerCBox.FormattingEnabled = true;
-            this.ContainerCBox.Location = new System.Drawing.Point(464, 520);
-            this.ContainerCBox.Name = "ContainerCBox";
-            this.ContainerCBox.Size = new System.Drawing.Size(172, 33);
-            this.ContainerCBox.TabIndex = 25;
-            this.ContainerCBox.Visible = false;
             // 
             // FlavorCBox
             // 
@@ -344,7 +320,7 @@
             // SizeCBox
             // 
             this.SizeCBox.FormattingEnabled = true;
-            this.SizeCBox.Location = new System.Drawing.Point(746, 523);
+            this.SizeCBox.Location = new System.Drawing.Point(476, 504);
             this.SizeCBox.Name = "SizeCBox";
             this.SizeCBox.Size = new System.Drawing.Size(172, 33);
             this.SizeCBox.TabIndex = 28;
@@ -352,12 +328,14 @@
             // 
             // AddOrderButton
             // 
+            this.AddOrderButton.Enabled = false;
             this.AddOrderButton.Location = new System.Drawing.Point(484, 644);
             this.AddOrderButton.Name = "AddOrderButton";
             this.AddOrderButton.Size = new System.Drawing.Size(172, 41);
             this.AddOrderButton.TabIndex = 29;
             this.AddOrderButton.Text = "Add to Order";
             this.AddOrderButton.UseVisualStyleBackColor = true;
+            this.AddOrderButton.Click += new System.EventHandler(this.AddOrderButton_Click);
             // 
             // SideItemsListbox
             // 
@@ -369,6 +347,57 @@
             this.SideItemsListbox.TabIndex = 30;
             this.SideItemsListbox.Visible = false;
             // 
+            // SyrupLabel
+            // 
+            this.SyrupLabel.AutoSize = true;
+            this.SyrupLabel.Location = new System.Drawing.Point(666, 434);
+            this.SyrupLabel.Name = "SyrupLabel";
+            this.SyrupLabel.Size = new System.Drawing.Size(74, 25);
+            this.SyrupLabel.TabIndex = 20;
+            this.SyrupLabel.Text = "Syrup:";
+            this.SyrupLabel.Visible = false;
+            // 
+            // ContainerLabel
+            // 
+            this.ContainerLabel.AutoSize = true;
+            this.ContainerLabel.Location = new System.Drawing.Point(358, 437);
+            this.ContainerLabel.Name = "ContainerLabel";
+            this.ContainerLabel.Size = new System.Drawing.Size(111, 25);
+            this.ContainerLabel.TabIndex = 22;
+            this.ContainerLabel.Text = "Container:";
+            this.ContainerLabel.Visible = false;
+            // 
+            // ContainerCBox
+            // 
+            this.ContainerCBox.FormattingEnabled = true;
+            this.ContainerCBox.Location = new System.Drawing.Point(476, 434);
+            this.ContainerCBox.Name = "ContainerCBox";
+            this.ContainerCBox.Size = new System.Drawing.Size(172, 33);
+            this.ContainerCBox.TabIndex = 25;
+            this.ContainerCBox.Visible = false;
+            // 
+            // WhippedCreamCBox
+            // 
+            this.WhippedCreamCBox.AutoSize = true;
+            this.WhippedCreamCBox.Location = new System.Drawing.Point(731, 508);
+            this.WhippedCreamCBox.Name = "WhippedCreamCBox";
+            this.WhippedCreamCBox.Size = new System.Drawing.Size(210, 29);
+            this.WhippedCreamCBox.TabIndex = 31;
+            this.WhippedCreamCBox.Text = "Whipped Cream?";
+            this.WhippedCreamCBox.UseVisualStyleBackColor = true;
+            this.WhippedCreamCBox.Visible = false;
+            // 
+            // CherryCBox
+            // 
+            this.CherryCBox.AutoSize = true;
+            this.CherryCBox.Location = new System.Drawing.Point(731, 559);
+            this.CherryCBox.Name = "CherryCBox";
+            this.CherryCBox.Size = new System.Drawing.Size(186, 29);
+            this.CherryCBox.TabIndex = 32;
+            this.CherryCBox.Text = "Cherry on top?";
+            this.CherryCBox.UseVisualStyleBackColor = true;
+            this.CherryCBox.Visible = false;
+            // 
             // PlaceOrderView
             // 
             this.AcceptButton = this.PlaceOrderButton;
@@ -376,6 +405,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelOrderButton;
             this.ClientSize = new System.Drawing.Size(998, 697);
+            this.Controls.Add(this.CherryCBox);
+            this.Controls.Add(this.WhippedCreamCBox);
             this.Controls.Add(this.AddOrderButton);
             this.Controls.Add(this.SizeCBox);
             this.Controls.Add(this.SyrupCBox);
@@ -436,16 +467,18 @@
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.NumericUpDown QuantityUD;
         private System.Windows.Forms.Label FlavorLabel;
-        private System.Windows.Forms.Label SyrupLabel;
         private System.Windows.Forms.Label ToppingLabel;
-        private System.Windows.Forms.Label ContainerLabel;
         private System.Windows.Forms.Label SizeLabel;
         private System.Windows.Forms.ComboBox ToppingCBox;
-        private System.Windows.Forms.ComboBox ContainerCBox;
         private System.Windows.Forms.ComboBox FlavorCBox;
         private System.Windows.Forms.ComboBox SyrupCBox;
         private System.Windows.Forms.ComboBox SizeCBox;
         private System.Windows.Forms.Button AddOrderButton;
         private System.Windows.Forms.ListBox SideItemsListbox;
+        private System.Windows.Forms.Label SyrupLabel;
+        private System.Windows.Forms.Label ContainerLabel;
+        private System.Windows.Forms.ComboBox ContainerCBox;
+        private System.Windows.Forms.CheckBox WhippedCreamCBox;
+        private System.Windows.Forms.CheckBox CherryCBox;
     }
 }

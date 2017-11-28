@@ -19,12 +19,17 @@ namespace SmuldersIceCreamCart
         {
             //Setup from Input Stuff.
             Viewer = user;
+            //TODO like the stuff below, fill out the rest of the user info in more text boxes.
+            //Later, enable users to edit this info permanently.
 
             //Get stuff from SQL to store somewhere to get ready.
-            //TODO Get order history.
+            //TODO Get order history. Fill the HistoryListbox with the items.
 
             //Make the components ready to go.
             InitializeComponent();
+
+            HistoryFromDatepick.Value = DateTime.Today.AddDays(-1);
+            HistoryToDatepick.Value = DateTime.Now;
 
             //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
@@ -59,6 +64,7 @@ namespace SmuldersIceCreamCart
             {
                 UpdateInfoButton.Text = "Save";
                 NameTextbox.Enabled = true;
+                //TODO Add more fields to display user info and allow updating.
             }
             else if(UpdateInfoButton.Text == "Save")
             {
@@ -91,7 +97,33 @@ namespace SmuldersIceCreamCart
             {
                 //TODO Order was not successfully placed. Error.
             }
+            HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
             Show();
+        }
+
+        private void HistoryListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(HistoryListbox.SelectedItem.ToString()))
+            {
+                ViewHistoryItemButton.Enabled = false;
+            } else
+            {
+                ViewHistoryItemButton.Enabled = true;
+            }
+        }
+
+        private void ViewHistoryItemButton_Click(object sender, EventArgs e)
+        {
+            //Open up a history view of the item in question, this view might enable such things as:
+            //Re-ordering the given view. Cancelling an in-progress order.
+            //For now the button does nothing but say not implemented.
+
+            MessageBox.Show("Detailed history view is not yet implemented.", "History Item");
+        }
+
+        private void HistoryRangeChange(object sender, EventArgs e)
+        {
+            //TODO refresh the list of orders in the given history range.
         }
     }
 }

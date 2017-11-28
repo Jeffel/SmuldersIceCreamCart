@@ -35,16 +35,17 @@
             this.manageAccountLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.HistoryFromDatepick = new System.Windows.Forms.DateTimePicker();
             this.VertSplitLabel = new System.Windows.Forms.Label();
             this.HistFromLabel = new System.Windows.Forms.Label();
             this.HistToLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.HistoryToDatepick = new System.Windows.Forms.DateTimePicker();
             this.PlaceOrderButton = new System.Windows.Forms.Button();
             this.NameLabel = new System.Windows.Forms.Label();
             this.UpdateInfoButton = new System.Windows.Forms.Button();
             this.NameTextbox = new System.Windows.Forms.TextBox();
+            this.HistoryListbox = new System.Windows.Forms.ListBox();
+            this.ViewHistoryItemButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,10 +86,11 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // dateTimePicker1
+            // HistoryFromDatepick
             // 
-            resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
-            this.dateTimePicker1.Name = "dateTimePicker1";
+            resources.ApplyResources(this.HistoryFromDatepick, "HistoryFromDatepick");
+            this.HistoryFromDatepick.Name = "HistoryFromDatepick";
+            this.HistoryFromDatepick.ValueChanged += new System.EventHandler(this.HistoryRangeChange);
             // 
             // VertSplitLabel
             // 
@@ -106,15 +108,11 @@
             resources.ApplyResources(this.HistToLabel, "HistToLabel");
             this.HistToLabel.Name = "HistToLabel";
             // 
-            // dateTimePicker2
+            // HistoryToDatepick
             // 
-            resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            // 
-            // treeView1
-            // 
-            resources.ApplyResources(this.treeView1, "treeView1");
-            this.treeView1.Name = "treeView1";
+            resources.ApplyResources(this.HistoryToDatepick, "HistoryToDatepick");
+            this.HistoryToDatepick.Name = "HistoryToDatepick";
+            this.HistoryToDatepick.ValueChanged += new System.EventHandler(this.HistoryRangeChange);
             // 
             // PlaceOrderButton
             // 
@@ -140,22 +138,37 @@
             resources.ApplyResources(this.NameTextbox, "NameTextbox");
             this.NameTextbox.Name = "NameTextbox";
             // 
+            // HistoryListbox
+            // 
+            this.HistoryListbox.FormattingEnabled = true;
+            resources.ApplyResources(this.HistoryListbox, "HistoryListbox");
+            this.HistoryListbox.Name = "HistoryListbox";
+            this.HistoryListbox.SelectedIndexChanged += new System.EventHandler(this.HistoryListbox_SelectedIndexChanged);
+            // 
+            // ViewHistoryItemButton
+            // 
+            resources.ApplyResources(this.ViewHistoryItemButton, "ViewHistoryItemButton");
+            this.ViewHistoryItemButton.Name = "ViewHistoryItemButton";
+            this.ViewHistoryItemButton.UseVisualStyleBackColor = true;
+            this.ViewHistoryItemButton.Click += new System.EventHandler(this.ViewHistoryItemButton_Click);
+            // 
             // CustomerMainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ViewHistoryItemButton);
+            this.Controls.Add(this.HistoryListbox);
             this.Controls.Add(this.NameTextbox);
             this.Controls.Add(this.UpdateInfoButton);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.PlaceOrderButton);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.HistoryToDatepick);
             this.Controls.Add(this.HistToLabel);
             this.Controls.Add(this.HistFromLabel);
             this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.HistoryFromDatepick);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -174,16 +187,17 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel manageAccountLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker HistoryFromDatepick;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label VertSplitLabel;
         private System.Windows.Forms.Label HistFromLabel;
         private System.Windows.Forms.Label HistToLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.DateTimePicker HistoryToDatepick;
         private System.Windows.Forms.Button PlaceOrderButton;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Button UpdateInfoButton;
         private System.Windows.Forms.TextBox NameTextbox;
+        private System.Windows.Forms.ListBox HistoryListbox;
+        private System.Windows.Forms.Button ViewHistoryItemButton;
     }
 }

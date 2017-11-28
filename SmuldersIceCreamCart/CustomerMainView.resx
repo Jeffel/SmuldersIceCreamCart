@@ -223,7 +223,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,7 +286,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,28 +316,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
-  <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="HistoryFromDatepick.Location" type="System.Drawing.Point, System.Drawing">
     <value>623, 111</value>
   </data>
-  <data name="dateTimePicker1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="HistoryFromDatepick.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 31</value>
   </data>
-  <data name="dateTimePicker1.TabIndex" type="System.Int32, mscorlib">
+  <data name="HistoryFromDatepick.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Name" xml:space="preserve">
-    <value>dateTimePicker1</value>
+  <data name="&gt;&gt;HistoryFromDatepick.Name" xml:space="preserve">
+    <value>HistoryFromDatepick</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Type" xml:space="preserve">
+  <data name="&gt;&gt;HistoryFromDatepick.Type" xml:space="preserve">
     <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;HistoryFromDatepick.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dateTimePicker1.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;HistoryFromDatepick.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="VertSplitLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>368, 51</value>
@@ -358,7 +358,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;VertSplitLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="HistFromLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,7 +385,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;HistFromLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="HistToLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,49 +415,28 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;HistToLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="dateTimePicker2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>623, 163</value>
-  </data>
-  <data name="dateTimePicker2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 31</value>
-  </data>
-  <data name="dateTimePicker2.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker2.Name" xml:space="preserve">
-    <value>dateTimePicker2</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;dateTimePicker2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="treeView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 210</value>
-  </data>
-  <data name="treeView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 475</value>
-  </data>
-  <data name="treeView1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;treeView1.Name" xml:space="preserve">
-    <value>treeView1</value>
+  <data name="HistoryToDatepick.Location" type="System.Drawing.Point, System.Drawing">
+    <value>623, 163</value>
   </data>
-  <data name="&gt;&gt;treeView1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="HistoryToDatepick.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 31</value>
   </data>
-  <data name="&gt;&gt;treeView1.Parent" xml:space="preserve">
+  <data name="HistoryToDatepick.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;HistoryToDatepick.Name" xml:space="preserve">
+    <value>HistoryToDatepick</value>
+  </data>
+  <data name="&gt;&gt;HistoryToDatepick.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HistoryToDatepick.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;treeView1.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;HistoryToDatepick.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="PlaceOrderButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 111</value>
@@ -481,7 +460,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PlaceOrderButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="NameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -508,13 +487,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="UpdateInfoButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 622</value>
   </data>
   <data name="UpdateInfoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 37</value>
+    <value>152, 41</value>
   </data>
   <data name="UpdateInfoButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -532,7 +511,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UpdateInfoButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="NameTextbox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -559,6 +538,57 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameTextbox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="HistoryListbox.ItemHeight" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="HistoryListbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>387, 226</value>
+  </data>
+  <data name="HistoryListbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>598, 404</value>
+  </data>
+  <data name="HistoryListbox.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;HistoryListbox.Name" xml:space="preserve">
+    <value>HistoryListbox</value>
+  </data>
+  <data name="&gt;&gt;HistoryListbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;HistoryListbox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;HistoryListbox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ViewHistoryItemButton.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="ViewHistoryItemButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>843, 636</value>
+  </data>
+  <data name="ViewHistoryItemButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 48</value>
+  </data>
+  <data name="ViewHistoryItemButton.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="ViewHistoryItemButton.Text" xml:space="preserve">
+    <value>View Item</value>
+  </data>
+  <data name="&gt;&gt;ViewHistoryItemButton.Name" xml:space="preserve">
+    <value>ViewHistoryItemButton</value>
+  </data>
+  <data name="&gt;&gt;ViewHistoryItemButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ViewHistoryItemButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ViewHistoryItemButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
