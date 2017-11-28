@@ -13,7 +13,7 @@ namespace SmuldersIceCreamCart
 {
     public partial class CustomerMainView : Form
     {
-        User Viewer { get; set; } //Until we have a user class to store their info, this will suffice.
+        User Viewer { get; set; }
 
         public CustomerMainView(User user)
         {
@@ -66,6 +66,32 @@ namespace SmuldersIceCreamCart
                 UpdateInfoButton.Text = "Update Info";
                 NameTextbox.Enabled = false;
             }
+        }
+
+        private void PlaceOrderButton_Click(object sender, EventArgs e)
+        {
+            PlaceOrderVIew orderView = new PlaceOrderVIew(Viewer);
+            //We will want a property within this view to get the actual order class item.
+            Hide();
+            DialogResult result = orderView.ShowDialog(); //Will answer 'Did the user logout?'           
+
+            if (result == DialogResult.Yes)
+            {
+                //Order was successfully place.
+            }
+            else if(result == DialogResult.Abort)
+            {
+                //Order was stopped mid-place. 'Saved' as in progress.
+            }
+            else if(result == DialogResult.Cancel)
+            {
+                //Order was cancelled by user before being placed.
+            }
+            else if(result == DialogResult.No)
+            {
+                //Order was not successfully placed. Error.
+            }
+            Show();
         }
     }
 }

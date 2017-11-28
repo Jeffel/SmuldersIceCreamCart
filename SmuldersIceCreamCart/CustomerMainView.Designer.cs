@@ -121,6 +121,7 @@
             resources.ApplyResources(this.PlaceOrderButton, "PlaceOrderButton");
             this.PlaceOrderButton.Name = "PlaceOrderButton";
             this.PlaceOrderButton.UseVisualStyleBackColor = true;
+            this.PlaceOrderButton.Click += new System.EventHandler(this.PlaceOrderButton_Click);
             // 
             // NameLabel
             // 

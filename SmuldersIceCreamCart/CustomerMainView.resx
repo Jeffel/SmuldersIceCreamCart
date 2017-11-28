@@ -186,27 +186,6 @@
   <data name="&gt;&gt;logoutLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 0</value>
-  </data>
-  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
-  </data>
-  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 10, 0, 0</value>
-  </data>
-  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 35</value>
-  </data>
-  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="manageAccountLabel.Text" xml:space="preserve">
-    <value>MyAccount</value>
-  </data>
   <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
     <value>manageAccountLabel</value>
   </data>
@@ -245,6 +224,39 @@
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 0</value>
+  </data>
+  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 0, 6, 0</value>
+  </data>
+  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 10, 0, 0</value>
+  </data>
+  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 35</value>
+  </data>
+  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="manageAccountLabel.Text" xml:space="preserve">
+    <value>MyAccount</value>
+  </data>
+  <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
+    <value>manageAccountLabel</value>
+  </data>
+  <data name="&gt;&gt;manageAccountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;manageAccountLabel.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;manageAccountLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -328,7 +340,7 @@
     <value>11</value>
   </data>
   <data name="VertSplitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 59</value>
+    <value>368, 51</value>
   </data>
   <data name="VertSplitLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>2, 1000</value>
