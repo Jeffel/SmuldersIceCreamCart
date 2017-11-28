@@ -1,6 +1,6 @@
 ﻿namespace SmuldersIceCreamCart
 {
-    partial class PlaceOrderVIew
+    partial class PlaceOrderView
     {
         /// <summary>
         /// Required designer variable.
@@ -163,6 +163,7 @@
             this.CancelOrderButton.TabIndex = 8;
             this.CancelOrderButton.Text = "Cancel Order";
             this.CancelOrderButton.UseVisualStyleBackColor = true;
+            this.CancelOrderButton.Click += new System.EventHandler(this.CancelOrderButton_Click);
             // 
             // label1
             // 
@@ -204,25 +205,25 @@
             // 
             this.EditItemButton.Location = new System.Drawing.Point(174, 55);
             this.EditItemButton.Name = "EditItemButton";
-            this.EditItemButton.Size = new System.Drawing.Size(61, 33);
+            this.EditItemButton.Size = new System.Drawing.Size(74, 41);
             this.EditItemButton.TabIndex = 13;
             this.EditItemButton.Text = "Edit";
             this.EditItemButton.UseVisualStyleBackColor = true;
             // 
             // RemoveItemButton
             // 
-            this.RemoveItemButton.Location = new System.Drawing.Point(242, 55);
+            this.RemoveItemButton.Location = new System.Drawing.Point(254, 55);
             this.RemoveItemButton.Name = "RemoveItemButton";
-            this.RemoveItemButton.Size = new System.Drawing.Size(109, 33);
+            this.RemoveItemButton.Size = new System.Drawing.Size(118, 41);
             this.RemoveItemButton.TabIndex = 14;
             this.RemoveItemButton.Text = "Remove";
             this.RemoveItemButton.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(357, 55);
+            this.button1.Location = new System.Drawing.Point(378, 55);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 33);
+            this.button1.Size = new System.Drawing.Size(79, 41);
             this.button1.TabIndex = 15;
             this.button1.Text = "Clear";
             this.button1.UseVisualStyleBackColor = true;
@@ -353,7 +354,7 @@
             // 
             this.AddOrderButton.Location = new System.Drawing.Point(484, 644);
             this.AddOrderButton.Name = "AddOrderButton";
-            this.AddOrderButton.Size = new System.Drawing.Size(172, 33);
+            this.AddOrderButton.Size = new System.Drawing.Size(172, 41);
             this.AddOrderButton.TabIndex = 29;
             this.AddOrderButton.Text = "Add to Order";
             this.AddOrderButton.UseVisualStyleBackColor = true;
@@ -368,7 +369,7 @@
             this.SideItemsListbox.TabIndex = 30;
             this.SideItemsListbox.Visible = false;
             // 
-            // PlaceOrderVIew
+            // PlaceOrderView
             // 
             this.AcceptButton = this.PlaceOrderButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -403,7 +404,7 @@
             this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.SideItemsListbox);
-            this.Name = "PlaceOrderVIew";
+            this.Name = "PlaceOrderView";
             this.Text = "Smulder\'s Ice Cream Service - Place Order";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmuldersIceCreamCart.Order
+namespace SmuldersIceCreamCart.Orders
 {
     class Order
     {
@@ -12,9 +12,9 @@ namespace SmuldersIceCreamCart.Order
         public enum Status
         {
             HOLD,
-            UNFUFILLED,
-            FUFILLED
-        }
+            UNLFUFILLED,
+            FULFILLED
+        } //TODO review this for Jen.
 
         //public Dictionary<Menu.MenuItem, int> shoppingCart { get; }
 

@@ -21,7 +21,7 @@ namespace SmuldersIceCreamCart
             Viewer = user;
 
             //Get stuff from SQL to store somewhere to get ready.
-            //TODO           
+            //TODO Get order history.
 
             //Make the components ready to go.
             InitializeComponent();
@@ -70,26 +70,26 @@ namespace SmuldersIceCreamCart
 
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
-            PlaceOrderVIew orderView = new PlaceOrderVIew(Viewer);
+            PlaceOrderView orderView = new PlaceOrderView(Viewer);
             //We will want a property within this view to get the actual order class item.
             Hide();
             DialogResult result = orderView.ShowDialog(); //Will answer 'Did the user logout?'           
 
             if (result == DialogResult.Yes)
             {
-                //Order was successfully place.
+                //TODO Order was successfully place.
             }
             else if(result == DialogResult.Abort)
             {
-                //Order was stopped mid-place. 'Saved' as in progress.
+                //TODO Order was stopped mid-place. 'Saved' as in progress.
             }
             else if(result == DialogResult.Cancel)
             {
-                //Order was cancelled by user before being placed.
+                //TODO Order was cancelled by user before being placed.
             }
             else if(result == DialogResult.No)
             {
-                //Order was not successfully placed. Error.
+                //TODO Order was not successfully placed. Error.
             }
             Show();
         }

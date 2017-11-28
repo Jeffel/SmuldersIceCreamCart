@@ -1,4 +1,5 @@
 ﻿using SmuldersIceCreamCart.Users;
+using SmuldersIceCreamCart.Orders;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,18 +12,27 @@ using System.Windows.Forms;
 
 namespace SmuldersIceCreamCart
 {
-    public partial class PlaceOrderVIew : Form
+    public partial class PlaceOrderView : Form
     {
         User Viewer { get; set; }
-        //We will want a property within this view to get the actual order class item.
-        //Once we have an order class...
-        //Order order { get; set; }
 
-        public PlaceOrderVIew(User user)
+        Order order { get; set; }
+
+        public PlaceOrderView(User user)
         {
             this.Viewer = user;
+            this.order = new Order();
 
             InitializeComponent();
+
+            usernameLabel.Text = Viewer.Email;
+            PopulateMenu();
+        }
+
+        private void PopulateMenu()
+        {
+            //TODO get the actual menu items list from server.
+            MenuItemsListbox.Items.AddRange(new string[] { "Ice Cream Scoop", "Sundae", "Milkshake", "Sides" });
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -48,7 +58,16 @@ namespace SmuldersIceCreamCart
 
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
+            //TODO Verify the order in some fashion and submit. If success, do below. If not, set result to No.
+            this.DialogResult = DialogResult.Yes;
+            Close();
+        }
 
+        private void CancelOrderButton_Click(object sender, EventArgs e)
+        {
+            //Just discard the order and move on with life.
+            this.DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }
