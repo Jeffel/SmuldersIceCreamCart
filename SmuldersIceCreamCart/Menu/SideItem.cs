@@ -9,7 +9,7 @@ namespace SmuldersIceCreamCart.Menu
     class SideItem : MenuItem
     {
         public SideItem( string name, double cost ) 
-            : base(name, Container.PLATE, cost )
+            : base(name, "plate", cost )
         {
 
         }

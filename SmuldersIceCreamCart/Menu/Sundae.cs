@@ -8,6 +8,7 @@ namespace SmuldersIceCreamCart.Menu
 {
     class Sundae : IceCreamScoop
     {
+        /**
         public enum Toppings
         {
             HOTFUDGE,
@@ -17,37 +18,19 @@ namespace SmuldersIceCreamCart.Menu
             CHERRY,
             PEANUTS
         }
+    */
 
-        List<Toppings> toppings { get; }
+        string Topping { get; set; }
         Boolean cherry { get; set; }
         Boolean whipped_cream { get; set; }
 
-        public Sundae( Flavour flavour, Toppings topping, Boolean cherry, Boolean whipped_cream, double cost ) 
-            : base( "Sundae", flavour, Container.DISH, Size.MEDIUM, cost )
+        public Sundae( string Flavour, string Topping, Boolean cherry, Boolean whipped_cream, double cost ) 
+            : base( "Sundae", Flavour, "dish", Size.MEDIUM, cost )
         {
-            toppings.Add(topping);
-
-            if( cherry == true )
-            {
-                toppings.Add(Toppings.CHERRY);
-            }
-
-            if( whipped_cream == true )
-            {
-                toppings.Add(Toppings.WHIPPEDCREAM);
-            }
+            this.Topping = Topping;
+            this.cherry = cherry;
+            this.whipped_cream = whipped_cream;
         }
 
-        //this may not be necessary
-        public void AddTopping( Toppings topping )
-        {
-            toppings.Add(topping);
-        }
-
-        //this may not be necessary
-        public void RemoveTopping( Toppings topping )
-        {
-            toppings.Remove(topping);
-        }
     }
 }
