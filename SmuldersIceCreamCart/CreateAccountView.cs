@@ -32,7 +32,7 @@ namespace SmuldersIceCreamCart
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            string username = UsernameBox.Text;
+            string username = EmailBox.Text;
             Username = username; //We use this for convenient filling in on the login box back a window.
 
             string password = PasswordBox.Text;
