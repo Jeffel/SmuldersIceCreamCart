@@ -26,10 +26,10 @@ namespace SmuldersIceCreamCart
                 string username = dbinfo[1];
                 string password = dbinfo[2];
 
-                Connection connection = new Connection(host, username, password);
+                new Connection(host, username, password);
                 Application.EnableVisualStyles();
                 
-                Application.Run(new Login(connection));
+                Application.Run(new Login());
             }
         }
     }

@@ -51,11 +51,11 @@ namespace SmuldersIceCreamCart
 
                 if (result == DialogResult.Yes)
                 {
-                    additional = MessageBox.Show("Account would have been created if it was implemented.\nCreate another?", "Account Created", MessageBoxButtons.YesNo);
+                    additional = MessageBox.Show("Account created!\nCreate another?", "Account Created", MessageBoxButtons.YesNo);
                 }
                 else
                 {
-                    additional = MessageBox.Show("Invalid X item in your new account.\nCreate another?", "Not Implemented", MessageBoxButtons.YesNo);
+                    additional = MessageBox.Show("Username already taken.\nCreate another?", "Duplicate Username", MessageBoxButtons.YesNo);
                 }
 
                 if(additional != DialogResult.Yes)
