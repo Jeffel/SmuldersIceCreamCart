@@ -21,6 +21,7 @@ namespace SmuldersIceCreamCart.Order
         public List<OrderItem> shoppingCart;
         double totalCost;
         public Status currentStatus { get; set; }
+        public DateTime orderDate { get; set; }
 
         public Order( )
         {
