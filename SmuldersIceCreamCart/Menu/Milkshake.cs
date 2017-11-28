@@ -18,12 +18,12 @@ namespace SmuldersIceCreamCart.Menu
         }
     */
 
-        string Syrup { get; set; }
-        bool cherry { get; set; }
-        bool whipped_cream { get; set; }
+        public string Syrup { get; set; }
+        public bool cherry { get; set; }
+        public bool whipped_cream { get; set; }
 
         public Milkshake( string syrup, bool cherry, bool whipped_cream, double cost )
-            : base( "Milkshake", "vanilla", "cup", Size.LARGE, cost )
+            : base( "Milkshake", "vanilla", "cup", Size.SMALL, cost )
         {
             this.Syrup = syrup;
             this.cherry = cherry;

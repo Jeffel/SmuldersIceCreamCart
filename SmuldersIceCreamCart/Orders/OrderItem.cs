@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Orders
 {
-    class OrderItem
+    public class OrderItem
     {
         public Menu.MenuItem item { get; set; }
         public int quantity { get; set; }

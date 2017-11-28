@@ -19,7 +19,7 @@ namespace SmuldersIceCreamCart.Menu
     {
         public string Name { get; set; }
         public double Cost { get; set; }
-        string Container { get; set; }
+        public string Container { get; set; }
         
         public MenuItem( string name, string container, double cost)
         {

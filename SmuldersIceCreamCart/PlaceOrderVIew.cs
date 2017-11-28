@@ -34,6 +34,11 @@ namespace SmuldersIceCreamCart
         {
             //TODO get the actual menu items list from server.
             MenuItemsListbox.Items.AddRange(new string[] { "Ice Cream Scoop", "Sundae", "Milkshake", "Sides" });
+            FlavorCBox.Items.AddRange(Connection.GetOptions("flavor"));
+            SyrupCBox.Items.AddRange(Connection.GetOptions("syrup"));
+            ToppingCBox.Items.AddRange(Connection.GetOptions("topping"));
+            SizeCBox.Items.AddRange(Connection.GetOptions("size"));
+            ContainerCBox.Items.AddRange(Connection.GetOptions("container"));
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -60,7 +65,14 @@ namespace SmuldersIceCreamCart
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
             //TODO Verify the order in some fashion and submit. If success, do below. If not, set result to No.
-            this.DialogResult = DialogResult.Yes;
+            bool successful = Connection.PlaceOrder(Viewer, order);
+            if (successful)
+            {
+                this.DialogResult = DialogResult.Yes;
+            } else
+            {
+                this.DialogResult = DialogResult.No;
+            }
             Close();
         }
 

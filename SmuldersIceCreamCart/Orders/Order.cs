@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Orders
 {
-    class Order
+    public class Order
     {
 
         public enum Status
