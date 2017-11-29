@@ -34,6 +34,14 @@ namespace SmuldersIceCreamCart.Menu
             this.Flavour = flavour;
             this.size = size;
         }
-            
+
+        public override string ToString()
+        {
+            string label = "Ice Cream   Flavour: " + this.Flavour + " Size: " + this.size +
+                " Container: " + this.Container;
+            label += " " + this.Cost;
+            return label;
+        }
+
     }
 }
