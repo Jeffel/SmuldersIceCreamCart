@@ -32,5 +32,14 @@ namespace SmuldersIceCreamCart.Menu
             this.whipped_cream = whipped_cream;
         }
 
+        public override string ToString()
+        {
+            string label = "Sundae   Topping: " + this.Topping;
+            label += this.cherry && this.whipped_cream ? " whip cream and a cherry"
+                : this.cherry ? " and a cherry" : " and whip cream ";
+            label += " " + this.Cost;
+            return label;
+        }
+
     }
 }
