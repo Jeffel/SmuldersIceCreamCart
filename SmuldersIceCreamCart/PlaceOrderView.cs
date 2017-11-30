@@ -79,20 +79,13 @@ namespace SmuldersIceCreamCart
 
         /**
          *  Customer clicks the order button to complete an order.
-         *  If successful ( and why shouldn't it be ), we print out
-         *  a nice thank you message with a confirmationId. 
         */
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
-            //TODO Verify the order in some fashion and submit. If success, do below. If not, set result to No.
-            //@jeffel the TODO looks done 
-            // will go back through the PlaceOrder function
             bool successful = Connection.PlaceOrder(Viewer, order);
             if (successful)
             {
                 this.DialogResult = DialogResult.Yes;
-                //should we add a message that gives the confirmation???
-                //
             } else
             {
                 this.DialogResult = DialogResult.No;
@@ -101,7 +94,6 @@ namespace SmuldersIceCreamCart
         }
 
         //cancel the order completely
-        //is there anything that we need to dispose of??
         private void CancelOrderButton_Click(object sender, EventArgs e)
         {
             //Just discard the order and move on with life.
@@ -202,40 +194,45 @@ namespace SmuldersIceCreamCart
             }
             else
             {
-                switch (MenuItemsListbox.SelectedItem.ToString())
-                {
-                    default:
-                        built = null;
-                        break;
-                }
+                //Instead of switch, just pass this string to build item.
+                built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
+                OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
+                order.AddItem( item );
+                this.RefreshShoppingCart(order);
+                
+                //TODO create a refreshShoppingCart function
+                /* We then will add this item gotten from builditem to the order. Once that is done...
+                 * CartListbox.Items.Clear(); //Or something...
+                 * CartListbox.Items.AddRange(//The items in the cart in the order item.);//This will refresh the list of items in the cart.
+                 */
             }
+        }
+
+        private void RefreshShoppingCart( Order order )
+        {
+            CartListbox.Items.Clear();
+            //CartListbox.Items.AddRange();
         }
 
         private Menu.MenuItem BuildItem(string type)
         {
             Menu.MenuItem result;
 
-            //TODO Based on if we are saving or not, the type passed in comes from the cart or left menu of item types.
-            //result = new IceCreamScoop("Temporary", "Vanilla", "Dish", SmuldersIceCreamCart.Menu.Size.LARGE, 12);
-            //Ask the current values of drop downs and whatnot on GUI to build the item appropriately instead of filling in manual.
-            //think the above has been handled
-
-
-            //would need to get the cost from the tables
             switch(type) {
                 case "Ice Cream Scoop":
                     result = new IceCreamScoop( "Ice Cream", FlavorCBox.SelectedValue.ToString(), ContainerCBox.SelectedValue.ToString(), 
-                        (SmuldersIceCreamCart.Menu.Size)SizeCBox.SelectedValue, 0.00 );
+                        (SmuldersIceCreamCart.Menu.Size)SizeCBox.SelectedValue, Connection.GetItemCost("Ice Cream Scoop") );
                     break;
                 case "Sundae":
                     result = new Sundae( FlavorCBox.SelectedValue.ToString(), ToppingCBox.SelectedValue.ToString(), 
-                        WhippedCreamCBox.Checked, CherryCBox.Checked, 0.00 );
+                        WhippedCreamCBox.Checked, CherryCBox.Checked, Connection.GetItemCost("Sundae"));
                     break;
                 case "Milkshake":
-                    result = new Milkshake( SyrupCBox.SelectedValue.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 0.00);
+                    result = new Milkshake( SyrupCBox.SelectedValue.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
+                        Connection.GetItemCost("Milkshake"));
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), 0.00 );
+                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), Connection.GetItemCost("Sides"));
                     break;
                 default:
                     //should additional error checking be done here???
@@ -246,22 +243,18 @@ namespace SmuldersIceCreamCart
             return result;
         }
 
-        //need to enforce number range on gui side
         private void QuantityUD_ValueChanged(object sender, EventArgs e)
         {
-            //TODO validate the value put in. This is supposed to be done in Validate methods instead, so this is temporary.
             int qty = int.Parse(QuantityUD.Value.ToString());
-            if( qty >= 0 && qty <= 20 )
+            if( qty < 0 ) 
             {
-                //am I changing the model too??
-                OrderItem item = order.shoppingCart[CartListbox.SelectedIndex];
-                item.quantity = qty;
-                order.EditItem(item);
+                QuantityUD.Value = 0;
             }
-            else
+            else if( qty > 1000000 )
             {
-                // do something
+                QuantityUD.Value = 1000000;
             }
+      
         }
 
         private void EditItemButton_Click(object sender, EventArgs e)
@@ -272,7 +265,7 @@ namespace SmuldersIceCreamCart
             Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
             //Pull from this the necessary information.
 
-
+            order.EditItem(order.shoppingCart[CartListbox.SelectedIndex]);
         }
 
         private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,28 +288,27 @@ namespace SmuldersIceCreamCart
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
-                    if( int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        ContainerCBox.SelectedValue.ToString() != null && SizeCBox.ToString() != null )
+                    if( FlavorCBox.SelectedValue.ToString() != null &&
+                        string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
+        string.IsNullOrEmpty(SizeCBox.ToString() ) )
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sundae":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        ToppingCBox.SelectedValue.ToString() != null)
+                    if ( FlavorCBox.SelectedValue.ToString() != null && ToppingCBox.SelectedValue.ToString() != null)
                     {
                         AddOrderButton.Enabled = true;
                     }     
                     break;
                 case "Milkshake":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        SyrupCBox.SelectedValue.ToString() != null)
+                    if ( FlavorCBox.SelectedValue.ToString() != null && SyrupCBox.SelectedValue.ToString() != null)
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sides":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && SideItemsListbox.SelectedValue.ToString() != null)
+                    if ( SideItemsListbox.SelectedValue.ToString() != null)
                     {
                         AddOrderButton.Enabled = true;
                     }

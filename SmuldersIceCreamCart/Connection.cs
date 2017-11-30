@@ -171,7 +171,7 @@ namespace SmuldersIceCreamCart
         {
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO orders (status) VALUES (@status) RETURNS id;", connection);
             cmd.Parameters.Add("status", NpgsqlTypes.NpgsqlDbType.Varchar);
-            cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Time);
+            //cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Time);
             cmd.Prepare();
             cmd.Parameters[0].Value = order.currentStatus.ToString();
             cmd.Parameters[1].Value = System.DateTime.Today;
@@ -261,10 +261,28 @@ namespace SmuldersIceCreamCart
             string queryString = "SELECT cost FROM menu_item where name=" + optionTable;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
+            //reader.Read();
             double cost = reader.GetDouble(0);
+            reader.Close();
             return cost;
         }
+
+        //TODO
+        //write query to return a list of orders
+        public static List<string> OrderHistoryIds(string customer_email, string startDate, string endDate)
+        {
+            List<string> orderHistory = new List<string>();
+            NpgsqlCommand cmd = new NpgsqlCommand("SELECT id FROM customer_orders INNER JOIN orders where email=@customer_email and timePlaced>=@startDate and timePlaced<=@endDate");
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while( reader.Read())
+            {
+                orderHistory.Add(reader.GetString(0));
+            }
+            reader.Close();
+            return orderHistory;
+        }
+
+
 
     }
 }

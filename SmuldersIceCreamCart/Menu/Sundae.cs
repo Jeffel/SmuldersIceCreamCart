@@ -8,18 +8,6 @@ namespace SmuldersIceCreamCart.Menu
 {
     class Sundae : IceCreamScoop
     {
-        /**
-        public enum Toppings
-        {
-            HOTFUDGE,
-            BUTTERSCOTCH,
-            CARAMEL,
-            WHIPPEDCREAM,
-            CHERRY,
-            PEANUTS
-        }
-    */
-
         public string Topping { get; set; }
         public bool cherry { get; set; }
         public bool whipped_cream { get; set; }
