@@ -27,6 +27,12 @@ namespace SmuldersIceCreamCart.Menu
             this.Container = container;
             this.Cost = cost;
         }
-   
+
+        // abstract method that requires each type of menu item to 
+        // build a list string list of everything related to that item
+        public abstract string[] BuildMenuItem();
+
+
+
     }
 }

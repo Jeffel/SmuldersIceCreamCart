@@ -39,5 +39,12 @@ namespace SmuldersIceCreamCart.Menu
             return label;
         }
 
+        public override string[] BuildMenuItem()
+        {
+            string[] result = { "milkshake", "vanilla", "cup", this.Syrup, "cherry: " + (this.cherry.ToString() ),
+                "whip cream: " + ( this.whipped_cream.ToString() ), "large", this.Cost.ToString() };
+            return result;
+        }
+
     }
 }

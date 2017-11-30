@@ -10,11 +10,13 @@ namespace SmuldersIceCreamCart.Orders
     {
         public Menu.MenuItem item { get; set; }
         public int quantity { get; set; }
+        public string[] itemString { get; }
 
         public OrderItem( Menu.MenuItem item, int quantity )
         {
             this.item = item;
             this.quantity = quantity;
+            this.itemString = item.BuildMenuItem();
         }
 
         //get the total cost for an item when quantity is accounted for

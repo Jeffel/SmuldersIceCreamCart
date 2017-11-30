@@ -63,6 +63,11 @@ namespace SmuldersIceCreamCart.Orders
         //Jeff will finish filling this out
         public void EditItem( OrderItem item )
         {
+            OrderItem itemToEdit;
+            if( this.shoppingCart.Contains( item ) )
+            {
+
+            }
 
         }
 

@@ -43,5 +43,11 @@ namespace SmuldersIceCreamCart.Menu
             return label;
         }
 
+        public override string[] BuildMenuItem()
+        {
+            string[] result = { "ice cream", this.Flavour, this.Container, this.size.ToString(), this.Cost.ToString() };
+            return result;
+        }
+
     }
 }

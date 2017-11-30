@@ -20,5 +20,11 @@ namespace SmuldersIceCreamCart.Menu
             label += " " + this.Cost;
             return label;
         }
+
+        public override string[] BuildMenuItem()
+        {
+            string[] result = { "side", this.Name, this.Cost.ToString() };
+            return result;
+        }
     }
 }
