@@ -171,8 +171,10 @@ namespace SmuldersIceCreamCart
         {
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO orders (status) VALUES (@status) RETURNS id;", connection);
             cmd.Parameters.Add("status", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Time);
             cmd.Prepare();
             cmd.Parameters[0].Value = order.currentStatus.ToString();
+            cmd.Parameters[1].Value = System.DateTime.Today;
             int id = (int)cmd.ExecuteScalar();
 
             cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity);", connection);
@@ -252,5 +254,17 @@ namespace SmuldersIceCreamCart
             reader.Close();
             return options.ToArray();
         }
+
+        // queries menu_item table for the cost of a product
+        public static double GetItemCost( string optionTable )
+        {
+            string queryString = "SELECT cost FROM menu_item where name=" + optionTable;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            double cost = reader.GetDouble(0);
+            return cost;
+        }
+
     }
 }
