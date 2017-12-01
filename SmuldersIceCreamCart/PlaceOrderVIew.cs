@@ -185,6 +185,35 @@ namespace SmuldersIceCreamCart
             OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
             order.AddItem( item );
             this.RefreshShoppingCart(order);
+            //ResetOrderWindow(built.Name);
+            AddOrderButton.Enabled = false;
+        }
+
+        private void ResetOrderWindow(string menu_item)
+        {
+            switch (menu_item)
+            {
+                case "Ice Cream Scoop":
+                    FlavorCBox.SelectedIndex = -1;
+                    ContainerCBox.SelectedIndex = -1;
+                    SizeCBox.SelectedIndex = -1;
+                    QuantityUD.Value = 0;
+                    break;
+                case "Sundae":
+                    FlavorCBox.SelectedIndex = -1;
+                    ToppingCBox.SelectedIndex = -1;
+                    break;
+                case "Milkshake":
+                    FlavorCBox.SelectedIndex = -1;
+                    SyrupCBox.SelectedIndex = -1;
+                    break;
+                case "Sides":
+                    SideItemsListbox.SelectedIndex = -1;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
