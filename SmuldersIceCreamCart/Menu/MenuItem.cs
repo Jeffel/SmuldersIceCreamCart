@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Menu
 {
-  /**  public enum Container
-    {
-        CUP,
-        DISH,
-        CONE,
-        PLATE
-    }
-    */
 
     public abstract class MenuItem
     {

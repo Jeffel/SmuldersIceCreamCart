@@ -13,7 +13,7 @@ namespace SmuldersIceCreamCart.Menu
         public bool whipped_cream { get; set; }
 
         public Sundae( string Flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
-            : base( "Sundae", Flavour, "dish", Size.SMALL, cost )
+            : base( "Sundae", Flavour, "dish", 1, cost )
         {
             this.Topping = Topping;
             this.cherry = cherry;

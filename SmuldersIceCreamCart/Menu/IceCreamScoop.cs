@@ -6,30 +6,15 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Menu
 {
-    /**
-    public enum Flavour 
-    {
-        CHOCOLATE,
-        VANILLA,
-        STRAWBERRY,
-        COOKIE_DOUGH
-    }
-*/
 
-    public enum Size
-    {
-        SMALL = 1,
-        MEDIUM = 2,
-        LARGE = 3
-    }
 
     class IceCreamScoop : MenuItem
     {
         public string Flavour { get; set; }
-        public Size size { get; set; }
+        public int size { get; set; }
 
-        public IceCreamScoop( string name, string flavour, string container, Size size, double cost )
-            : base( "Ice Cream", container, ( (int)size * cost ) )
+        public IceCreamScoop( string name, string flavour, string container, int size, double cost )
+            : base( "Ice Cream", container, ( size * cost ) )
         {
             this.Flavour = flavour;
             this.size = size;

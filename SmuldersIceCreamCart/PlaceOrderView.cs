@@ -181,53 +181,71 @@ namespace SmuldersIceCreamCart
 
         private void AddOrderButton_Click(object sender, EventArgs e)
         {
-            Menu.MenuItem built;
+            Menu.MenuItem built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
+            OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
+            order.AddItem( item );
+            this.RefreshShoppingCart(order);
+            //ResetOrderWindow(built.Name);
+            AddOrderButton.Enabled = false;
+        }
 
-            //We are modifying an existing item, use the selected item in the current order.
-            if (AddOrderButton.Text == "Save")
+        private void ResetOrderWindow(string menu_item)
+        {
+            switch (menu_item)
             {
-                string type = MenuItemsListbox.SelectedItem.ToString();
-                order.shoppingCart[CartListbox.SelectedIndex].item = BuildItem(type);
-                order.shoppingCart[CartListbox.SelectedIndex].quantity = int.Parse(QuantityUD.Value.ToString());
+                case "Ice Cream Scoop":
+                    FlavorCBox.SelectedIndex = -1;
+                    ContainerCBox.SelectedIndex = -1;
+                    SizeCBox.SelectedIndex = -1;
+                    QuantityUD.Value = 0;
+                    break;
+                case "Sundae":
+                    FlavorCBox.SelectedIndex = -1;
+                    ToppingCBox.SelectedIndex = -1;
+                    break;
+                case "Milkshake":
+                    FlavorCBox.SelectedIndex = -1;
+                    SyrupCBox.SelectedIndex = -1;
+                    break;
+                case "Sides":
+                    SideItemsListbox.SelectedIndex = -1;
+                    break;
+                default:
+                    break;
             }
-            //We are adding a brand new item to the shopping cart
-            else
-            {
-                built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
-                OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
-                order.AddItem( item );
-                this.RefreshShoppingCart(order);
-            }
+
         }
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
         private void RefreshShoppingCart( Order order )
         {
             CartListbox.Items.Clear();
-            List<OrderItem> current = order.shoppingCart;
             CartListbox.Items.AddRange( order.shoppingCart.ToArray() );
         }
 
         //Takes the values selected on a menu page and builds a menu item from that
+        //TODO hard coded price for now
+        //NEED TO FIX QUERY!!!
         private Menu.MenuItem BuildItem(string type)
         {
             Menu.MenuItem result;
 
             switch(type) {
                 case "Ice Cream Scoop":
-                    result = new IceCreamScoop( "Ice Cream", FlavorCBox.SelectedValue.ToString(), ContainerCBox.SelectedValue.ToString(), 
-                        (SmuldersIceCreamCart.Menu.Size)SizeCBox.SelectedValue, Connection.GetItemCost("Ice Cream Scoop") );
+                    result = new IceCreamScoop( "Ice Cream", FlavorCBox.SelectedItem.ToString(), ContainerCBox.SelectedItem.ToString(), 
+                        int.Parse(SizeCBox.SelectedItem.ToString()), 2.00 );
                     break;
                 case "Sundae":
-                    result = new Sundae( FlavorCBox.SelectedValue.ToString(), ToppingCBox.SelectedValue.ToString(), 
-                        WhippedCreamCBox.Checked, CherryCBox.Checked, Connection.GetItemCost("Sundae"));
+                    result = new Sundae( FlavorCBox.SelectedItem.ToString(), ToppingCBox.SelectedItem.ToString(), 
+                        WhippedCreamCBox.Checked, CherryCBox.Checked, 5.00);
                     break;
                 case "Milkshake":
-                    result = new Milkshake( SyrupCBox.SelectedValue.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
-                        Connection.GetItemCost("Milkshake"));
+                    result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
+                        5.00);
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), Connection.GetItemCost("Sides"));
+                    result = new SideItem( SideItemsListbox.SelectedIndex.ToString(), 
+                        3.00);
                     break;
                 default:
                     //should additional error checking be done here???
@@ -253,14 +271,13 @@ namespace SmuldersIceCreamCart
       
         }
 
-        private void EditItemButton_Click(object sender, EventArgs e)
+        //this is replacing the EditItemButton_Click
+        //it removes an item but I am not changing the name since it is tied to design code
+        private void RemoveItemButton_Click(object sender, EventArgs e)
         {
-            AddOrderButton.Text = "Save";
-            //TODO setup all the menu items down below to their appropriate selections based on the currently selected item.
-            //Still a little uncertain on what I am doing here
-            Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
-            //Pull from this the necessary information.
-            order.EditItem(order.shoppingCart[CartListbox.SelectedIndex]);
+            OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
+            order.RemoveItem(current);
+            this.RefreshShoppingCart(this.order);
         }
 
         //this handles enabling/disabling the edit and remove buttons from an order dialog box
@@ -268,12 +285,12 @@ namespace SmuldersIceCreamCart
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
-                EditItemButton.Enabled = false;
+                //EditItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
             }
             else
             {
-                EditItemButton.Enabled = true;
+                //EditItemButton.Enabled = true;
                 RemoveItemButton.Enabled = true;
             }
         }
@@ -282,32 +299,34 @@ namespace SmuldersIceCreamCart
         //enforces that all mandatory fields have a value
         private void ValidateOrderItem(object sender, EventArgs e)
         {
+        
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
-                    if( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) &&
-                        !string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
-                        !string.IsNullOrEmpty(SizeCBox.ToString() ) )
+                    if (FlavorCBox.SelectedIndex > -1  &&
+                        ContainerCBox.SelectedIndex > -1 &&
+                        SizeCBox.SelectedIndex > -1)
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sundae":
-                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
-                        !string.IsNullOrEmpty(ToppingCBox.SelectedValue.ToString()) )
+                    
+                    if ( FlavorCBox.SelectedIndex > -1 && 
+                        ToppingCBox.SelectedIndex > -1 )
                     {
                         AddOrderButton.Enabled = true;
                     }     
                     break;
                 case "Milkshake":
-                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
-                        !string.IsNullOrEmpty(SyrupCBox.SelectedValue.ToString()))
+                    if ( FlavorCBox.SelectedIndex > -1 && 
+                        SyrupCBox.SelectedIndex > -1 )
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sides":
-                    if ( !string.IsNullOrEmpty(SideItemsListbox.SelectedValue.ToString()))
+                    if ( SideItemsListbox.SelectedIndex > -1 )
                     {
                         AddOrderButton.Enabled = true;
                     }
@@ -316,6 +335,7 @@ namespace SmuldersIceCreamCart
                     AddOrderButton.Enabled = false;
                     break;
             }
+    
 
         }
     }
