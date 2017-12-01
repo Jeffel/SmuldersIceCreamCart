@@ -38,7 +38,6 @@ namespace SmuldersIceCreamCart
         private void PopulateMenu()
         {
             //TODO get the actual menu items list from server.
-            //@Jeffel these seem to build the menu from their given tables. That's complete, right?
             MenuItemsListbox.Items.AddRange(new string[] { "Ice Cream Scoop", "Sundae", "Milkshake", "Sides" });
             FlavorCBox.Items.AddRange(Connection.GetOptions("flavor"));
             SyrupCBox.Items.AddRange(Connection.GetOptions("syrup"));
@@ -79,19 +78,13 @@ namespace SmuldersIceCreamCart
 
         /**
          *  Customer clicks the order button to complete an order.
-         *  If successful ( and why shouldn't it be ), we print out
-         *  a nice thank you message with a confirmationId. 
         */
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
-            //TODO Verify the order in some fashion and submit. If success, do below. If not, set result to No.
-            //@jeffel the TODO looks done 
             bool successful = Connection.PlaceOrder(Viewer, order);
             if (successful)
             {
                 this.DialogResult = DialogResult.Yes;
-                //should we add a message that gives the confirmation???
-                //
             } else
             {
                 this.DialogResult = DialogResult.No;
@@ -102,9 +95,6 @@ namespace SmuldersIceCreamCart
         //cancel the order completely
         private void CancelOrderButton_Click(object sender, EventArgs e)
         {
-            //update the model
-            order.ClearOrder();
-
             //Just discard the order and move on with life.
             this.DialogResult = DialogResult.Cancel;
             Close();
@@ -193,33 +183,35 @@ namespace SmuldersIceCreamCart
         {
             Menu.MenuItem built;
 
+            //We are modifying an existing item, use the selected item in the current order.
             if (AddOrderButton.Text == "Save")
             {
-
-                //We are modifying an existing item, use the selected item in the current order.
                 string type = MenuItemsListbox.SelectedItem.ToString();
                 order.shoppingCart[CartListbox.SelectedIndex].item = BuildItem(type);
                 order.shoppingCart[CartListbox.SelectedIndex].quantity = int.Parse(QuantityUD.Value.ToString());
             }
+            //We are adding a brand new item to the shopping cart
             else
             {
-                switch (MenuItemsListbox.SelectedItem.ToString())
-                {
-                    default:
-                        built = null;
-                        break;
-                }
+                built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
+                OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
+                order.AddItem( item );
+                this.RefreshShoppingCart(order);
             }
         }
 
+        //clears the currently displayed shopping cart before displaying the updated shopping cart
+        private void RefreshShoppingCart( Order order )
+        {
+            CartListbox.Items.Clear();
+            List<OrderItem> current = order.shoppingCart;
+            CartListbox.Items.AddRange( order.shoppingCart.ToArray() );
+        }
+
+        //Takes the values selected on a menu page and builds a menu item from that
         private Menu.MenuItem BuildItem(string type)
         {
             Menu.MenuItem result;
-
-            //TODO Based on if we are saving or not, the type passed in comes from the cart or left menu of item types.
-            //result = new IceCreamScoop("Temporary", "Vanilla", "Dish", SmuldersIceCreamCart.Menu.Size.LARGE, 12);
-            //Ask the current values of drop downs and whatnot on GUI to build the item appropriately instead of filling in manual.
-            //think the above has been handled
 
             switch(type) {
                 case "Ice Cream Scoop":
@@ -246,22 +238,19 @@ namespace SmuldersIceCreamCart
             return result;
         }
 
-        //need to enforce number range on gui side
+        //For the quantity drop down box, enforces a valid range
         private void QuantityUD_ValueChanged(object sender, EventArgs e)
         {
-            //TODO validate the value put in. This is supposed to be done in Validate methods instead, so this is temporary.
             int qty = int.Parse(QuantityUD.Value.ToString());
-            if( qty >= 0 && qty <= 20 )
+            if( qty < 0 ) 
             {
-                //am I changing the model too??
-                OrderItem item = order.shoppingCart[CartListbox.SelectedIndex];
-                item.quantity = qty;
-                order.EditItem(item);
+                QuantityUD.Value = 0;
             }
-            else
+            else if( qty > 1000000 )
             {
-                // do something
+                QuantityUD.Value = 1000000;
             }
+      
         }
 
         private void EditItemButton_Click(object sender, EventArgs e)
@@ -271,10 +260,10 @@ namespace SmuldersIceCreamCart
             //Still a little uncertain on what I am doing here
             Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
             //Pull from this the necessary information.
-
             order.EditItem(order.shoppingCart[CartListbox.SelectedIndex]);
         }
 
+        //this handles enabling/disabling the edit and remove buttons from an order dialog box
         private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
@@ -289,34 +278,36 @@ namespace SmuldersIceCreamCart
             }
         }
 
-        //function to enable the add to order button.
+        //function to enable the add to order button
+        //enforces that all mandatory fields have a value
         private void ValidateOrderItem(object sender, EventArgs e)
         {
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
-                    if( int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        ContainerCBox.SelectedValue.ToString() != null && SizeCBox.ToString() != null )
+                    if( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) &&
+                        !string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
+                        !string.IsNullOrEmpty(SizeCBox.ToString() ) )
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sundae":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        ToppingCBox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
+                        !string.IsNullOrEmpty(ToppingCBox.SelectedValue.ToString()) )
                     {
                         AddOrderButton.Enabled = true;
                     }     
                     break;
                 case "Milkshake":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && FlavorCBox.SelectedValue.ToString() != null &&
-                        SyrupCBox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
+                        !string.IsNullOrEmpty(SyrupCBox.SelectedValue.ToString()))
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sides":
-                    if (int.Parse(QuantityUD.Value.ToString()) > 0 && SideItemsListbox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(SideItemsListbox.SelectedValue.ToString()))
                     {
                         AddOrderButton.Enabled = true;
                     }
