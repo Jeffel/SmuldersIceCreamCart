@@ -28,6 +28,8 @@ namespace SmuldersIceCreamCart
 
             usernameLabel.Text = Viewer.Email;
             PopulateMenu();
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
         }
 
         /**
@@ -185,8 +187,12 @@ namespace SmuldersIceCreamCart
             Menu.MenuItem built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
             OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
             order.AddItem( item );
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
+
             this.RefreshShoppingCart(order);
             this.ResetMenu();
+            this.ResetOrderPage();
             AddOrderButton.Enabled = false;
             ClearItemButton.Enabled = true;
         }
@@ -264,7 +270,12 @@ namespace SmuldersIceCreamCart
             {
                 ClearItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
+                this.ResetMenu();
+                this.ResetOrderPage();
             }
+
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
         }
 
         //this handles enabling/disabling the clear and remove buttons from an order dialog box
@@ -273,12 +284,10 @@ namespace SmuldersIceCreamCart
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
                 RemoveItemButton.Enabled = false;
-                //ClearItemButton.Enabled = false;
             }
             else
             {
                 RemoveItemButton.Enabled = true;
-               // ClearItemButton.Enabled = true;
             }
         }
 
@@ -327,8 +336,7 @@ namespace SmuldersIceCreamCart
         }
 
         //Clears the currently selected items from a menu_item order window
-        // this is called when the customer clicks the refresh button and when 
-        // an item is added to the shopping cart
+        // this is called when the customer clicks the refresh button 
         private void ResetMenu()
         {
             FlavorCBox.SelectedIndex = -1;
@@ -353,9 +361,38 @@ namespace SmuldersIceCreamCart
         {
             order.ClearOrder();
             RefreshShoppingCart(order);
-            ResetMenu();
+            this.ResetMenu();
+            this.ResetOrderPage();
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
+
             ClearItemButton.Enabled = false;
             RemoveItemButton.Enabled = false;
+        }
+
+        //after an item has been added to the shopping cart, reset the order page so the customer can make a new selection
+        private void ResetOrderPage()
+        {
+            QuantityLabel.Visible = false;
+            QuantityUD.Visible = false;
+            FlavorLabel.Visible = false;
+            FlavorCBox.Visible = false;
+            ToppingLabel.Visible = false;
+            ToppingCBox.Visible = false;
+            SyrupLabel.Visible = false;
+            SyrupCBox.Visible = false;
+            ContainerLabel.Visible = false;
+            ContainerCBox.Visible = false;
+            SizeLabel.Visible = false;
+            SizeCBox.Visible = false;
+            WhippedCreamCBox.Visible = false;
+            CherryCBox.Visible = false;
+            SideItemsListbox.Visible = false;
+        }
+
+        private void DisplayCost()
+        {
+            CostBox.Text = string.Format("${0:0.00}",order.GetOrderCost());
         }
     }
 }

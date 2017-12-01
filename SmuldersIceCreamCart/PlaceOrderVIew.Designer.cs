@@ -61,6 +61,8 @@
             this.WhippedCreamCBox = new System.Windows.Forms.CheckBox();
             this.CherryCBox = new System.Windows.Forms.CheckBox();
             this.RefreshButton = new System.Windows.Forms.Button();
+            this.TotalItemsBox = new System.Windows.Forms.TextBox();
+            this.CostBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityUD)).BeginInit();
             this.SuspendLayout();
@@ -448,6 +450,22 @@
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshOrderWindowButton_Click);
             // 
+            // TotalItemsBox
+            // 
+            this.TotalItemsBox.Location = new System.Drawing.Point(584, 33);
+            this.TotalItemsBox.Name = "TotalItemsBox";
+            this.TotalItemsBox.ReadOnly = true;
+            this.TotalItemsBox.Size = new System.Drawing.Size(64, 22);
+            this.TotalItemsBox.TabIndex = 33;
+            // 
+            // CostBox
+            // 
+            this.CostBox.Location = new System.Drawing.Point(584, 61);
+            this.CostBox.Name = "CostBox";
+            this.CostBox.ReadOnly = true;
+            this.CostBox.Size = new System.Drawing.Size(64, 22);
+            this.CostBox.TabIndex = 34;
+            // 
             // PlaceOrderView
             // 
             this.AcceptButton = this.PlaceOrderButton;
@@ -455,6 +473,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelOrderButton;
             this.ClientSize = new System.Drawing.Size(665, 446);
+            this.Controls.Add(this.CostBox);
+            this.Controls.Add(this.TotalItemsBox);
             this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.CherryCBox);
             this.Controls.Add(this.WhippedCreamCBox);
@@ -531,5 +551,7 @@
         private System.Windows.Forms.CheckBox WhippedCreamCBox;
         private System.Windows.Forms.CheckBox CherryCBox;
         private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.TextBox TotalItemsBox;
+        private System.Windows.Forms.TextBox CostBox;
     }
 }
