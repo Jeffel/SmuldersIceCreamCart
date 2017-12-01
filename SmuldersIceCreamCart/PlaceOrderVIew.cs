@@ -256,7 +256,7 @@ namespace SmuldersIceCreamCart
 
         //this is replacing the EditItemButton_Click
         //it removes an item but I am not changing the name since it is tied to design code
-        private void EditItemButton_Click(object sender, EventArgs e)
+        private void RemoveItemButton_Click(object sender, EventArgs e)
         {
             OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
             order.RemoveItem(current);
@@ -285,29 +285,29 @@ namespace SmuldersIceCreamCart
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
-                    if( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) &&
-                        !string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
-                        !string.IsNullOrEmpty(SizeCBox.ToString() ) )
+                    if( !string.IsNullOrEmpty(FlavorCBox.SelectedText.ToString() ?? "") &&
+                        !string.IsNullOrEmpty(ContainerCBox.SelectedText.ToString() ?? "") &&
+                        !string.IsNullOrEmpty(SizeCBox.SelectedText.ToString() ?? ""))
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sundae":
-                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
-                        !string.IsNullOrEmpty(ToppingCBox.SelectedValue.ToString()) )
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString() ?? "") && 
+                        !string.IsNullOrEmpty(ToppingCBox.SelectedValue.ToString() ?? "") )
                     {
                         AddOrderButton.Enabled = true;
                     }     
                     break;
                 case "Milkshake":
-                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
-                        !string.IsNullOrEmpty(SyrupCBox.SelectedValue.ToString()))
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString() ?? "" ) && 
+                        !string.IsNullOrEmpty(SyrupCBox.SelectedValue.ToString() ?? ""))
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sides":
-                    if ( !string.IsNullOrEmpty(SideItemsListbox.SelectedValue.ToString()))
+                    if ( !string.IsNullOrEmpty(SideItemsListbox.SelectedValue.ToString() ?? ""))
                     {
                         AddOrderButton.Enabled = true;
                     }
