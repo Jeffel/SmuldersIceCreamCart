@@ -227,7 +227,8 @@ namespace SmuldersIceCreamCart
                         Connection.GetItemCost("Milkshake"));
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), Connection.GetItemCost("Sides"));
+                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), 
+                        Connection.GetSideItemCost(SideItemsListbox.SelectedValue.ToString()));
                     break;
                 default:
                     //should additional error checking be done here???
@@ -253,14 +254,13 @@ namespace SmuldersIceCreamCart
       
         }
 
+        //this is replacing the EditItemButton_Click
+        //it removes an item but I am not changing the name since it is tied to design code
         private void EditItemButton_Click(object sender, EventArgs e)
         {
-            AddOrderButton.Text = "Save";
-            //TODO setup all the menu items down below to their appropriate selections based on the currently selected item.
-            //Still a little uncertain on what I am doing here
-            Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
-            //Pull from this the necessary information.
-            order.EditItem(order.shoppingCart[CartListbox.SelectedIndex]);
+            OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
+            order.RemoveItem(current);
+            this.RefreshShoppingCart(this.order);
         }
 
         //this handles enabling/disabling the edit and remove buttons from an order dialog box
@@ -268,12 +268,12 @@ namespace SmuldersIceCreamCart
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
-                EditItemButton.Enabled = false;
+                //EditItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
             }
             else
             {
-                EditItemButton.Enabled = true;
+                //EditItemButton.Enabled = true;
                 RemoveItemButton.Enabled = true;
             }
         }
