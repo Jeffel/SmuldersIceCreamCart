@@ -44,6 +44,7 @@ namespace SmuldersIceCreamCart
             ToppingCBox.Items.AddRange(Connection.GetOptions("topping"));
             SizeCBox.Items.AddRange(Connection.GetOptions("size"));
             ContainerCBox.Items.AddRange(Connection.GetOptions("container"));
+            SideItemsListbox.Items.AddRange(Connection.GetOptions("side_item"));
         }
 
         /**
@@ -311,7 +312,6 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 case "Sundae":
-                    
                     if ( FlavorCBox.SelectedIndex > -1 && 
                         ToppingCBox.SelectedIndex > -1 )
                     {
@@ -326,7 +326,7 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 case "Sides":
-                    if ( SideItemsListbox.SelectedIndex > -1 )
+                    if( SideItemsListbox.SelectedIndex > -1)
                     {
                         AddOrderButton.Enabled = true;
                     }
@@ -335,8 +335,6 @@ namespace SmuldersIceCreamCart
                     AddOrderButton.Enabled = false;
                     break;
             }
-    
-
         }
     }
 }
