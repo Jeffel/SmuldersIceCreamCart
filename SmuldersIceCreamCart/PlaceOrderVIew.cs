@@ -44,6 +44,7 @@ namespace SmuldersIceCreamCart
             ToppingCBox.Items.AddRange(Connection.GetOptions("topping"));
             SizeCBox.Items.AddRange(Connection.GetOptions("size"));
             ContainerCBox.Items.AddRange(Connection.GetOptions("container"));
+
         }
 
         /**
@@ -185,13 +186,20 @@ namespace SmuldersIceCreamCart
             OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
             order.AddItem( item );
             this.RefreshShoppingCart(order);
+            this.ResetMenu();
+            AddOrderButton.Enabled = false;
         }
+
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
         private void RefreshShoppingCart( Order order )
         {
             CartListbox.Items.Clear();
-            CartListbox.Items.AddRange( order.shoppingCart.ToArray() );
+            foreach( OrderItem item in order.shoppingCart )
+            {
+                CartListbox.Items.Add( item.item.ToString() );
+            }
+
         }
 
         //Takes the values selected on a menu page and builds a menu item from that
@@ -256,12 +264,10 @@ namespace SmuldersIceCreamCart
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
-                //EditItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
             }
             else
             {
-                //EditItemButton.Enabled = true;
                 RemoveItemButton.Enabled = true;
             }
         }
@@ -308,6 +314,26 @@ namespace SmuldersIceCreamCart
             }
     
 
+        }
+
+        //Clears the currently selected items from a menu_item order window
+        private void ResetMenu()
+        {
+            FlavorCBox.SelectedIndex = -1;
+            ContainerCBox.SelectedIndex = -1;
+            SizeCBox.SelectedIndex = -1;
+            QuantityUD.Value = 0;
+            ToppingCBox.SelectedIndex = -1;
+            WhippedCreamCBox.Checked = false;
+            CherryCBox.Checked = false;
+            SyrupCBox.SelectedIndex = -1;
+        }
+
+        //When clicked, this button clears the currently selected items from a menu_item order window
+        private void RefreshOrderWindowButton_Click(object sender, EventArgs e)
+        {
+            this.ResetMenu();
+            AddOrderButton.Enabled = false;
         }
     }
 }
