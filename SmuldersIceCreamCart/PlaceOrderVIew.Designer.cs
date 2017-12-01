@@ -42,7 +42,7 @@
             this.TotalItemLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
             this.RemoveItemButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ClearItemButton = new System.Windows.Forms.Button();
             this.CartListbox = new System.Windows.Forms.ListBox();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.QuantityUD = new System.Windows.Forms.NumericUpDown();
@@ -225,15 +225,17 @@
             this.RemoveItemButton.UseVisualStyleBackColor = true;
             this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
-            // button1
+            // ClearItemButton
             // 
-            this.button1.Location = new System.Drawing.Point(252, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 26);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Enabled = false;
+            this.ClearItemButton.Location = new System.Drawing.Point(252, 35);
+            this.ClearItemButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ClearItemButton.Name = "ClearItemButton";
+            this.ClearItemButton.Size = new System.Drawing.Size(53, 26);
+            this.ClearItemButton.TabIndex = 15;
+            this.ClearItemButton.Text = "Clear";
+            this.ClearItemButton.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Click += new System.EventHandler(this.ClearOrderItem_Click);
             // 
             // CartListbox
             // 
@@ -470,7 +472,7 @@
             this.Controls.Add(this.QuantityUD);
             this.Controls.Add(this.QuantityLabel);
             this.Controls.Add(this.CartListbox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ClearItemButton);
             this.Controls.Add(this.RemoveItemButton);
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.TotalItemLabel);
@@ -510,7 +512,7 @@
         private System.Windows.Forms.Label TotalItemLabel;
         private System.Windows.Forms.Label CostLabel;
         private System.Windows.Forms.Button RemoveItemButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ClearItemButton;
         private System.Windows.Forms.ListBox CartListbox;
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.NumericUpDown QuantityUD;

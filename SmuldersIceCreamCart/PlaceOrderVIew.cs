@@ -188,6 +188,7 @@ namespace SmuldersIceCreamCart
             this.RefreshShoppingCart(order);
             this.ResetMenu();
             AddOrderButton.Enabled = false;
+            ClearItemButton.Enabled = true;
         }
 
 
@@ -250,25 +251,34 @@ namespace SmuldersIceCreamCart
       
         }
 
-        //this is replacing the EditItemButton_Click
-        //it removes an item but I am not changing the name since it is tied to design code
+        //when an item is selected from the shopping cart, the Remove button is enabled
+        //and the customer can click it to remove the selected item from the shopping cart
+        // the shopping cart and stats are updated
         private void RemoveItemButton_Click(object sender, EventArgs e)
         {
             OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
             order.RemoveItem(current);
             this.RefreshShoppingCart(this.order);
+
+            if( order.GetTotalNumberofItems() == 0 )
+            {
+                ClearItemButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+            }
         }
 
-        //this handles enabling/disabling the edit and remove buttons from an order dialog box
+        //this handles enabling/disabling the clear and remove buttons from an order dialog box
         private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
                 RemoveItemButton.Enabled = false;
+                //ClearItemButton.Enabled = false;
             }
             else
             {
                 RemoveItemButton.Enabled = true;
+               // ClearItemButton.Enabled = true;
             }
         }
 
@@ -317,12 +327,14 @@ namespace SmuldersIceCreamCart
         }
 
         //Clears the currently selected items from a menu_item order window
+        // this is called when the customer clicks the refresh button and when 
+        // an item is added to the shopping cart
         private void ResetMenu()
         {
             FlavorCBox.SelectedIndex = -1;
             ContainerCBox.SelectedIndex = -1;
             SizeCBox.SelectedIndex = -1;
-            QuantityUD.Value = 0;
+            QuantityUD.Value = 1;
             ToppingCBox.SelectedIndex = -1;
             WhippedCreamCBox.Checked = false;
             CherryCBox.Checked = false;
@@ -334,6 +346,16 @@ namespace SmuldersIceCreamCart
         {
             this.ResetMenu();
             AddOrderButton.Enabled = false;
+        }
+
+        //When a customer doesn't want anything in the shopping cart but wants to continue shopping
+        private void ClearOrderItem_Click(object sender, EventArgs e)
+        {
+            order.ClearOrder();
+            RefreshShoppingCart(order);
+            ResetMenu();
+            ClearItemButton.Enabled = false;
+            RemoveItemButton.Enabled = false;
         }
     }
 }
