@@ -58,19 +58,6 @@ namespace SmuldersIceCreamCart.Orders
             }
         }
 
-
-        //TODO
-        //Jeff will finish filling this out
-        public void EditItem( OrderItem item )
-        {
-            OrderItem itemToEdit;
-            if( this.shoppingCart.Contains( item ) )
-            {
-
-            }
-
-        }
-
         //tells you how many unique items are in an order
         //does not account for quantities of items greater than 1
         public int GetOrderSize()

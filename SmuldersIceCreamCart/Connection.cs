@@ -259,7 +259,7 @@ namespace SmuldersIceCreamCart
         //applies to ice cream items
         public static double GetItemCost( string optionTable )
         {
-            string queryString = "SELECT cost FROM menu_item where name=" + optionTable;
+            string queryString = "SELECT cost FROM menu_item WHERE name=" + optionTable;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             double cost = reader.GetDouble(0);
@@ -270,7 +270,7 @@ namespace SmuldersIceCreamCart
         // queries side_item table for the cost of a specific side item
         public static double GetSideItemCost( string sideItemName )
         {
-            string queryString = "SELECT cost FROM side_item where item_name=" + sideItemName;
+            string queryString = "SELECT cost FROM side_item WHERE item_name=" + sideItemName;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             double cost = reader.GetDouble(0);
@@ -284,7 +284,7 @@ namespace SmuldersIceCreamCart
         public static List<string> OrderFromOrderHistory(string orderID )
         {
             List<string> orderHistory = new List<string>();
-            string queryString = "SELECT * FROM order_contain_order_item where orderID=" + orderID;
+            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=" + orderID;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read())
@@ -300,7 +300,7 @@ namespace SmuldersIceCreamCart
         {
             List<string> orderList = new List<string>();
             //lazy man's way of doing this
-            string queryString = "SELECT order_id FROM customer_orders where customer_email=" + customer_email + " ORDER BY order_id DESC";
+            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=" + customer_email + " ORDER BY order_id DESC";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read() )
@@ -316,7 +316,7 @@ namespace SmuldersIceCreamCart
         public static List<string> OrderStatusSummary( string order_id )
         {
             List<string> order_summary = new List<string>();
-            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders where order_id=" + order_id;
+            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=" + order_id;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read() )
@@ -335,7 +335,7 @@ namespace SmuldersIceCreamCart
         public static List<string> GetCustomerName( string customer_email )
         {
             List<string> customer_info = new List<string>();
-            string queryString = "SELECT person.first_name, person.last_name FROM person where email=" + customer_email;
+            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email=" + customer_email;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -350,7 +350,7 @@ namespace SmuldersIceCreamCart
         public static List<string> GetCustomerAddress( string customer_email )
         {
             List<string> customer_address = new List<string>();
-            string queryString = "SELECT address.street_num, address.street_name, address.city, address.state, address.zip FROM address INNER JOIN customer where customer_email=" + customer_email;
+            string queryString = "SELECT address.street_num, address.street_name, address.city, address.state, address.zip FROM address INNER JOIN customer WHERE customer_email=" + customer_email;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -365,7 +365,7 @@ namespace SmuldersIceCreamCart
         public string GetCustomerPhoneNumber( string customer_email )
         {
             string phone;
-            string queryString = "SELECT person.phone_number FROM person where email=" + customer_email;
+            string queryString = "SELECT person.phone_number FROM person WHERE email=" + customer_email;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             phone = reader.GetString(0);

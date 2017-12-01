@@ -123,17 +123,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="usernameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 0</value>
+    <value>4, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="usernameLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="usernameLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 0, 0</value>
+    <value>7, 6, 0, 0</value>
   </data>
   <data name="usernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 35</value>
+    <value>92, 23</value>
   </data>
   <data name="usernameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -157,16 +157,16 @@
     <value>True</value>
   </data>
   <data name="logoutLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>290, 0</value>
+    <value>189, 0</value>
   </data>
   <data name="logoutLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="logoutLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 10, 0, 0</value>
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="logoutLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 35</value>
+    <value>52, 23</value>
   </data>
   <data name="logoutLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -185,6 +185,27 @@
   </data>
   <data name="&gt;&gt;logoutLabel.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 0</value>
+  </data>
+  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
+  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 23</value>
+  </data>
+  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="manageAccountLabel.Text" xml:space="preserve">
+    <value>MyAccount</value>
   </data>
   <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
     <value>manageAccountLabel</value>
@@ -205,10 +226,10 @@
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>998, 51</value>
+    <value>665, 33</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -225,39 +246,6 @@
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 0</value>
-  </data>
-  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
-  </data>
-  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 10, 0, 0</value>
-  </data>
-  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 35</value>
-  </data>
-  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="manageAccountLabel.Text" xml:space="preserve">
-    <value>MyAccount</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
-    <value>manageAccountLabel</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -265,10 +253,13 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 59</value>
+    <value>7, 38</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 37</value>
+    <value>198, 25</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -295,10 +286,13 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 59</value>
+    <value>253, 38</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>207, 37</value>
+    <value>127, 25</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -319,10 +313,13 @@
     <value>11</value>
   </data>
   <data name="HistoryFromDatepick.Location" type="System.Drawing.Point, System.Drawing">
-    <value>623, 111</value>
+    <value>411, 69</value>
+  </data>
+  <data name="HistoryFromDatepick.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="HistoryFromDatepick.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 31</value>
+    <value>243, 22</value>
   </data>
   <data name="HistoryFromDatepick.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -340,10 +337,13 @@
     <value>12</value>
   </data>
   <data name="VertSplitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 51</value>
+    <value>245, 33</value>
+  </data>
+  <data name="VertSplitLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="VertSplitLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>2, 1000</value>
+    <value>1, 640</value>
   </data>
   <data name="VertSplitLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -364,10 +364,13 @@
     <value>True</value>
   </data>
   <data name="HistFromLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>551, 112</value>
+    <value>363, 70</value>
+  </data>
+  <data name="HistFromLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="HistFromLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 25</value>
+    <value>44, 17</value>
   </data>
   <data name="HistFromLabel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -394,10 +397,13 @@
     <value>NoControl</value>
   </data>
   <data name="HistToLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>573, 164</value>
+    <value>378, 103</value>
+  </data>
+  <data name="HistToLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="HistToLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 25</value>
+    <value>29, 17</value>
   </data>
   <data name="HistToLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -418,10 +424,13 @@
     <value>7</value>
   </data>
   <data name="HistoryToDatepick.Location" type="System.Drawing.Point, System.Drawing">
-    <value>623, 163</value>
+    <value>411, 102</value>
+  </data>
+  <data name="HistoryToDatepick.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="HistoryToDatepick.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 31</value>
+    <value>243, 22</value>
   </data>
   <data name="HistoryToDatepick.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -439,10 +448,13 @@
     <value>6</value>
   </data>
   <data name="PlaceOrderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 111</value>
+    <value>258, 71</value>
+  </data>
+  <data name="PlaceOrderButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="PlaceOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 83</value>
+    <value>106, 53</value>
   </data>
   <data name="PlaceOrderButton.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -466,10 +478,13 @@
     <value>True</value>
   </data>
   <data name="NameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>37, 140</value>
+    <value>25, 90</value>
+  </data>
+  <data name="NameLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="NameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 25</value>
+    <value>49, 17</value>
   </data>
   <data name="NameLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -490,10 +505,13 @@
     <value>4</value>
   </data>
   <data name="UpdateInfoButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 622</value>
+    <value>65, 398</value>
+  </data>
+  <data name="UpdateInfoButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="UpdateInfoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 41</value>
+    <value>101, 26</value>
   </data>
   <data name="UpdateInfoButton.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -517,10 +535,13 @@
     <value>False</value>
   </data>
   <data name="NameTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 140</value>
+    <value>79, 90</value>
+  </data>
+  <data name="NameTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="NameTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 31</value>
+    <value>123, 22</value>
   </data>
   <data name="NameTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -541,13 +562,16 @@
     <value>2</value>
   </data>
   <data name="HistoryListbox.ItemHeight" type="System.Int32, mscorlib">
-    <value>25</value>
+    <value>16</value>
   </data>
   <data name="HistoryListbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 226</value>
+    <value>258, 129</value>
+  </data>
+  <data name="HistoryListbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="HistoryListbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 404</value>
+    <value>400, 276</value>
   </data>
   <data name="HistoryListbox.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -568,10 +592,13 @@
     <value>False</value>
   </data>
   <data name="ViewHistoryItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>843, 636</value>
+    <value>562, 407</value>
+  </data>
+  <data name="ViewHistoryItemButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="ViewHistoryItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 48</value>
+    <value>95, 31</value>
   </data>
   <data name="ViewHistoryItemButton.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -595,13 +622,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>12, 25</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>998, 697</value>
+    <value>665, 446</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Smulder's Ice Cream Service - Customer Dashboard</value>

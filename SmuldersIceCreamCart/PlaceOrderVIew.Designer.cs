@@ -263,6 +263,11 @@
             this.QuantityUD.Name = "QuantityUD";
             this.QuantityUD.Size = new System.Drawing.Size(80, 22);
             this.QuantityUD.TabIndex = 18;
+            this.QuantityUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.QuantityUD.Visible = false;
             this.QuantityUD.ValueChanged += new System.EventHandler(this.QuantityUD_ValueChanged);
             // 
@@ -301,6 +306,7 @@
             // 
             // ToppingCBox
             // 
+            this.ToppingCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ToppingCBox.FormattingEnabled = true;
             this.ToppingCBox.Location = new System.Drawing.Point(317, 228);
             this.ToppingCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -308,9 +314,11 @@
             this.ToppingCBox.Size = new System.Drawing.Size(116, 24);
             this.ToppingCBox.TabIndex = 24;
             this.ToppingCBox.Visible = false;
+            this.ToppingCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // FlavorCBox
             // 
+            this.FlavorCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FlavorCBox.FormattingEnabled = true;
             this.FlavorCBox.Location = new System.Drawing.Point(497, 227);
             this.FlavorCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -318,10 +326,11 @@
             this.FlavorCBox.Size = new System.Drawing.Size(116, 24);
             this.FlavorCBox.TabIndex = 26;
             this.FlavorCBox.Visible = false;
-            this.FlavorCBox.SelectedIndexChanged += new System.EventHandler(this.ValidateOrderItem);
+            this.FlavorCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SyrupCBox
             // 
+            this.SyrupCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SyrupCBox.FormattingEnabled = true;
             this.SyrupCBox.Location = new System.Drawing.Point(497, 278);
             this.SyrupCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -329,9 +338,11 @@
             this.SyrupCBox.Size = new System.Drawing.Size(116, 24);
             this.SyrupCBox.TabIndex = 27;
             this.SyrupCBox.Visible = false;
+            this.SyrupCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SizeCBox
             // 
+            this.SizeCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SizeCBox.FormattingEnabled = true;
             this.SizeCBox.Location = new System.Drawing.Point(317, 323);
             this.SizeCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -339,6 +350,7 @@
             this.SizeCBox.Size = new System.Drawing.Size(116, 24);
             this.SizeCBox.TabIndex = 28;
             this.SizeCBox.Visible = false;
+            this.SizeCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // AddOrderButton
             // 
@@ -387,6 +399,7 @@
             // 
             // ContainerCBox
             // 
+            this.ContainerCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContainerCBox.FormattingEnabled = true;
             this.ContainerCBox.Location = new System.Drawing.Point(317, 278);
             this.ContainerCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -394,6 +407,7 @@
             this.ContainerCBox.Size = new System.Drawing.Size(116, 24);
             this.ContainerCBox.TabIndex = 25;
             this.ContainerCBox.Visible = false;
+            this.ContainerCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // WhippedCreamCBox
             // 
@@ -406,6 +420,7 @@
             this.WhippedCreamCBox.Text = "Whipped Cream?";
             this.WhippedCreamCBox.UseVisualStyleBackColor = true;
             this.WhippedCreamCBox.Visible = false;
+            this.WhippedCreamCBox.CheckedChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // CherryCBox
             // 
@@ -418,6 +433,7 @@
             this.CherryCBox.Text = "Cherry on top?";
             this.CherryCBox.UseVisualStyleBackColor = true;
             this.CherryCBox.Visible = false;
+            this.CherryCBox.CheckedChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // PlaceOrderView
             // 
