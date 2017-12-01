@@ -38,7 +38,6 @@ namespace SmuldersIceCreamCart
         private void PopulateMenu()
         {
             //TODO get the actual menu items list from server.
-            //@Jeffel these seem to build the menu from their given tables. That's complete, right?
             MenuItemsListbox.Items.AddRange(new string[] { "Ice Cream Scoop", "Sundae", "Milkshake", "Sides" });
             FlavorCBox.Items.AddRange(Connection.GetOptions("flavor"));
             SyrupCBox.Items.AddRange(Connection.GetOptions("syrup"));
@@ -184,36 +183,32 @@ namespace SmuldersIceCreamCart
         {
             Menu.MenuItem built;
 
+            //We are modifying an existing item, use the selected item in the current order.
             if (AddOrderButton.Text == "Save")
             {
-
-                //We are modifying an existing item, use the selected item in the current order.
                 string type = MenuItemsListbox.SelectedItem.ToString();
                 order.shoppingCart[CartListbox.SelectedIndex].item = BuildItem(type);
                 order.shoppingCart[CartListbox.SelectedIndex].quantity = int.Parse(QuantityUD.Value.ToString());
             }
+            //We are adding a brand new item to the shopping cart
             else
             {
-                //Instead of switch, just pass this string to build item.
                 built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
                 OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
                 order.AddItem( item );
                 this.RefreshShoppingCart(order);
-                
-                //TODO create a refreshShoppingCart function
-                /* We then will add this item gotten from builditem to the order. Once that is done...
-                 * CartListbox.Items.Clear(); //Or something...
-                 * CartListbox.Items.AddRange(//The items in the cart in the order item.);//This will refresh the list of items in the cart.
-                 */
             }
         }
 
+        //clears the currently displayed shopping cart before displaying the updated shopping cart
         private void RefreshShoppingCart( Order order )
         {
             CartListbox.Items.Clear();
-            //CartListbox.Items.AddRange();
+            List<OrderItem> current = order.shoppingCart;
+            CartListbox.Items.AddRange( order.shoppingCart.ToArray() );
         }
 
+        //Takes the values selected on a menu page and builds a menu item from that
         private Menu.MenuItem BuildItem(string type)
         {
             Menu.MenuItem result;
@@ -232,7 +227,8 @@ namespace SmuldersIceCreamCart
                         Connection.GetItemCost("Milkshake"));
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), Connection.GetItemCost("Sides"));
+                    result = new SideItem( SideItemsListbox.SelectedValue.ToString(), 
+                        Connection.GetSideItemCost(SideItemsListbox.SelectedValue.ToString()));
                     break;
                 default:
                     //should additional error checking be done here???
@@ -243,6 +239,7 @@ namespace SmuldersIceCreamCart
             return result;
         }
 
+        //For the quantity drop down box, enforces a valid range
         private void QuantityUD_ValueChanged(object sender, EventArgs e)
         {
             int qty = int.Parse(QuantityUD.Value.ToString());
@@ -257,58 +254,60 @@ namespace SmuldersIceCreamCart
       
         }
 
+        //this is replacing the EditItemButton_Click
+        //it removes an item but I am not changing the name since it is tied to design code
         private void EditItemButton_Click(object sender, EventArgs e)
         {
-            AddOrderButton.Text = "Save";
-            //TODO setup all the menu items down below to their appropriate selections based on the currently selected item.
-            //Still a little uncertain on what I am doing here
-            Menu.MenuItem current = order.shoppingCart[CartListbox.SelectedIndex].item;
-            //Pull from this the necessary information.
-
-            order.EditItem(order.shoppingCart[CartListbox.SelectedIndex]);
+            OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
+            order.RemoveItem(current);
+            this.RefreshShoppingCart(this.order);
         }
 
+        //this handles enabling/disabling the edit and remove buttons from an order dialog box
         private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
-                EditItemButton.Enabled = false;
+                //EditItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
             }
             else
             {
-                EditItemButton.Enabled = true;
+                //EditItemButton.Enabled = true;
                 RemoveItemButton.Enabled = true;
             }
         }
 
-        //function to enable the add to order button.
+        //function to enable the add to order button
+        //enforces that all mandatory fields have a value
         private void ValidateOrderItem(object sender, EventArgs e)
         {
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
-                    if( FlavorCBox.SelectedValue.ToString() != null &&
-                        string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
-        string.IsNullOrEmpty(SizeCBox.ToString() ) )
+                    if( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) &&
+                        !string.IsNullOrEmpty(ContainerCBox.SelectedValue.ToString()) &&
+                        !string.IsNullOrEmpty(SizeCBox.ToString() ) )
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sundae":
-                    if ( FlavorCBox.SelectedValue.ToString() != null && ToppingCBox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
+                        !string.IsNullOrEmpty(ToppingCBox.SelectedValue.ToString()) )
                     {
                         AddOrderButton.Enabled = true;
                     }     
                     break;
                 case "Milkshake":
-                    if ( FlavorCBox.SelectedValue.ToString() != null && SyrupCBox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(FlavorCBox.SelectedValue.ToString()) && 
+                        !string.IsNullOrEmpty(SyrupCBox.SelectedValue.ToString()))
                     {
                         AddOrderButton.Enabled = true;
                     }
                     break;
                 case "Sides":
-                    if ( SideItemsListbox.SelectedValue.ToString() != null)
+                    if ( !string.IsNullOrEmpty(SideItemsListbox.SelectedValue.ToString()))
                     {
                         AddOrderButton.Enabled = true;
                     }

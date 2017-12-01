@@ -256,12 +256,24 @@ namespace SmuldersIceCreamCart
         }
 
         // queries menu_item table for the cost of a product
+        //applies to ice cream items
         public static double GetItemCost( string optionTable )
         {
             string queryString = "SELECT cost FROM menu_item where name=" + optionTable;
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             //reader.Read();
+            double cost = reader.GetDouble(0);
+            reader.Close();
+            return cost;
+        }
+
+        // queries side_item table for the cost of a specific side item
+        public static double GetSideItemCost( string sideItemName )
+        {
+            string queryString = "SELECT cost FROM side_item where item_name=" + sideItemName;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
             double cost = reader.GetDouble(0);
             reader.Close();
             return cost;
