@@ -33,6 +33,7 @@ namespace SmuldersIceCreamCart
 
             //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
+            NameTextbox.Text = Viewer.FirstName + " " + Viewer.LastName;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

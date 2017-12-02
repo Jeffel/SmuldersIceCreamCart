@@ -1,4 +1,4 @@
-﻿using SmuldersIceCreamCart.Users;
+using SmuldersIceCreamCart.Users;
 using SmuldersIceCreamCart.Orders;
 using System;
 using System.Collections.Generic;
@@ -28,6 +28,8 @@ namespace SmuldersIceCreamCart
 
             usernameLabel.Text = Viewer.Email;
             PopulateMenu();
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
         }
 
         /**
@@ -44,6 +46,7 @@ namespace SmuldersIceCreamCart
             ToppingCBox.Items.AddRange(Connection.GetOptions("topping"));
             SizeCBox.Items.AddRange(Connection.GetOptions("size"));
             ContainerCBox.Items.AddRange(Connection.GetOptions("container"));
+            SideItemsListbox.Items.AddRange(Connection.GetOptions("side_item"));
         }
 
         /**
@@ -184,43 +187,35 @@ namespace SmuldersIceCreamCart
             Menu.MenuItem built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
             OrderItem item = new OrderItem(built, int.Parse(QuantityUD.Value.ToString()));
             order.AddItem( item );
-            this.RefreshShoppingCart(order);
-            //ResetOrderWindow(built.Name);
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
+
+            this.RefreshShoppingCart();
+            this.ResetMenu();
+            this.ResetOrderPage();
             AddOrderButton.Enabled = false;
+            ClearItemButton.Enabled = true;
         }
 
-        private void ResetOrderWindow(string menu_item)
-        {
-            switch (menu_item)
-            {
-                case "Ice Cream Scoop":
-                    FlavorCBox.SelectedIndex = -1;
-                    ContainerCBox.SelectedIndex = -1;
-                    SizeCBox.SelectedIndex = -1;
-                    QuantityUD.Value = 0;
-                    break;
-                case "Sundae":
-                    FlavorCBox.SelectedIndex = -1;
-                    ToppingCBox.SelectedIndex = -1;
-                    break;
-                case "Milkshake":
-                    FlavorCBox.SelectedIndex = -1;
-                    SyrupCBox.SelectedIndex = -1;
-                    break;
-                case "Sides":
-                    SideItemsListbox.SelectedIndex = -1;
-                    break;
-                default:
-                    break;
-            }
-
-        }
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
-        private void RefreshShoppingCart( Order order )
+        private void RefreshShoppingCart()
         {
             CartListbox.Items.Clear();
-            CartListbox.Items.AddRange( order.shoppingCart.ToArray() );
+            foreach( OrderItem item in order.shoppingCart )
+            {
+                CartListbox.Items.Add( item.item.ToString() );
+            }
+
+            if(order.shoppingCart.Count > 0)
+            {
+                PlaceOrderButton.Enabled = true;
+            }
+            else
+            {
+                PlaceOrderButton.Enabled = false;
+            }
+
         }
 
         //Takes the values selected on a menu page and builds a menu item from that
@@ -244,7 +239,7 @@ namespace SmuldersIceCreamCart
                         5.00);
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedIndex.ToString(), 
+                    result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
                         3.00);
                     break;
                 default:
@@ -271,26 +266,36 @@ namespace SmuldersIceCreamCart
       
         }
 
-        //this is replacing the EditItemButton_Click
-        //it removes an item but I am not changing the name since it is tied to design code
+        //when an item is selected from the shopping cart, the Remove button is enabled
+        //and the customer can click it to remove the selected item from the shopping cart
+        // the shopping cart and stats are updated
         private void RemoveItemButton_Click(object sender, EventArgs e)
         {
             OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
             order.RemoveItem(current);
-            this.RefreshShoppingCart(this.order);
+            this.RefreshShoppingCart();
+
+            if( order.GetTotalNumberofItems() == 0 )
+            {
+                ClearItemButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+                this.ResetMenu();
+                this.ResetOrderPage();
+            }
+
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
         }
 
-        //this handles enabling/disabling the edit and remove buttons from an order dialog box
+        //this handles enabling/disabling the clear and remove buttons from an order dialog box
         private void CartListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CartListbox.SelectedIndex.ToString()))
             {
-                //EditItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
             }
             else
             {
-                //EditItemButton.Enabled = true;
                 RemoveItemButton.Enabled = true;
             }
         }
@@ -311,7 +316,6 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 case "Sundae":
-                    
                     if ( FlavorCBox.SelectedIndex > -1 && 
                         ToppingCBox.SelectedIndex > -1 )
                     {
@@ -326,7 +330,7 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 case "Sides":
-                    if ( SideItemsListbox.SelectedIndex > -1 )
+                    if( SideItemsListbox.SelectedIndex > -1)
                     {
                         AddOrderButton.Enabled = true;
                     }
@@ -335,8 +339,67 @@ namespace SmuldersIceCreamCart
                     AddOrderButton.Enabled = false;
                     break;
             }
-    
+        }
 
+        //Clears the currently selected items from a menu_item order window
+        // this is called when the customer clicks the refresh button 
+        private void ResetMenu()
+        {
+            FlavorCBox.SelectedIndex = -1;
+            ContainerCBox.SelectedIndex = -1;
+            SizeCBox.SelectedIndex = -1;
+            QuantityUD.Value = 1;
+            ToppingCBox.SelectedIndex = -1;
+            WhippedCreamCBox.Checked = false;
+            CherryCBox.Checked = false;
+            SyrupCBox.SelectedIndex = -1;
+            SideItemsListbox.SelectedIndex = -1;
+        }
+
+        //When clicked, this button clears the currently selected items from a menu_item order window
+        private void RefreshOrderWindowButton_Click(object sender, EventArgs e)
+        {
+            this.ResetMenu();
+            AddOrderButton.Enabled = false;
+        }
+
+        //When a customer doesn't want anything in the shopping cart but wants to continue shopping
+        private void ClearOrderItem_Click(object sender, EventArgs e)
+        {
+            order.ClearOrder();
+            RefreshShoppingCart();
+            this.ResetMenu();
+            this.ResetOrderPage();
+            TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
+            this.DisplayCost();
+
+            ClearItemButton.Enabled = false;
+            RemoveItemButton.Enabled = false;
+        }
+
+        //after an item has been added to the shopping cart, reset the order page so the customer can make a new selection
+        private void ResetOrderPage()
+        {
+            QuantityLabel.Visible = false;
+            QuantityUD.Visible = false;
+            FlavorLabel.Visible = false;
+            FlavorCBox.Visible = false;
+            ToppingLabel.Visible = false;
+            ToppingCBox.Visible = false;
+            SyrupLabel.Visible = false;
+            SyrupCBox.Visible = false;
+            ContainerLabel.Visible = false;
+            ContainerCBox.Visible = false;
+            SizeLabel.Visible = false;
+            SizeCBox.Visible = false;
+            WhippedCreamCBox.Visible = false;
+            CherryCBox.Visible = false;
+            SideItemsListbox.Visible = false;
+        }
+
+        private void DisplayCost()
+        {
+            CostBox.Text = string.Format("${0:0.00}",order.GetOrderCost());
         }
     }
 }
