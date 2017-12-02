@@ -39,7 +39,6 @@ namespace SmuldersIceCreamCart
          */
         private void PopulateMenu()
         {
-            //TODO get the actual menu items list from server.
             MenuItemsListbox.Items.AddRange(new string[] { "Ice Cream Scoop", "Sundae", "Milkshake", "Sides" });
             FlavorCBox.Items.AddRange(Connection.GetOptions("flavor"));
             SyrupCBox.Items.AddRange(Connection.GetOptions("syrup"));
@@ -49,22 +48,15 @@ namespace SmuldersIceCreamCart
             SideItemsListbox.Items.AddRange(Connection.GetOptions("side_item"));
         }
 
-        /**
-         * The customer logs out by clicking log out button
-         * 
-        */
+       
+        //The customer logs out by clicking log out button
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //logout was clicked. More needs to be done to properly handle this.
-            //@jeffel Exception handling???
             this.DialogResult = DialogResult.Abort;
             Close();
         }
 
-        /**
-         *  This looks like it has to do with managing account info. 
-         *  @jen is not going to deal with this right now
-        */
         private void manageAccountLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //More needs to be done to properly handle this.
@@ -79,9 +71,8 @@ namespace SmuldersIceCreamCart
             }
         }
 
-        /**
-         *  Customer clicks the order button to complete an order.
-        */
+       
+        //Customer clicks the order button to complete an order 
         private void PlaceOrderButton_Click(object sender, EventArgs e)
         {
             bool successful = Connection.PlaceOrder(Viewer, order);
@@ -182,6 +173,7 @@ namespace SmuldersIceCreamCart
             }
         }
 
+        //When a customer wants to add a menu_item to their shopping cart
         private void AddOrderButton_Click(object sender, EventArgs e)
         {
             Menu.MenuItem built = this.BuildItem(MenuItemsListbox.SelectedItem.ToString());
@@ -207,13 +199,16 @@ namespace SmuldersIceCreamCart
                 CartListbox.Items.Add( item.item.ToString() );
             }
 
-            if(order.shoppingCart.Count > 0)
+            if( order.GetOrderSize() > 0 )
             {
                 PlaceOrderButton.Enabled = true;
+                ClearItemButton.Enabled = true;
             }
             else
             {
                 PlaceOrderButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+                ClearItemButton.Enabled = false;
             }
 
         }
@@ -243,7 +238,6 @@ namespace SmuldersIceCreamCart
                         3.00);
                     break;
                 default:
-                    //should additional error checking be done here???
                     result = null;
                     break;
             }
@@ -279,6 +273,7 @@ namespace SmuldersIceCreamCart
             {
                 ClearItemButton.Enabled = false;
                 RemoveItemButton.Enabled = false;
+
                 this.ResetMenu();
                 this.ResetOrderPage();
             }
@@ -304,7 +299,6 @@ namespace SmuldersIceCreamCart
         //enforces that all mandatory fields have a value
         private void ValidateOrderItem(object sender, EventArgs e)
         {
-        
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
@@ -336,7 +330,7 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 default:
-                    AddOrderButton.Enabled = false;
+                    AddOrderButton.Enabled = true;
                     break;
             }
         }

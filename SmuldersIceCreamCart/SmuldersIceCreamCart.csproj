@@ -94,6 +94,12 @@
     <Compile Include="Menu\Milkshake.cs" />
     <Compile Include="Menu\IceCreamScoop.cs" />
     <Compile Include="Menu\MenuItem.cs" />
+    <Compile Include="OrderHistoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderHistoryView.Designer.cs">
+      <DependentUpon>OrderHistoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Orders\Order.cs" />
     <Compile Include="Orders\OrderItem.cs" />
     <Compile Include="PlaceOrderView.cs">
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageAccount.resx">
       <DependentUpon>ManageAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderHistoryView.resx">
+      <DependentUpon>OrderHistoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlaceOrderView.resx">
       <DependentUpon>PlaceOrderView.cs</DependentUpon>

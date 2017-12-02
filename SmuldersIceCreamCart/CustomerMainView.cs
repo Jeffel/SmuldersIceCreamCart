@@ -1,4 +1,4 @@
-﻿using SmuldersIceCreamCart.Orders;
+using SmuldersIceCreamCart.Orders;
 using SmuldersIceCreamCart.Users;
 using SmuldersIceCreamCart.Menu;
 using System;
@@ -30,6 +30,11 @@ namespace SmuldersIceCreamCart
 
             //Make the components ready to go.
             InitializeComponent();
+
+            HistoryFromDatepick.Value = DateTime.Today.AddDays(-1);
+            HistoryToDatepick.Value = DateTime.Now;
+
+            PopulateHistory();
 
             //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
@@ -139,12 +144,22 @@ namespace SmuldersIceCreamCart
             {
                 //TODO Order was not successfully placed. Error.
             }
+            HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
+            HistoryListbox.Items.Clear();
+            PopulateHistory();
             Show();
+        }
+
+        private void PopulateHistory()
+        {
+            HistoryListbox.Items.AddRange(Connection.OrderHistoryList(Viewer.Email));
         }
 
         private void HistoryListbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(HistoryListbox.SelectedItem.ToString()))
+            //HistoryListbox.Items.Clear();
+            //PopulateHistory();
+                if(string.IsNullOrEmpty(HistoryListbox.SelectedItem.ToString()))
             {
                 ViewHistoryItemButton.Enabled = false;
             } else

@@ -14,7 +14,7 @@ namespace SmuldersIceCreamCart.Menu
         public int size { get; set; }
 
         public IceCreamScoop( string name, string flavour, string container, int size, double cost )
-            : base( "Ice Cream", container, ( size * cost ) )
+            : base( "Ice Cream Scoop", container, ( size * cost ) )
         {
             this.Flavour = flavour;
             this.size = size;
