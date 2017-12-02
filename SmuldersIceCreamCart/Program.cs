@@ -17,6 +17,7 @@ namespace SmuldersIceCreamCart
         static void Main()
         {
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
             OpenFileDialog dialog = new OpenFileDialog();
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
@@ -27,7 +28,6 @@ namespace SmuldersIceCreamCart
                 string password = dbinfo[2];
 
                 new Connection(host, username, password);
-                Application.EnableVisualStyles();
                 
                 Application.Run(new Login());
             }

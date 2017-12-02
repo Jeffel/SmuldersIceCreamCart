@@ -22,9 +22,23 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string ToString()
         {
-            string label = "Ice Cream   Flavour: " + this.Flavour + " Size: " + this.size +
-                " Container: " + this.Container;
-            label += " " + this.Cost;
+            string label;
+            switch (this.size)
+            {
+                case 1:
+                    label = "Single scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                case 2:
+                    label = "Double scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                case 3:
+                    label = "Triple scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                default:
+                    label = this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+            }
+            label += ": $" + this.Cost;
             return label;
         }
 

@@ -190,7 +190,7 @@ namespace SmuldersIceCreamCart
 
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
-        private void RefreshShoppingCart( )
+        private void RefreshShoppingCart()
         {
             CartListbox.Items.Clear();
             foreach( OrderItem item in order.shoppingCart )
@@ -230,10 +230,10 @@ namespace SmuldersIceCreamCart
                     break;
                 case "Milkshake":
                     result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
-                        5.00);
+                        5.00, FlavorCBox.SelectedItem.ToString());
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedIndex.ToString(), 
+                    result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
                         3.00);
                     break;
                 default:

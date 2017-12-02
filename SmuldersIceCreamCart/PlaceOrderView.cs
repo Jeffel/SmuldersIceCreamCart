@@ -186,11 +186,12 @@ namespace SmuldersIceCreamCart
             this.ResetMenu();
             this.ResetOrderPage();
             AddOrderButton.Enabled = false;
+            ClearItemButton.Enabled = true;
         }
 
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
-        private void RefreshShoppingCart( )
+        private void RefreshShoppingCart()
         {
             CartListbox.Items.Clear();
             foreach( OrderItem item in order.shoppingCart )
@@ -230,10 +231,10 @@ namespace SmuldersIceCreamCart
                     break;
                 case "Milkshake":
                     result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
-                        5.00);
+                        5.00, FlavorCBox.SelectedItem.ToString());
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedIndex.ToString(), 
+                    result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
                         3.00);
                     break;
                 default:
@@ -270,6 +271,9 @@ namespace SmuldersIceCreamCart
 
             if( order.GetTotalNumberofItems() == 0 )
             {
+                ClearItemButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+
                 this.ResetMenu();
                 this.ResetOrderPage();
             }
@@ -362,6 +366,9 @@ namespace SmuldersIceCreamCart
             this.ResetOrderPage();
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
             this.DisplayCost();
+
+            ClearItemButton.Enabled = false;
+            RemoveItemButton.Enabled = false;
         }
 
         //after an item has been added to the shopping cart, reset the order page so the customer can make a new selection

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,7 +76,19 @@ namespace SmuldersIceCreamCart
                 return null;
             }
             reader.Read();
-            Employee employee = new Employee(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetFloat(4), reader.GetFloat(5));
+            string[] attributes = new String[4];
+            for(int i = 0; i < attributes.Length; i++)
+            {
+                if (reader.IsDBNull(i))
+                {
+                    attributes[i] = "";
+                }
+                else
+                {
+                    attributes[i] = reader.GetString(i);
+                }
+            }
+            Employee employee = new Employee(attributes[0], attributes[1], attributes[2], attributes[3], reader.GetFloat(4), reader.GetFloat(5));
             reader.Close();
             return employee;
         }
@@ -292,8 +304,12 @@ namespace SmuldersIceCreamCart
         public static string[] OrderFromOrderHistory(string orderID )
         {
             List<string> orderHistory = new List<string>();
-            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=" + orderID;
+            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=@orderID;";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("orderID", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = orderID;
+
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read())
             {
@@ -304,6 +320,7 @@ namespace SmuldersIceCreamCart
         }
 
         //this is used to display a list of orders that a customer has made
+
         public static string[] OrderHistoryList( string customer_email )
         {
             List<string> orderList = new List<string>();
@@ -312,9 +329,12 @@ namespace SmuldersIceCreamCart
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             cmd.Parameters.AddWithValue("@customer_email", customer_email);
             NpgsqlDataReader reader = cmd.ExecuteReader();
-            while( reader.Read() )
+            if (reader.HasRows)
             {
-                orderList.Add(reader.GetString(0));
+                while (reader.Read())
+                {
+                    orderList.Add(reader.GetString(0));
+                }
             }
             reader.Close();
             return orderList.ToArray();
@@ -325,8 +345,11 @@ namespace SmuldersIceCreamCart
         public static List<string> OrderStatusSummary( string order_id )
         {
             List<string> order_summary = new List<string>();
-            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=" + order_id;
+            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=@order_id;";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("order_id", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = order_id;
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read() )
             {
@@ -340,7 +363,7 @@ namespace SmuldersIceCreamCart
         public static List<string> GetCustomerName( string customer_email )
         {
             List<string> customer_info = new List<string>();
-            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email=" + customer_email;
+            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email='" + customer_email + "'";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
