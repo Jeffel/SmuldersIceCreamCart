@@ -207,6 +207,15 @@ namespace SmuldersIceCreamCart
                 CartListbox.Items.Add( item.item.ToString() );
             }
 
+            if(order.shoppingCart.Count > 0)
+            {
+                PlaceOrderButton.Enabled = true;
+            }
+            else
+            {
+                PlaceOrderButton.Enabled = false;
+            }
+
         }
 
         //Takes the values selected on a menu page and builds a menu item from that
@@ -230,7 +239,7 @@ namespace SmuldersIceCreamCart
                         5.00);
                     break;
                 case "Sides":
-                    result = new SideItem( SideItemsListbox.SelectedIndex.ToString(), 
+                    result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
                         3.00);
                     break;
                 default:
