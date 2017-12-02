@@ -10,20 +10,18 @@ namespace SmuldersIceCreamCart.Menu
 
     class IceCreamScoop : MenuItem
     {
-        public string Flavour { get; set; }
-        public int size { get; set; }
 
         public IceCreamScoop( string name, string flavour, string container, int size, double cost )
-            : base( "Ice Cream Scoop", container, ( size * cost ) )
+            : base( name, container, ( size * cost ) )
         {
             this.Flavour = flavour;
-            this.size = size;
+            this.Size = size;
         }
 
         public override string ToString()
         {
             string label;
-            switch (this.size)
+            switch (this.Size)
             {
                 case 1:
                     label = "Single scoop " + this.Flavour + " Ice Cream in a " + this.Container;
@@ -44,7 +42,7 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string[] BuildMenuItem()
         {
-            string[] result = { "ice cream", this.Flavour, this.Container, this.size.ToString(), this.Cost.ToString() };
+            string[] result = { "ice cream", this.Flavour, this.Container, this.Size.ToString(), this.Cost.ToString() };
             return result;
         }
 

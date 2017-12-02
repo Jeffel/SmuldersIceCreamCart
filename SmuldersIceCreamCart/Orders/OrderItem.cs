@@ -25,6 +25,10 @@ namespace SmuldersIceCreamCart.Orders
             return this.item.Cost * this.quantity;
         }
 
+        public override string ToString()
+        {
+            return item.ToString() + "; Count: " + quantity + "; $" + totalCostForItem();
+        }
 
     }
 }

@@ -192,19 +192,18 @@ namespace SmuldersIceCreamCart
             //Inserting into order_contain_order_items is BROKEN
             //TODO Fix this!!!
 
-            /**
             cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, container, size, whipped_cream, cherry, quantity, syrup, side_item) VALUES (@id, @item_name, @flavor, @topping, @container, @size, @whipped_cream, @cherry, @quantity, @syrup, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("topping", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("container", NpgsqlTypes.NpgsqlDbType.Varchar);
-            cmd.Parameters.Add("size", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("size", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("whipped_cream", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("cherry", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("quantity", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("syrup", NpgsqlTypes.NpgsqlDbType.Varchar);
-            cmd.Parameters.Add("side_item", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Parameters.Add("side_item", NpgsqlTypes.NpgsqlDbType.Varchar);
 
             cmd.Prepare();
 
@@ -212,7 +211,7 @@ namespace SmuldersIceCreamCart
             {
                 cmd.Parameters[0].Value = id;
                 cmd.Parameters[1].Value = order_item.item.Name;
-                cmd.Parameters[2].Value = order_item.item.IceCream_Flavour;
+                cmd.Parameters[2].Value = order_item.item.Flavour;
                 cmd.Parameters[3].Value = order_item.item.Topping;
                 cmd.Parameters[9].Value = order_item.item.Syrup;
                 cmd.Parameters[4].Value = order_item.item.Container;
@@ -220,11 +219,18 @@ namespace SmuldersIceCreamCart
                 cmd.Parameters[6].Value = order_item.item.Whipped_cream;
                 cmd.Parameters[7].Value = order_item.item.Cherry;
                 cmd.Parameters[8].Value = order_item.quantity;
-                cmd.Parameters[10].Value = 1;
+                if (order_item.item is SideItem)
+                {
+                    cmd.Parameters[10].Value = ((SideItem)order_item.item).SideName;
+                }
+                else
+                {
+                    cmd.Parameters[10].Value = "None";
+                }
                 cmd.ExecuteNonQuery();
 
             }
-    */
+
             cmd = new NpgsqlCommand("INSERT INTO customer_orders (customer_email, order_id) VALUES (@customer_email, @order_id);", connection);
             cmd.Parameters.Add("customer_email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("order_id", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -279,23 +285,32 @@ namespace SmuldersIceCreamCart
         //applies to ice cream items
         public static double GetItemCost( string optionTable )
         {
-            string queryString = "SELECT cost FROM menu_item WHERE name=" + optionTable;
+            string queryString = "SELECT cost FROM menu_item WHERE name='" + optionTable + "';";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
-            NpgsqlDataReader reader = cmd.ExecuteReader();
-            double cost = reader.GetDouble(0);
-            reader.Close();
-            return cost;
+            var cost = cmd.ExecuteScalar();
+            if (cost is null)
+            {
+                return 0.00;
+            }
+            else
+            {
+                return Convert.ToDouble(cost);
+            }
         }
 
         // queries side_item table for the cost of a specific side item
         public static double GetSideItemCost( string sideItemName )
         {
-            string queryString = "SELECT cost FROM side_item WHERE item_name=" + sideItemName;
+            string queryString = "SELECT item_cost FROM side_item WHERE item_name='" + sideItemName + "';";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
-            NpgsqlDataReader reader = cmd.ExecuteReader();
-            double cost = reader.GetDouble(0);
-            reader.Close();
-            return cost;
+            var cost = cmd.ExecuteScalar();
+            if (cost is null)
+            {
+                return 0.00;
+            } else
+            {
+                return Convert.ToDouble(cost);
+            }
         }
 
         

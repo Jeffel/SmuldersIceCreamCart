@@ -196,7 +196,7 @@ namespace SmuldersIceCreamCart
             CartListbox.Items.Clear();
             foreach( OrderItem item in order.shoppingCart )
             {
-                CartListbox.Items.Add( item.item.ToString() );
+                CartListbox.Items.Add( item.ToString() );
             }
 
             if( order.GetOrderSize() > 0 )
@@ -222,20 +222,20 @@ namespace SmuldersIceCreamCart
 
             switch(type) {
                 case "Ice Cream Scoop":
-                    result = new IceCreamScoop( "Ice Cream", FlavorCBox.SelectedItem.ToString(), ContainerCBox.SelectedItem.ToString(), 
-                        int.Parse(SizeCBox.SelectedItem.ToString()), 2.00 );
+                    result = new IceCreamScoop( type, FlavorCBox.SelectedItem.ToString(), ContainerCBox.SelectedItem.ToString(), 
+                        int.Parse(SizeCBox.SelectedItem.ToString()), Connection.GetItemCost(type) );
                     break;
                 case "Sundae":
                     result = new Sundae( FlavorCBox.SelectedItem.ToString(), ToppingCBox.SelectedItem.ToString(), 
-                        WhippedCreamCBox.Checked, CherryCBox.Checked, 5.00);
+                        WhippedCreamCBox.Checked, CherryCBox.Checked, Connection.GetItemCost(type));
                     break;
                 case "Milkshake":
                     result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
-                        5.00, FlavorCBox.SelectedItem.ToString());
+                        Connection.GetItemCost(type), FlavorCBox.SelectedItem.ToString());
                     break;
                 case "Sides":
                     result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
-                        3.00);
+                        Connection.GetSideItemCost(SideItemsListbox.SelectedItem.ToString()));
                     break;
                 default:
                     result = null;

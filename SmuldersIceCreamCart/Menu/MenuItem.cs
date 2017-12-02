@@ -10,13 +10,13 @@ namespace SmuldersIceCreamCart.Menu
     public abstract class MenuItem
     {
         public string Name { get; set; }
-        public string Size { get; set; }
+        public int Size { get; set; }
         public string Container { get; set; }
-        public string IceCream_Flavour { get; set; }
+        public string Flavour { get; set; }
         public string Topping { get; set; }
         public string Syrup { get; set; }
         public bool Cherry { get; set; }
-        public bool Whipped_cream { get; }
+        public bool Whipped_cream { get; set; }
         public double Cost { get; set; }
         
         public MenuItem( string name, string container, double cost)
@@ -25,8 +25,8 @@ namespace SmuldersIceCreamCart.Menu
             this.Container = container;
             this.Cost = cost;
 
-            this.Size = "None";
-            this.IceCream_Flavour = "None";
+            this.Size = 1;
+            this.Flavour = "None";
             this.Topping = "None";
             this.Syrup = "None";
             this.Cherry = false;

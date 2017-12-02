@@ -8,15 +8,17 @@ namespace SmuldersIceCreamCart.Menu
 {
     class SideItem : MenuItem
     {
+        public string SideName { get; }
+
         public SideItem( string name, double cost ) 
             : base("Side Item", "plate", cost )
         {
-
+            SideName = name;
         }
 
         public override string ToString()
         {
-            string label = "Side item:  " + this.Name;
+            string label = "Side item:  " + this.SideName;
             label += ": $" + this.Cost;
             return label;
         }
