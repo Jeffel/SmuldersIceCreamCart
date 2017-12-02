@@ -11,12 +11,12 @@ namespace SmuldersIceCreamCart.Menu
         public string Topping { get; set; }
         public bool cherry { get; set; }
         public bool whipped_cream { get; set; }
-        public string Flavor { get; set; }
+        public string flavor { get; set; }
 
-        public Sundae( string Flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
-            : base( "Sundae", Flavour, "dish", 1, cost )
+        public Sundae( string flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
+            : base( "Sundae", flavour, "dish", 1, cost )
         {
-            this.Flavor = Flavor;
+            this.flavor = flavour;
             this.Topping = Topping;
             this.cherry = cherry;
             this.whipped_cream = whipped_cream;
@@ -24,7 +24,7 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string ToString()
         {
-            string label = Flavor + " Sundae with " + this.Topping;
+            string label = flavor + " Sundae with " + this.Topping;
             if (this.cherry || this.whipped_cream)
             {
                 if (this.whipped_cream && this.cherry)
