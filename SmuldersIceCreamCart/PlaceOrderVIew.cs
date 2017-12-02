@@ -236,7 +236,7 @@ namespace SmuldersIceCreamCart
                     break;
                 case "Milkshake":
                     result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
-                        5.00);
+                        5.00, FlavorCBox.SelectedItem.ToString());
                     break;
                 case "Sides":
                     result = new SideItem( SideItemsListbox.SelectedItem.ToString(), 
