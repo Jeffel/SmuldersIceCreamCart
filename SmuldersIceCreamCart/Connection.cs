@@ -300,8 +300,12 @@ namespace SmuldersIceCreamCart
         public static List<string> OrderFromOrderHistory(string orderID )
         {
             List<string> orderHistory = new List<string>();
-            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=" + orderID;
+            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=@orderID;";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("orderID", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = orderID;
+
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read())
             {
@@ -312,18 +316,21 @@ namespace SmuldersIceCreamCart
         }
 
         //this is used to display a list of orders that a customer has made
-        public static List<string> OrderHistoryList( string customer_email )
+        public static List<string> OrderHistoryList(string customer_email)
         {
             List<string> orderList = new List<string>();
             //lazy man's way of doing this
-            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=" + customer_email + " ORDER BY order_id DESC";
+            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email='" + customer_email + "' ORDER BY order_id DESC";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
-            while( reader.Read() )
+            if (reader.HasRows)
             {
-                orderList.Add(reader.GetString(0));
+                while (reader.Read())
+                {
+                    orderList.Add(reader.GetString(0));
+                }
+                reader.Close();
             }
-            reader.Close();
             return orderList;
         }
 
@@ -332,8 +339,11 @@ namespace SmuldersIceCreamCart
         public static List<string> OrderStatusSummary( string order_id )
         {
             List<string> order_summary = new List<string>();
-            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=" + order_id;
+            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=@order_id;";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("order_id", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = order_id;
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read() )
             {
@@ -351,7 +361,7 @@ namespace SmuldersIceCreamCart
         public static List<string> GetCustomerName( string customer_email )
         {
             List<string> customer_info = new List<string>();
-            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email=" + customer_email;
+            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email='" + customer_email + "'";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

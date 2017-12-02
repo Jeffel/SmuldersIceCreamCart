@@ -1,4 +1,6 @@
-﻿using SmuldersIceCreamCart.Users;
+﻿using SmuldersIceCreamCart.Orders;
+using SmuldersIceCreamCart.Users;
+using SmuldersIceCreamCart.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +16,7 @@ namespace SmuldersIceCreamCart
     public partial class CustomerMainView : Form
     {
         User Viewer { get; set; }
+        List<Order> History { get; set; }
 
         public CustomerMainView(User user)
         {
@@ -28,17 +31,49 @@ namespace SmuldersIceCreamCart
             //Make the components ready to go.
             InitializeComponent();
 
-            HistoryFromDatepick.Value = DateTime.Today.AddDays(-1);
-            HistoryToDatepick.Value = DateTime.Now;
-
             //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
             NameTextbox.Text = Viewer.FirstName + " " + Viewer.LastName;
-            List<string> history = Connection.OrderHistoryList(Viewer.Email);
-            foreach (string id in history)
+            /*List<string> history = Connection.OrderHistoryList(Viewer.Email);
+            if (history.Count > 0)
             {
-                List<String> order = Connection.OrderFromOrderHistory(id);
-                Console.WriteLine(order);//We'll have to build the object, once I know what the output actually is...
+                List<string> history_status = new List<string>();
+                foreach (string id in history)
+                {
+                    List<String> order = Connection.OrderFromOrderHistory(id);
+                    history_status.Add(Connection.OrderStatusSummary(id)[3]);
+                    Order incoming = new Order();
+                    Menu.MenuItem result;
+                    switch (order[1])
+                    {
+                        case "Ice Cream Scoop":
+                            result = new IceCreamScoop("Ice Cream", order[2], order[4],
+                                int.Parse(order[5]), 2.00);
+                            break;
+                        case "Sundae":
+                            result = new Sundae(order[2], order[3],
+                                true, true, 5.00);
+                            break;
+                        case "Milkshake":
+                            result = new Milkshake(order[9], true, true,
+                                5.00);
+                            break;
+                        case "Sides":
+                            result = new SideItem(order[10],
+                                3.00);
+                            break;
+                        default:
+                            //should additional error checking be done here???
+                            result = null;
+                            break;
+                    }
+                    if (!result.Equals(null))
+                    {
+                        OrderItem add = new OrderItem(result, int.Parse(order[8]));
+                        incoming.AddItem(add);
+                    }
+
+                }*/
             }
         }
 
@@ -104,7 +139,6 @@ namespace SmuldersIceCreamCart
             {
                 //TODO Order was not successfully placed. Error.
             }
-            HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
             Show();
         }
 
