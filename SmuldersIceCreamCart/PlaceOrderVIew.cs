@@ -186,6 +186,7 @@ namespace SmuldersIceCreamCart
             this.ResetMenu();
             this.ResetOrderPage();
             AddOrderButton.Enabled = false;
+            ClearItemButton.Enabled = true;
         }
 
 
@@ -270,6 +271,9 @@ namespace SmuldersIceCreamCart
 
             if( order.GetTotalNumberofItems() == 0 )
             {
+                ClearItemButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+
                 this.ResetMenu();
                 this.ResetOrderPage();
             }
@@ -362,6 +366,9 @@ namespace SmuldersIceCreamCart
             this.ResetOrderPage();
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
             this.DisplayCost();
+
+            ClearItemButton.Enabled = false;
+            RemoveItemButton.Enabled = false;
         }
 
         //after an item has been added to the shopping cart, reset the order page so the customer can make a new selection
@@ -387,6 +394,11 @@ namespace SmuldersIceCreamCart
         private void DisplayCost()
         {
             CostBox.Text = string.Format("${0:0.00}",order.GetOrderCost());
+        }
+
+        private void TotalItemsBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

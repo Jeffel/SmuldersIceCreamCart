@@ -31,8 +31,8 @@ namespace SmuldersIceCreamCart
             //Make the components ready to go.
             InitializeComponent();
 
-            HistoryFromDatepick.Value = DateTime.Today.AddDays(-1);
-            HistoryToDatepick.Value = DateTime.Now;
+           // HistoryFromDatepick.Value = DateTime.Today.AddDays(-1);
+            //HistoryToDatepick.Value = DateTime.Now;
 
             PopulateHistory();
 
@@ -144,7 +144,7 @@ namespace SmuldersIceCreamCart
             {
                 //TODO Order was not successfully placed. Error.
             }
-            HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
+            //HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
             HistoryListbox.Items.Clear();
             PopulateHistory();
             Show();
