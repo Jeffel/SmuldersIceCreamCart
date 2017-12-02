@@ -38,9 +38,21 @@ namespace SmuldersIceCreamCart.Orders
 
         //add a new item to the shopping cart and update totalCost
         //assumes item DNE in shopping cart
-        public void AddItem( OrderItem item )
+        public void AddItem(OrderItem item)
         {
-            this.shoppingCart.Add(item);
+            bool shouldAdd = true;
+            foreach (OrderItem orderItem in shoppingCart)
+            {
+                if (orderItem.item.ToString().Equals(item.item.ToString()))
+                {
+                    orderItem.quantity += item.quantity;
+                    shouldAdd = false;
+                    break;
+                }
+            }
+            if (shouldAdd) { 
+                this.shoppingCart.Add(item);
+            }
             totalCost += item.totalCostForItem();
         }
 

@@ -8,30 +8,26 @@ namespace SmuldersIceCreamCart.Menu
 {
     class Sundae : IceCreamScoop
     {
-        public string Topping { get; set; }
-        public bool cherry { get; set; }
-        public bool whipped_cream { get; set; }
-        public string Flavor { get; set; }
 
         public Sundae( string Flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
             : base( "Sundae", Flavour, "dish", 1, cost )
         {
-            this.Flavor = Flavour;
+            this.Flavour = Flavour;
             this.Topping = Topping;
-            this.cherry = cherry;
-            this.whipped_cream = whipped_cream;
+            this.Cherry = cherry;
+            this.Whipped_cream = whipped_cream;
         }
 
         public override string ToString()
         {
-            string label = Flavor + " Sundae with " + this.Topping;
-            if (this.cherry || this.whipped_cream)
+            string label = Flavour + " Sundae with " + this.Topping;
+            if (this.Cherry || this.Whipped_cream)
             {
-                if (this.whipped_cream && this.cherry)
+                if (this.Whipped_cream && this.Cherry)
                 {
                     label += " and whipped cream with a cherry";
                 }
-                else if (this.cherry)
+                else if (this.Cherry)
                 {
                     label += " and whipped cream";
                 }
@@ -46,8 +42,8 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string[] BuildMenuItem()
         {
-            string[] result = { "sundae", this.Flavour, "dish", this.Topping, "cherry: " + (this.cherry.ToString() ),
-                "whip cream: " + ( this.whipped_cream.ToString() ), "medium", this.Cost.ToString() };
+            string[] result = { "sundae", this.Flavour, "dish", this.Topping, "cherry: " + (this.Cherry.ToString() ),
+                "whip cream: " + ( this.Whipped_cream.ToString() ), "medium", this.Cost.ToString() };
             return result;
         }
 
