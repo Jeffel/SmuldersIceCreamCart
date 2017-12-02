@@ -35,11 +35,7 @@
             this.manageAccountLabel = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.HistoryFromDatepick = new System.Windows.Forms.DateTimePicker();
             this.VertSplitLabel = new System.Windows.Forms.Label();
-            this.HistFromLabel = new System.Windows.Forms.Label();
-            this.HistToLabel = new System.Windows.Forms.Label();
-            this.HistoryToDatepick = new System.Windows.Forms.DateTimePicker();
             this.PlaceOrderButton = new System.Windows.Forms.Button();
             this.NameLabel = new System.Windows.Forms.Label();
             this.UpdateInfoButton = new System.Windows.Forms.Button();
@@ -86,33 +82,11 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // HistoryFromDatepick
-            // 
-            resources.ApplyResources(this.HistoryFromDatepick, "HistoryFromDatepick");
-            this.HistoryFromDatepick.Name = "HistoryFromDatepick";
-            this.HistoryFromDatepick.ValueChanged += new System.EventHandler(this.HistoryRangeChange);
-            // 
             // VertSplitLabel
             // 
             this.VertSplitLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(this.VertSplitLabel, "VertSplitLabel");
             this.VertSplitLabel.Name = "VertSplitLabel";
-            // 
-            // HistFromLabel
-            // 
-            resources.ApplyResources(this.HistFromLabel, "HistFromLabel");
-            this.HistFromLabel.Name = "HistFromLabel";
-            // 
-            // HistToLabel
-            // 
-            resources.ApplyResources(this.HistToLabel, "HistToLabel");
-            this.HistToLabel.Name = "HistToLabel";
-            // 
-            // HistoryToDatepick
-            // 
-            resources.ApplyResources(this.HistoryToDatepick, "HistoryToDatepick");
-            this.HistoryToDatepick.Name = "HistoryToDatepick";
-            this.HistoryToDatepick.ValueChanged += new System.EventHandler(this.HistoryRangeChange);
             // 
             // PlaceOrderButton
             // 
@@ -162,13 +136,9 @@
             this.Controls.Add(this.UpdateInfoButton);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.PlaceOrderButton);
-            this.Controls.Add(this.HistoryToDatepick);
-            this.Controls.Add(this.HistToLabel);
-            this.Controls.Add(this.HistFromLabel);
             this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.HistoryFromDatepick);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -187,12 +157,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel manageAccountLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker HistoryFromDatepick;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label VertSplitLabel;
-        private System.Windows.Forms.Label HistFromLabel;
-        private System.Windows.Forms.Label HistToLabel;
-        private System.Windows.Forms.DateTimePicker HistoryToDatepick;
         private System.Windows.Forms.Button PlaceOrderButton;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Button UpdateInfoButton;

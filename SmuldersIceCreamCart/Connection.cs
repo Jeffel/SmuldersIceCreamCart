@@ -183,11 +183,13 @@ namespace SmuldersIceCreamCart
         {
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO orders (status) VALUES (@status) RETURNS id;", connection);
             cmd.Parameters.Add("status", NpgsqlTypes.NpgsqlDbType.Varchar);
+            //cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Time);
             cmd.Prepare();
             cmd.Parameters[0].Value = order.currentStatus.ToString();
+            cmd.Parameters[1].Value = System.DateTime.Today;
             int id = (int)cmd.ExecuteScalar();
 
-            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity);", connection);
+            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity, side_item) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Unknown);
@@ -198,6 +200,7 @@ namespace SmuldersIceCreamCart
             cmd.Parameters.Add("whipped_cream", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("cherry", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("quantity", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Parameters.Add("side_item", NpgsqlTypes.NpgsqlDbType.Integer);
 
             cmd.Prepare();
 
@@ -253,16 +256,159 @@ namespace SmuldersIceCreamCart
 
         public static string[] GetOptions(string optionTable)
         {
-            string queryString = "SELECT name FROM " + optionTable;
+            string queryString;
+            if(optionTable == "side_item")
+            {
+                queryString = "SELECT item_name FROM " + optionTable;
+            }
+            else
+            {
+                queryString = "SELECT name FROM " + optionTable;
+            }
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             List<string> options = new List<string>();
             while (reader.Read())
             {
-                options.Add(reader.GetString(0));
+                if(optionTable != "side_item")
+                {
+                    options.Add(reader.GetString(0));
+                }
+                else if(reader.GetString(0) != "None")
+                {
+                    options.Add(reader.GetString(0));
+                }
             }
             reader.Close();
             return options.ToArray();
         }
+
+        // queries menu_item table for the cost of a product
+        //applies to ice cream items
+        public static double GetItemCost( string optionTable )
+        {
+            string queryString = "SELECT cost FROM menu_item WHERE name=" + optionTable;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            double cost = reader.GetDouble(0);
+            reader.Close();
+            return cost;
+        }
+
+        // queries side_item table for the cost of a specific side item
+        public static double GetSideItemCost( string sideItemName )
+        {
+            string queryString = "SELECT cost FROM side_item WHERE item_name=" + sideItemName;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            double cost = reader.GetDouble(0);
+            reader.Close();
+            return cost;
+        }
+
+        
+        //this uses the orderID string selected by the customer from their list of orderIds
+        // what is returned can be used to build the receipt
+        public static List<string> OrderFromOrderHistory(string orderID )
+        {
+            List<string> orderHistory = new List<string>();
+            string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=@orderID;";
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("orderID", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = orderID;
+
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while( reader.Read())
+            {
+                orderHistory.Add(reader.GetString(0));
+            }
+            reader.Close();
+            return orderHistory;
+        }
+
+        //this is used to display a list of orders that a customer has made
+        public static List<string> OrderHistoryList(string customer_email)
+        {
+            List<string> orderList = new List<string>();
+            //lazy man's way of doing this
+            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email='" + customer_email + "' ORDER BY order_id DESC";
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    orderList.Add(reader.GetString(0));
+                }
+                reader.Close();
+            }
+            return orderList;
+        }
+
+        // this is used to print order summary on receipt
+        // summary includes: order_id, time placed, time fulfilled, and status
+        public static List<string> OrderStatusSummary( string order_id )
+        {
+            List<string> order_summary = new List<string>();
+            string queryString = "SELECT order_id, time_placed, time_fulfilled, status FROM customer_orders WHERE order_id=@order_id;";
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.Add("order_id", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Prepare();
+            cmd.Parameters[0].Value = order_id;
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while( reader.Read() )
+            {
+                order_summary.Add(reader.GetString(0));
+            }
+            reader.Close();
+            return order_summary;
+        }
+
+        // TODO figure out where I should get the total cost and the total number of items in an order
+        // the following methods retrieve customer data used for displaying an order receipt or customer info summary
+        // may be able to get both of these items from calling the order object, which could be done in the view file
+
+        // retrieves a customer's first and last name
+        public static List<string> GetCustomerName( string customer_email )
+        {
+            List<string> customer_info = new List<string>();
+            string queryString = "SELECT person.first_name, person.last_name FROM person WHERE email='" + customer_email + "'";
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                customer_info.Add(reader.GetString(0));
+            }
+            reader.Close();
+            return customer_info;
+        }
+
+        //retrieves a customer's billing address info 
+        public static List<string> GetCustomerAddress( string customer_email )
+        {
+            List<string> customer_address = new List<string>();
+            string queryString = "SELECT address.street_num, address.street_name, address.city, address.state, address.zip FROM address INNER JOIN customer WHERE customer_email=" + customer_email;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                customer_address.Add(reader.GetString(0));
+            }
+            reader.Close();
+            return customer_address;
+        }
+
+        // retrieves a customer's phone number
+        public string GetCustomerPhoneNumber( string customer_email )
+        {
+            string phone;
+            string queryString = "SELECT person.phone_number FROM person WHERE email=" + customer_email;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            phone = reader.GetString(0);
+            return phone;
+        }
+
     }
 }

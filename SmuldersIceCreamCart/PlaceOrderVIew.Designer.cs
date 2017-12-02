@@ -41,9 +41,8 @@
             this.CartLabel = new System.Windows.Forms.Label();
             this.TotalItemLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
-            this.EditItemButton = new System.Windows.Forms.Button();
             this.RemoveItemButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ClearItemButton = new System.Windows.Forms.Button();
             this.CartListbox = new System.Windows.Forms.ListBox();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.QuantityUD = new System.Windows.Forms.NumericUpDown();
@@ -61,6 +60,9 @@
             this.ContainerCBox = new System.Windows.Forms.ComboBox();
             this.WhippedCreamCBox = new System.Windows.Forms.CheckBox();
             this.CherryCBox = new System.Windows.Forms.CheckBox();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.TotalItemsBox = new System.Windows.Forms.TextBox();
+            this.CostBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityUD)).BeginInit();
             this.SuspendLayout();
@@ -72,8 +74,8 @@
             this.usernameLabel.Location = new System.Drawing.Point(6, 0);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
-            this.usernameLabel.Size = new System.Drawing.Size(141, 35);
+            this.usernameLabel.Padding = new System.Windows.Forms.Padding(10, 9, 0, 0);
+            this.usernameLabel.Size = new System.Drawing.Size(141, 34);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "USERNAME";
             // 
@@ -84,8 +86,8 @@
             this.manageAccountLabel.Location = new System.Drawing.Point(159, 0);
             this.manageAccountLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.manageAccountLabel.Name = "manageAccountLabel";
-            this.manageAccountLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.manageAccountLabel.Size = new System.Drawing.Size(119, 35);
+            this.manageAccountLabel.Padding = new System.Windows.Forms.Padding(0, 9, 0, 0);
+            this.manageAccountLabel.Size = new System.Drawing.Size(119, 34);
             this.manageAccountLabel.TabIndex = 3;
             this.manageAccountLabel.TabStop = true;
             this.manageAccountLabel.Text = "MyAccount";
@@ -98,8 +100,8 @@
             this.logoutLabel.Location = new System.Drawing.Point(290, 0);
             this.logoutLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.logoutLabel.Name = "logoutLabel";
-            this.logoutLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.logoutLabel.Size = new System.Drawing.Size(78, 35);
+            this.logoutLabel.Padding = new System.Windows.Forms.Padding(0, 9, 0, 0);
+            this.logoutLabel.Size = new System.Drawing.Size(78, 34);
             this.logoutLabel.TabIndex = 1;
             this.logoutLabel.TabStop = true;
             this.logoutLabel.Text = "Logout";
@@ -112,9 +114,9 @@
             this.flowLayoutPanel1.Controls.Add(this.logoutLabel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(998, 51);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(998, 52);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // VertSplitLabel
@@ -132,7 +134,7 @@
             this.MenuItemsListbox.ItemHeight = 25;
             this.MenuItemsListbox.Location = new System.Drawing.Point(4, 348);
             this.MenuItemsListbox.Name = "MenuItemsListbox";
-            this.MenuItemsListbox.Size = new System.Drawing.Size(285, 329);
+            this.MenuItemsListbox.Size = new System.Drawing.Size(284, 329);
             this.MenuItemsListbox.TabIndex = 5;
             this.MenuItemsListbox.SelectedIndexChanged += new System.EventHandler(this.MenuItemsListbox_SelectedIndexChanged);
             // 
@@ -140,7 +142,7 @@
             // 
             this.MenuItemsLabel.AutoSize = true;
             this.MenuItemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuItemsLabel.Location = new System.Drawing.Point(53, 276);
+            this.MenuItemsLabel.Location = new System.Drawing.Point(52, 277);
             this.MenuItemsLabel.Name = "MenuItemsLabel";
             this.MenuItemsLabel.Size = new System.Drawing.Size(182, 37);
             this.MenuItemsLabel.TabIndex = 6;
@@ -149,7 +151,7 @@
             // PlaceOrderButton
             // 
             this.PlaceOrderButton.Enabled = false;
-            this.PlaceOrderButton.Location = new System.Drawing.Point(811, 137);
+            this.PlaceOrderButton.Location = new System.Drawing.Point(812, 138);
             this.PlaceOrderButton.Name = "PlaceOrderButton";
             this.PlaceOrderButton.Size = new System.Drawing.Size(160, 47);
             this.PlaceOrderButton.TabIndex = 7;
@@ -160,7 +162,7 @@
             // CancelOrderButton
             // 
             this.CancelOrderButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelOrderButton.Location = new System.Drawing.Point(811, 190);
+            this.CancelOrderButton.Location = new System.Drawing.Point(812, 191);
             this.CancelOrderButton.Name = "CancelOrderButton";
             this.CancelOrderButton.Size = new System.Drawing.Size(160, 47);
             this.CancelOrderButton.TabIndex = 8;
@@ -189,7 +191,7 @@
             // TotalItemLabel
             // 
             this.TotalItemLabel.AutoSize = true;
-            this.TotalItemLabel.Location = new System.Drawing.Point(812, 57);
+            this.TotalItemLabel.Location = new System.Drawing.Point(812, 56);
             this.TotalItemLabel.Name = "TotalItemLabel";
             this.TotalItemLabel.Size = new System.Drawing.Size(69, 25);
             this.TotalItemLabel.TabIndex = 11;
@@ -204,17 +206,6 @@
             this.CostLabel.TabIndex = 12;
             this.CostLabel.Text = "Cost:";
             // 
-            // EditItemButton
-            // 
-            this.EditItemButton.Enabled = false;
-            this.EditItemButton.Location = new System.Drawing.Point(174, 55);
-            this.EditItemButton.Name = "EditItemButton";
-            this.EditItemButton.Size = new System.Drawing.Size(74, 41);
-            this.EditItemButton.TabIndex = 13;
-            this.EditItemButton.Text = "Edit";
-            this.EditItemButton.UseVisualStyleBackColor = true;
-            this.EditItemButton.Click += new System.EventHandler(this.EditItemButton_Click);
-            // 
             // RemoveItemButton
             // 
             this.RemoveItemButton.Enabled = false;
@@ -224,23 +215,26 @@
             this.RemoveItemButton.TabIndex = 14;
             this.RemoveItemButton.Text = "Remove";
             this.RemoveItemButton.UseVisualStyleBackColor = true;
+            this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
-            // button1
+            // ClearItemButton
             // 
-            this.button1.Location = new System.Drawing.Point(378, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(79, 41);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Enabled = false;
+            this.ClearItemButton.Location = new System.Drawing.Point(378, 55);
+            this.ClearItemButton.Name = "ClearItemButton";
+            this.ClearItemButton.Size = new System.Drawing.Size(80, 41);
+            this.ClearItemButton.TabIndex = 15;
+            this.ClearItemButton.Text = "Clear";
+            this.ClearItemButton.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Click += new System.EventHandler(this.ClearOrderItem_Click);
             // 
             // CartListbox
             // 
             this.CartListbox.FormattingEnabled = true;
             this.CartListbox.ItemHeight = 25;
-            this.CartListbox.Location = new System.Drawing.Point(13, 94);
+            this.CartListbox.Location = new System.Drawing.Point(14, 94);
             this.CartListbox.Name = "CartListbox";
-            this.CartListbox.Size = new System.Drawing.Size(771, 154);
+            this.CartListbox.Size = new System.Drawing.Size(770, 154);
             this.CartListbox.TabIndex = 16;
             this.CartListbox.SelectedIndexChanged += new System.EventHandler(this.CartListbox_SelectedIndexChanged);
             // 
@@ -260,13 +254,18 @@
             this.QuantityUD.Name = "QuantityUD";
             this.QuantityUD.Size = new System.Drawing.Size(120, 31);
             this.QuantityUD.TabIndex = 18;
+            this.QuantityUD.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.QuantityUD.Visible = false;
             this.QuantityUD.ValueChanged += new System.EventHandler(this.QuantityUD_ValueChanged);
             // 
             // FlavorLabel
             // 
             this.FlavorLabel.AutoSize = true;
-            this.FlavorLabel.Location = new System.Drawing.Point(662, 357);
+            this.FlavorLabel.Location = new System.Drawing.Point(662, 356);
             this.FlavorLabel.Name = "FlavorLabel";
             this.FlavorLabel.Size = new System.Drawing.Size(78, 25);
             this.FlavorLabel.TabIndex = 19;
@@ -276,7 +275,7 @@
             // ToppingLabel
             // 
             this.ToppingLabel.AutoSize = true;
-            this.ToppingLabel.Location = new System.Drawing.Point(373, 357);
+            this.ToppingLabel.Location = new System.Drawing.Point(374, 356);
             this.ToppingLabel.Name = "ToppingLabel";
             this.ToppingLabel.Size = new System.Drawing.Size(96, 25);
             this.ToppingLabel.TabIndex = 21;
@@ -286,7 +285,7 @@
             // SizeLabel
             // 
             this.SizeLabel.AutoSize = true;
-            this.SizeLabel.Location = new System.Drawing.Point(410, 504);
+            this.SizeLabel.Location = new System.Drawing.Point(410, 505);
             this.SizeLabel.Name = "SizeLabel";
             this.SizeLabel.Size = new System.Drawing.Size(60, 25);
             this.SizeLabel.TabIndex = 23;
@@ -295,40 +294,47 @@
             // 
             // ToppingCBox
             // 
+            this.ToppingCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ToppingCBox.FormattingEnabled = true;
-            this.ToppingCBox.Location = new System.Drawing.Point(476, 357);
+            this.ToppingCBox.Location = new System.Drawing.Point(476, 356);
             this.ToppingCBox.Name = "ToppingCBox";
             this.ToppingCBox.Size = new System.Drawing.Size(172, 33);
             this.ToppingCBox.TabIndex = 24;
             this.ToppingCBox.Visible = false;
+            this.ToppingCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // FlavorCBox
             // 
+            this.FlavorCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FlavorCBox.FormattingEnabled = true;
-            this.FlavorCBox.Location = new System.Drawing.Point(746, 354);
+            this.FlavorCBox.Location = new System.Drawing.Point(746, 355);
             this.FlavorCBox.Name = "FlavorCBox";
             this.FlavorCBox.Size = new System.Drawing.Size(172, 33);
             this.FlavorCBox.TabIndex = 26;
             this.FlavorCBox.Visible = false;
-            this.FlavorCBox.SelectedIndexChanged += new System.EventHandler(this.ValidateOrderItem);
+            this.FlavorCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SyrupCBox
             // 
+            this.SyrupCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SyrupCBox.FormattingEnabled = true;
             this.SyrupCBox.Location = new System.Drawing.Point(746, 434);
             this.SyrupCBox.Name = "SyrupCBox";
             this.SyrupCBox.Size = new System.Drawing.Size(172, 33);
             this.SyrupCBox.TabIndex = 27;
             this.SyrupCBox.Visible = false;
+            this.SyrupCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SizeCBox
             // 
+            this.SizeCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SizeCBox.FormattingEnabled = true;
-            this.SizeCBox.Location = new System.Drawing.Point(476, 504);
+            this.SizeCBox.Location = new System.Drawing.Point(476, 505);
             this.SizeCBox.Name = "SizeCBox";
             this.SizeCBox.Size = new System.Drawing.Size(172, 33);
             this.SizeCBox.TabIndex = 28;
             this.SizeCBox.Visible = false;
+            this.SizeCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // AddOrderButton
             // 
@@ -345,11 +351,12 @@
             // 
             this.SideItemsListbox.FormattingEnabled = true;
             this.SideItemsListbox.ItemHeight = 25;
-            this.SideItemsListbox.Location = new System.Drawing.Point(339, 276);
+            this.SideItemsListbox.Location = new System.Drawing.Point(339, 277);
             this.SideItemsListbox.Name = "SideItemsListbox";
-            this.SideItemsListbox.Size = new System.Drawing.Size(317, 329);
+            this.SideItemsListbox.Size = new System.Drawing.Size(318, 329);
             this.SideItemsListbox.TabIndex = 30;
             this.SideItemsListbox.Visible = false;
+            this.SideItemsListbox.SelectedIndexChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SyrupLabel
             // 
@@ -364,7 +371,7 @@
             // ContainerLabel
             // 
             this.ContainerLabel.AutoSize = true;
-            this.ContainerLabel.Location = new System.Drawing.Point(358, 437);
+            this.ContainerLabel.Location = new System.Drawing.Point(358, 438);
             this.ContainerLabel.Name = "ContainerLabel";
             this.ContainerLabel.Size = new System.Drawing.Size(111, 25);
             this.ContainerLabel.TabIndex = 22;
@@ -373,34 +380,67 @@
             // 
             // ContainerCBox
             // 
+            this.ContainerCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContainerCBox.FormattingEnabled = true;
             this.ContainerCBox.Location = new System.Drawing.Point(476, 434);
             this.ContainerCBox.Name = "ContainerCBox";
             this.ContainerCBox.Size = new System.Drawing.Size(172, 33);
             this.ContainerCBox.TabIndex = 25;
             this.ContainerCBox.Visible = false;
+            this.ContainerCBox.SelectedValueChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // WhippedCreamCBox
             // 
             this.WhippedCreamCBox.AutoSize = true;
-            this.WhippedCreamCBox.Location = new System.Drawing.Point(731, 508);
+            this.WhippedCreamCBox.Location = new System.Drawing.Point(730, 508);
             this.WhippedCreamCBox.Name = "WhippedCreamCBox";
             this.WhippedCreamCBox.Size = new System.Drawing.Size(210, 29);
             this.WhippedCreamCBox.TabIndex = 31;
             this.WhippedCreamCBox.Text = "Whipped Cream?";
             this.WhippedCreamCBox.UseVisualStyleBackColor = true;
             this.WhippedCreamCBox.Visible = false;
+            this.WhippedCreamCBox.CheckedChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
             // CherryCBox
             // 
             this.CherryCBox.AutoSize = true;
-            this.CherryCBox.Location = new System.Drawing.Point(731, 559);
+            this.CherryCBox.Location = new System.Drawing.Point(730, 559);
             this.CherryCBox.Name = "CherryCBox";
             this.CherryCBox.Size = new System.Drawing.Size(186, 29);
             this.CherryCBox.TabIndex = 32;
             this.CherryCBox.Text = "Cherry on top?";
             this.CherryCBox.UseVisualStyleBackColor = true;
             this.CherryCBox.Visible = false;
+            this.CherryCBox.CheckedChanged += new System.EventHandler(this.ValidateOrderItem);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(730, 644);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(172, 41);
+            this.RefreshButton.TabIndex = 29;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshOrderWindowButton_Click);
+            // 
+            // TotalItemsBox
+            // 
+            this.TotalItemsBox.Location = new System.Drawing.Point(876, 52);
+            this.TotalItemsBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TotalItemsBox.Name = "TotalItemsBox";
+            this.TotalItemsBox.ReadOnly = true;
+            this.TotalItemsBox.Size = new System.Drawing.Size(94, 31);
+            this.TotalItemsBox.TabIndex = 33;
+            // 
+            // CostBox
+            // 
+            this.CostBox.Location = new System.Drawing.Point(876, 95);
+            this.CostBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CostBox.Name = "CostBox";
+            this.CostBox.ReadOnly = true;
+            this.CostBox.Size = new System.Drawing.Size(94, 31);
+            this.CostBox.TabIndex = 34;
             // 
             // PlaceOrderView
             // 
@@ -409,6 +449,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelOrderButton;
             this.ClientSize = new System.Drawing.Size(998, 697);
+            this.Controls.Add(this.CostBox);
+            this.Controls.Add(this.TotalItemsBox);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.CherryCBox);
             this.Controls.Add(this.WhippedCreamCBox);
             this.Controls.Add(this.AddOrderButton);
@@ -425,9 +468,8 @@
             this.Controls.Add(this.QuantityUD);
             this.Controls.Add(this.QuantityLabel);
             this.Controls.Add(this.CartListbox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ClearItemButton);
             this.Controls.Add(this.RemoveItemButton);
-            this.Controls.Add(this.EditItemButton);
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.TotalItemLabel);
             this.Controls.Add(this.CartLabel);
@@ -464,9 +506,8 @@
         private System.Windows.Forms.Label CartLabel;
         private System.Windows.Forms.Label TotalItemLabel;
         private System.Windows.Forms.Label CostLabel;
-        private System.Windows.Forms.Button EditItemButton;
         private System.Windows.Forms.Button RemoveItemButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ClearItemButton;
         private System.Windows.Forms.ListBox CartListbox;
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.NumericUpDown QuantityUD;
@@ -484,5 +525,8 @@
         private System.Windows.Forms.ComboBox ContainerCBox;
         private System.Windows.Forms.CheckBox WhippedCreamCBox;
         private System.Windows.Forms.CheckBox CherryCBox;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.TextBox TotalItemsBox;
+        private System.Windows.Forms.TextBox CostBox;
     }
 }

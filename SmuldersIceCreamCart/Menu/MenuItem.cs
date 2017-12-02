@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Menu
 {
-  /**  public enum Container
-    {
-        CUP,
-        DISH,
-        CONE,
-        PLATE
-    }
-    */
 
     public abstract class MenuItem
     {
@@ -27,6 +19,12 @@ namespace SmuldersIceCreamCart.Menu
             this.Container = container;
             this.Cost = cost;
         }
-   
+
+        // abstract method that requires each type of menu item to 
+        // build a list string list of everything related to that item
+        public abstract string[] BuildMenuItem();
+
+
+
     }
 }

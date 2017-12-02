@@ -6,30 +6,15 @@ using System.Threading.Tasks;
 
 namespace SmuldersIceCreamCart.Menu
 {
-    /**
-    public enum Flavour 
-    {
-        CHOCOLATE,
-        VANILLA,
-        STRAWBERRY,
-        COOKIE_DOUGH
-    }
-*/
 
-    public enum Size
-    {
-        SMALL = 1,
-        MEDIUM = 2,
-        LARGE = 3
-    }
 
     class IceCreamScoop : MenuItem
     {
         public string Flavour { get; set; }
-        public Size size { get; set; }
+        public int size { get; set; }
 
-        public IceCreamScoop( string name, string flavour, string container, Size size, double cost )
-            : base( "Ice Cream", container, ( (int)size * cost ) )
+        public IceCreamScoop( string name, string flavour, string container, int size, double cost )
+            : base( "Ice Cream", container, ( size * cost ) )
         {
             this.Flavour = flavour;
             this.size = size;
@@ -37,10 +22,30 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string ToString()
         {
-            string label = "Ice Cream   Flavour: " + this.Flavour + " Size: " + this.size +
-                " Container: " + this.Container;
-            label += " " + this.Cost;
+            string label;
+            switch (this.size)
+            {
+                case 1:
+                    label = "Single scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                case 2:
+                    label = "Double scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                case 3:
+                    label = "Triple scoop " + this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+                default:
+                    label = this.Flavour + " Ice Cream in a " + this.Container;
+                    break;
+            }
+            label += ": $" + this.Cost;
             return label;
+        }
+
+        public override string[] BuildMenuItem()
+        {
+            string[] result = { "ice cream", this.Flavour, this.Container, this.size.ToString(), this.Cost.ToString() };
+            return result;
         }
 
     }

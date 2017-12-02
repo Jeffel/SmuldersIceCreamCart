@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,25 +8,15 @@ namespace SmuldersIceCreamCart.Menu
 {
     class Sundae : IceCreamScoop
     {
-        /**
-        public enum Toppings
-        {
-            HOTFUDGE,
-            BUTTERSCOTCH,
-            CARAMEL,
-            WHIPPEDCREAM,
-            CHERRY,
-            PEANUTS
-        }
-    */
-
         public string Topping { get; set; }
         public bool cherry { get; set; }
         public bool whipped_cream { get; set; }
+        public string Flavor { get; set; }
 
         public Sundae( string Flavour, string Topping, bool cherry, bool whipped_cream, double cost ) 
-            : base( "Sundae", Flavour, "dish", Size.SMALL, cost )
+            : base( "Sundae", Flavour, "dish", 1, cost )
         {
+            this.Flavor = Flavour;
             this.Topping = Topping;
             this.cherry = cherry;
             this.whipped_cream = whipped_cream;
@@ -41,5 +31,11 @@ namespace SmuldersIceCreamCart.Menu
             return label;
         }
 
+        public override string[] BuildMenuItem()
+        {
+            string[] result = { "sundae", this.Flavour, "dish", this.Topping, "cherry: " + (this.cherry.ToString() ),
+                "whip cream: " + ( this.whipped_cream.ToString() ), "medium", this.Cost.ToString() };
+            return result;
+        }
     }
 }

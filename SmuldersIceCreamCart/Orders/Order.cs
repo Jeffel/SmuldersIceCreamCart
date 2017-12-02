@@ -21,7 +21,7 @@ namespace SmuldersIceCreamCart.Orders
         public List<OrderItem> shoppingCart;
         double totalCost;
         public Status currentStatus { get; set; }
-        public DateTime orderDate { get; set; }
+        //public DateTime orderDate { get; set; }
 
         public Order( )
         {
@@ -50,20 +50,13 @@ namespace SmuldersIceCreamCart.Orders
         {
             if (this.shoppingCart.Contains( item ) )
             {
+                this.shoppingCart.Remove(item);
                 totalCost -= item.totalCostForItem();
             }
             else
             {
                 throw new NullReferenceException(); 
             }
-        }
-
-
-        //TODO
-        //Jeff will finish filling this out
-        public void EditItem( OrderItem item )
-        {
-
         }
 
         //tells you how many unique items are in an order
