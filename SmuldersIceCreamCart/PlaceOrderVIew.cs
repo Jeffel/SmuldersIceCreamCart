@@ -190,21 +190,32 @@ namespace SmuldersIceCreamCart
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
             this.DisplayCost();
 
-            this.RefreshShoppingCart(order);
+            this.RefreshShoppingCart();
             this.ResetMenu();
             this.ResetOrderPage();
             AddOrderButton.Enabled = false;
-            ClearItemButton.Enabled = true;
         }
 
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
-        private void RefreshShoppingCart( Order order )
+        private void RefreshShoppingCart( )
         {
             CartListbox.Items.Clear();
             foreach( OrderItem item in order.shoppingCart )
             {
                 CartListbox.Items.Add( item.item.ToString() );
+            }
+
+            if( order.GetOrderSize() > 0 )
+            {
+                PlaceOrderButton.Enabled = true;
+                ClearItemButton.Enabled = true;
+            }
+            else
+            {
+                PlaceOrderButton.Enabled = false;
+                RemoveItemButton.Enabled = false;
+                ClearItemButton.Enabled = false;
             }
 
         }
@@ -264,12 +275,10 @@ namespace SmuldersIceCreamCart
         {
             OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
             order.RemoveItem(current);
-            this.RefreshShoppingCart(this.order);
+            this.RefreshShoppingCart();
 
             if( order.GetTotalNumberofItems() == 0 )
             {
-                ClearItemButton.Enabled = false;
-                RemoveItemButton.Enabled = false;
                 this.ResetMenu();
                 this.ResetOrderPage();
             }
@@ -295,7 +304,6 @@ namespace SmuldersIceCreamCart
         //enforces that all mandatory fields have a value
         private void ValidateOrderItem(object sender, EventArgs e)
         {
-        
             switch (MenuItemsListbox.SelectedItem.ToString())
             {
                 case "Ice Cream Scoop":
@@ -327,7 +335,7 @@ namespace SmuldersIceCreamCart
                     }
                     break;
                 default:
-                    AddOrderButton.Enabled = false;
+                    AddOrderButton.Enabled = true;
                     break;
             }
         }
@@ -358,14 +366,11 @@ namespace SmuldersIceCreamCart
         private void ClearOrderItem_Click(object sender, EventArgs e)
         {
             order.ClearOrder();
-            RefreshShoppingCart(order);
+            RefreshShoppingCart();
             this.ResetMenu();
             this.ResetOrderPage();
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
             this.DisplayCost();
-
-            ClearItemButton.Enabled = false;
-            RemoveItemButton.Enabled = false;
         }
 
         //after an item has been added to the shopping cart, reset the order page so the customer can make a new selection

@@ -10,14 +10,27 @@ namespace SmuldersIceCreamCart.Menu
     public abstract class MenuItem
     {
         public string Name { get; set; }
-        public double Cost { get; set; }
+        public string Size { get; set; }
         public string Container { get; set; }
+        public string IceCream_Flavour { get; set; }
+        public string Topping { get; set; }
+        public string Syrup { get; set; }
+        public bool Cherry { get; set; }
+        public bool Whipped_cream { get; }
+        public double Cost { get; set; }
         
         public MenuItem( string name, string container, double cost)
         {
             this.Name = name ?? throw new ArgumentNullException(nameof(name));
             this.Container = container;
             this.Cost = cost;
+
+            this.Size = "None";
+            this.IceCream_Flavour = "None";
+            this.Topping = "None";
+            this.Syrup = "None";
+            this.Cherry = false;
+            this.Whipped_cream = false;
         }
 
         // abstract method that requires each type of menu item to 

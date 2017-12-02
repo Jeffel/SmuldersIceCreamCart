@@ -169,22 +169,22 @@ namespace SmuldersIceCreamCart
 
         public static bool PlaceOrder(User user, Order order)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO orders (status) VALUES (@status) RETURNS id;", connection);
+            NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO orders (status) VALUES (@status) RETURNING id;", connection);
             cmd.Parameters.Add("status", NpgsqlTypes.NpgsqlDbType.Varchar);
-            //cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Time);
+            cmd.Parameters.Add("time_placed", NpgsqlTypes.NpgsqlDbType.Timestamp);
             cmd.Prepare();
             cmd.Parameters[0].Value = order.currentStatus.ToString();
-            cmd.Parameters[1].Value = System.DateTime.Today;
+            cmd.Parameters[1].Value = DateTime.Now;
             int id = (int)cmd.ExecuteScalar();
 
             cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity, side_item) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
-            cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Unknown);
-            cmd.Parameters.Add("topping", NpgsqlTypes.NpgsqlDbType.Unknown);
-            cmd.Parameters.Add("syrup", NpgsqlTypes.NpgsqlDbType.Unknown);
-            cmd.Parameters.Add("container", NpgsqlTypes.NpgsqlDbType.Unknown);
-            cmd.Parameters.Add("size", NpgsqlTypes.NpgsqlDbType.Unknown);
+            cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("topping", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("syrup", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("container", NpgsqlTypes.NpgsqlDbType.Varchar);
+            cmd.Parameters.Add("size", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("whipped_cream", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("cherry", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("quantity", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -192,43 +192,21 @@ namespace SmuldersIceCreamCart
 
             cmd.Prepare();
 
-            foreach (OrderItem orderItem in order.shoppingCart)
+            foreach ( OrderItem order_item in order.shoppingCart )
             {
                 cmd.Parameters[0].Value = id;
-                cmd.Parameters[1].Value = orderItem.item.Name;
-                cmd.Parameters[5].Value = orderItem.item.Container;
-                cmd.Parameters[9].Value = orderItem.quantity;
-                MenuItem item = orderItem.item;
-
-                cmd.Parameters[2].Value = DBNull.Value; //Flavor
-                cmd.Parameters[3].Value = DBNull.Value; //Topping
-                cmd.Parameters[4].Value = DBNull.Value; //Syrup
-                cmd.Parameters[6].Value = DBNull.Value; //Size
-                cmd.Parameters[7].Value = DBNull.Value; //Whipped cream
-                cmd.Parameters[8].Value = DBNull.Value; //Cherry
-                if (item is IceCreamScoop)
-                {
-                    IceCreamScoop icsItem = (IceCreamScoop)item;
-                    cmd.Parameters[2].Value = icsItem.Flavour;
-                    cmd.Parameters[6].Value = icsItem.size;
-
-                    if (item is Milkshake)
-                    {
-                        Milkshake msItem = (Milkshake)item;
-                        cmd.Parameters[4].Value = msItem.Syrup;
-                        cmd.Parameters[7].Value = msItem.whipped_cream; //Whipped cream
-                        cmd.Parameters[8].Value = msItem.cherry; //Cherry
-                    }
-                    else if (item is Sundae)
-                    {
-                        Sundae sunItem = (Sundae)item;
-                        cmd.Parameters[3].Value = sunItem.Topping; //Topping
-                        cmd.Parameters[7].Value = sunItem.whipped_cream; //Whipped cream
-                        cmd.Parameters[8].Value = sunItem.cherry; //Cherry
-                    }
-                }
-                
+                cmd.Parameters[1].Value = order_item.item.Name;
+                cmd.Parameters[2].Value = order_item.item.IceCream_Flavour;
+                cmd.Parameters[3].Value = order_item.item.Topping;
+                cmd.Parameters[4].Value = order_item.item.Syrup;
+                cmd.Parameters[5].Value = order_item.item.Container;
+                cmd.Parameters[6].Value = order_item.item.Size;
+                cmd.Parameters[7].Value = order_item.item.Whipped_cream;
+                cmd.Parameters[8].Value = order_item.item.Cherry;
+                cmd.Parameters[9].Value = order_item.quantity;
+                cmd.Parameters[10].Value = 1;
                 cmd.ExecuteNonQuery();
+
             }
 
             cmd = new NpgsqlCommand("INSERT INTO customer_orders (customer_email, order_id) VALUES (@customer_email, @order_id);", connection);
@@ -240,6 +218,16 @@ namespace SmuldersIceCreamCart
 
             int rows_changed = cmd.ExecuteNonQuery();
             return (rows_changed != 0);
+        }
+
+        public static int GetSideItemID( string name )
+        {
+            string queryString = "SELECT side_item_id FROM side_item WHERE item_name=" + name;
+            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            NpgsqlDataReader reader = cmd.ExecuteReader();
+            int id = reader.GetInt32(0);
+            reader.Close();
+            return id;
         }
 
         public static string[] GetOptions(string optionTable)

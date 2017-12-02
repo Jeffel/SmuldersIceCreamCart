@@ -379,6 +379,7 @@
             this.SideItemsListbox.Size = new System.Drawing.Size(213, 212);
             this.SideItemsListbox.TabIndex = 30;
             this.SideItemsListbox.Visible = false;
+            this.SideItemsListbox.Click += new System.EventHandler(this.ValidateOrderItem);
             // 
             // SyrupLabel
             // 
