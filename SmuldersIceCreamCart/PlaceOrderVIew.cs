@@ -190,7 +190,7 @@ namespace SmuldersIceCreamCart
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();
             this.DisplayCost();
 
-            this.RefreshShoppingCart(order);
+            this.RefreshShoppingCart();
             this.ResetMenu();
             this.ResetOrderPage();
             AddOrderButton.Enabled = false;
@@ -199,7 +199,7 @@ namespace SmuldersIceCreamCart
 
 
         //clears the currently displayed shopping cart before displaying the updated shopping cart
-        private void RefreshShoppingCart( Order order )
+        private void RefreshShoppingCart()
         {
             CartListbox.Items.Clear();
             foreach( OrderItem item in order.shoppingCart )
@@ -273,7 +273,7 @@ namespace SmuldersIceCreamCart
         {
             OrderItem current = order.shoppingCart[CartListbox.SelectedIndex];
             order.RemoveItem(current);
-            this.RefreshShoppingCart(this.order);
+            this.RefreshShoppingCart();
 
             if( order.GetTotalNumberofItems() == 0 )
             {
@@ -367,7 +367,7 @@ namespace SmuldersIceCreamCart
         private void ClearOrderItem_Click(object sender, EventArgs e)
         {
             order.ClearOrder();
-            RefreshShoppingCart(order);
+            RefreshShoppingCart();
             this.ResetMenu();
             this.ResetOrderPage();
             TotalItemsBox.Text = order.GetTotalNumberofItems().ToString();

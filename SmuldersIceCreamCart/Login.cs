@@ -96,5 +96,10 @@ namespace SmuldersIceCreamCart
                 loginBox.Text = createacctView.Username;
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.Activate(); //Attempt to fix the weird non-focus issue with the window when it first comes up.
+        }
     }
 }
