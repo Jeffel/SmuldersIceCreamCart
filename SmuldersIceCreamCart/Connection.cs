@@ -177,17 +177,17 @@ namespace SmuldersIceCreamCart
             cmd.Parameters[1].Value = DateTime.Now;
             int id = (int)cmd.ExecuteScalar();
 
-            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity, side_item) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity, @side_item);", connection);
+            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, container, size, whipped_cream, cherry, quantity, syrup, side_item) VALUES (@id, @item_name, @flavor, @topping, @container, @size, @whipped_cream, @cherry, @quantity, @syrup, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("topping", NpgsqlTypes.NpgsqlDbType.Varchar);
-            cmd.Parameters.Add("syrup", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("container", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("size", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("whipped_cream", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("cherry", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("quantity", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Parameters.Add("syrup", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("side_item", NpgsqlTypes.NpgsqlDbType.Integer);
 
             cmd.Prepare();
@@ -198,12 +198,12 @@ namespace SmuldersIceCreamCart
                 cmd.Parameters[1].Value = order_item.item.Name;
                 cmd.Parameters[2].Value = order_item.item.IceCream_Flavour;
                 cmd.Parameters[3].Value = order_item.item.Topping;
-                cmd.Parameters[4].Value = order_item.item.Syrup;
-                cmd.Parameters[5].Value = order_item.item.Container;
-                cmd.Parameters[6].Value = order_item.item.Size;
-                cmd.Parameters[7].Value = order_item.item.Whipped_cream;
-                cmd.Parameters[8].Value = order_item.item.Cherry;
-                cmd.Parameters[9].Value = order_item.quantity;
+                cmd.Parameters[9].Value = order_item.item.Syrup;
+                cmd.Parameters[4].Value = order_item.item.Container;
+                cmd.Parameters[5].Value = order_item.item.Size;
+                cmd.Parameters[6].Value = order_item.item.Whipped_cream;
+                cmd.Parameters[7].Value = order_item.item.Cherry;
+                cmd.Parameters[8].Value = order_item.quantity;
                 cmd.Parameters[10].Value = 1;
                 cmd.ExecuteNonQuery();
 
@@ -330,10 +330,6 @@ namespace SmuldersIceCreamCart
             reader.Close();
             return order_summary;
         }
-
-        // TODO figure out where I should get the total cost and the total number of items in an order
-        // the following methods retrieve customer data used for displaying an order receipt or customer info summary
-        // may be able to get both of these items from calling the order object, which could be done in the view file
 
         // retrieves a customer's first and last name
         public static List<string> GetCustomerName( string customer_email )
