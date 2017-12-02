@@ -177,7 +177,7 @@ namespace SmuldersIceCreamCart
             cmd.Parameters[1].Value = System.DateTime.Today;
             int id = (int)cmd.ExecuteScalar();
 
-            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity);", connection);
+            cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, syrup, container, size, whipped_cream, cherry, quantity, side_item) VALUES (@id, @item_name, @flavor, @topping, @syrup, @container, @size, @whipped_cream, @cherry, @quantity, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("flavor", NpgsqlTypes.NpgsqlDbType.Unknown);
@@ -188,6 +188,7 @@ namespace SmuldersIceCreamCart
             cmd.Parameters.Add("whipped_cream", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("cherry", NpgsqlTypes.NpgsqlDbType.Boolean);
             cmd.Parameters.Add("quantity", NpgsqlTypes.NpgsqlDbType.Integer);
+            cmd.Parameters.Add("side_item", NpgsqlTypes.NpgsqlDbType.Integer);
 
             cmd.Prepare();
 
@@ -243,13 +244,28 @@ namespace SmuldersIceCreamCart
 
         public static string[] GetOptions(string optionTable)
         {
-            string queryString = "SELECT name FROM " + optionTable;
+            string queryString;
+            if(optionTable == "side_item")
+            {
+                queryString = "SELECT item_name FROM " + optionTable;
+            }
+            else
+            {
+                queryString = "SELECT name FROM " + optionTable;
+            }
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             List<string> options = new List<string>();
             while (reader.Read())
             {
-                options.Add(reader.GetString(0));
+                if(optionTable != "side_item")
+                {
+                    options.Add(reader.GetString(0));
+                }
+                else if(reader.GetString(0) != "None")
+                {
+                    options.Add(reader.GetString(0));
+                }
             }
             reader.Close();
             return options.ToArray();
