@@ -34,6 +34,12 @@ namespace SmuldersIceCreamCart
             //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
             NameTextbox.Text = Viewer.FirstName + " " + Viewer.LastName;
+            List<string> history = Connection.OrderHistoryList(Viewer.Email);
+            foreach (string id in history)
+            {
+                List<String> order = Connection.OrderFromOrderHistory(id);
+                Console.WriteLine(order);//We'll have to build the object, once I know what the output actually is...
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

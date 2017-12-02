@@ -186,6 +186,27 @@
   <data name="&gt;&gt;logoutLabel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>159, 0</value>
+  </data>
+  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 0, 6, 0</value>
+  </data>
+  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 9, 0, 0</value>
+  </data>
+  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 34</value>
+  </data>
+  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="manageAccountLabel.Text" xml:space="preserve">
+    <value>MyAccount</value>
+  </data>
   <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
     <value>manageAccountLabel</value>
   </data>
@@ -223,40 +244,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="manageAccountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="manageAccountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 0</value>
-  </data>
-  <data name="manageAccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
-  </data>
-  <data name="manageAccountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 9, 0, 0</value>
-  </data>
-  <data name="manageAccountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 34</value>
-  </data>
-  <data name="manageAccountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="manageAccountLabel.Text" xml:space="preserve">
-    <value>MyAccount</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Name" xml:space="preserve">
-    <value>manageAccountLabel</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;manageAccountLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>9</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,7 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>7</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -295,7 +283,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>380, 59</value>
+    <value>391, 107</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 37</value>
@@ -316,28 +304,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="HistoryFromDatepick.Location" type="System.Drawing.Point, System.Drawing">
-    <value>616, 108</value>
-  </data>
-  <data name="HistoryFromDatepick.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 31</value>
-  </data>
-  <data name="HistoryFromDatepick.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;HistoryFromDatepick.Name" xml:space="preserve">
-    <value>HistoryFromDatepick</value>
-  </data>
-  <data name="&gt;&gt;HistoryFromDatepick.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HistoryFromDatepick.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HistoryFromDatepick.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>8</value>
   </data>
   <data name="VertSplitLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>368, 52</value>
@@ -358,88 +325,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;VertSplitLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="HistFromLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="HistFromLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>544, 109</value>
-  </data>
-  <data name="HistFromLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 25</value>
-  </data>
-  <data name="HistFromLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="HistFromLabel.Text" xml:space="preserve">
-    <value>From:</value>
-  </data>
-  <data name="&gt;&gt;HistFromLabel.Name" xml:space="preserve">
-    <value>HistFromLabel</value>
-  </data>
-  <data name="&gt;&gt;HistFromLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HistFromLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HistFromLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="HistToLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="HistToLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="HistToLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>567, 161</value>
-  </data>
-  <data name="HistToLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 25</value>
-  </data>
-  <data name="HistToLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="HistToLabel.Text" xml:space="preserve">
-    <value>To:</value>
-  </data>
-  <data name="&gt;&gt;HistToLabel.Name" xml:space="preserve">
-    <value>HistToLabel</value>
-  </data>
-  <data name="&gt;&gt;HistToLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HistToLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HistToLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="HistoryToDatepick.Location" type="System.Drawing.Point, System.Drawing">
-    <value>616, 159</value>
-  </data>
-  <data name="HistoryToDatepick.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 31</value>
-  </data>
-  <data name="HistoryToDatepick.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;HistoryToDatepick.Name" xml:space="preserve">
-    <value>HistoryToDatepick</value>
-  </data>
-  <data name="&gt;&gt;HistoryToDatepick.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DateTimePicker, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HistoryToDatepick.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HistoryToDatepick.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="PlaceOrderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 111</value>
+    <value>691, 61</value>
   </data>
   <data name="PlaceOrderButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 83</value>
@@ -547,10 +436,10 @@
     <value>25</value>
   </data>
   <data name="HistoryListbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 202</value>
+    <value>387, 152</value>
   </data>
   <data name="HistoryListbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 429</value>
+    <value>598, 479</value>
   </data>
   <data name="HistoryListbox.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
