@@ -42,7 +42,7 @@
             this.TotalItemLabel = new System.Windows.Forms.Label();
             this.CostLabel = new System.Windows.Forms.Label();
             this.RemoveItemButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ClearItemButton = new System.Windows.Forms.Button();
             this.CartListbox = new System.Windows.Forms.ListBox();
             this.QuantityLabel = new System.Windows.Forms.Label();
             this.QuantityUD = new System.Windows.Forms.NumericUpDown();
@@ -60,6 +60,9 @@
             this.ContainerCBox = new System.Windows.Forms.ComboBox();
             this.WhippedCreamCBox = new System.Windows.Forms.CheckBox();
             this.CherryCBox = new System.Windows.Forms.CheckBox();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.TotalItemsBox = new System.Windows.Forms.TextBox();
+            this.CostBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QuantityUD)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +114,7 @@
             this.flowLayoutPanel1.Controls.Add(this.logoutLabel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(665, 33);
             this.flowLayoutPanel1.TabIndex = 3;
@@ -131,7 +134,7 @@
             this.MenuItemsListbox.FormattingEnabled = true;
             this.MenuItemsListbox.ItemHeight = 16;
             this.MenuItemsListbox.Location = new System.Drawing.Point(3, 223);
-            this.MenuItemsListbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MenuItemsListbox.Margin = new System.Windows.Forms.Padding(2);
             this.MenuItemsListbox.Name = "MenuItemsListbox";
             this.MenuItemsListbox.Size = new System.Drawing.Size(191, 212);
             this.MenuItemsListbox.TabIndex = 5;
@@ -152,7 +155,7 @@
             // 
             this.PlaceOrderButton.Enabled = false;
             this.PlaceOrderButton.Location = new System.Drawing.Point(541, 88);
-            this.PlaceOrderButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlaceOrderButton.Margin = new System.Windows.Forms.Padding(2);
             this.PlaceOrderButton.Name = "PlaceOrderButton";
             this.PlaceOrderButton.Size = new System.Drawing.Size(107, 30);
             this.PlaceOrderButton.TabIndex = 7;
@@ -164,7 +167,7 @@
             // 
             this.CancelOrderButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelOrderButton.Location = new System.Drawing.Point(541, 122);
-            this.CancelOrderButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CancelOrderButton.Margin = new System.Windows.Forms.Padding(2);
             this.CancelOrderButton.Name = "CancelOrderButton";
             this.CancelOrderButton.Size = new System.Drawing.Size(107, 30);
             this.CancelOrderButton.TabIndex = 8;
@@ -216,7 +219,7 @@
             // 
             this.RemoveItemButton.Enabled = false;
             this.RemoveItemButton.Location = new System.Drawing.Point(169, 35);
-            this.RemoveItemButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RemoveItemButton.Margin = new System.Windows.Forms.Padding(2);
             this.RemoveItemButton.Name = "RemoveItemButton";
             this.RemoveItemButton.Size = new System.Drawing.Size(79, 26);
             this.RemoveItemButton.TabIndex = 14;
@@ -224,22 +227,24 @@
             this.RemoveItemButton.UseVisualStyleBackColor = true;
             this.RemoveItemButton.Click += new System.EventHandler(this.RemoveItemButton_Click);
             // 
-            // button1
+            // ClearItemButton
             // 
-            this.button1.Location = new System.Drawing.Point(252, 35);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(53, 26);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Enabled = false;
+            this.ClearItemButton.Location = new System.Drawing.Point(252, 35);
+            this.ClearItemButton.Margin = new System.Windows.Forms.Padding(2);
+            this.ClearItemButton.Name = "ClearItemButton";
+            this.ClearItemButton.Size = new System.Drawing.Size(53, 26);
+            this.ClearItemButton.TabIndex = 15;
+            this.ClearItemButton.Text = "Clear";
+            this.ClearItemButton.UseVisualStyleBackColor = true;
+            this.ClearItemButton.Click += new System.EventHandler(this.ClearOrderItem_Click);
             // 
             // CartListbox
             // 
             this.CartListbox.FormattingEnabled = true;
             this.CartListbox.ItemHeight = 16;
             this.CartListbox.Location = new System.Drawing.Point(9, 60);
-            this.CartListbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CartListbox.Margin = new System.Windows.Forms.Padding(2);
             this.CartListbox.Name = "CartListbox";
             this.CartListbox.Size = new System.Drawing.Size(515, 100);
             this.CartListbox.TabIndex = 16;
@@ -259,7 +264,7 @@
             // QuantityUD
             // 
             this.QuantityUD.Location = new System.Drawing.Point(532, 181);
-            this.QuantityUD.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.QuantityUD.Margin = new System.Windows.Forms.Padding(2);
             this.QuantityUD.Name = "QuantityUD";
             this.QuantityUD.Size = new System.Drawing.Size(80, 22);
             this.QuantityUD.TabIndex = 18;
@@ -309,7 +314,7 @@
             this.ToppingCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ToppingCBox.FormattingEnabled = true;
             this.ToppingCBox.Location = new System.Drawing.Point(317, 228);
-            this.ToppingCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ToppingCBox.Margin = new System.Windows.Forms.Padding(2);
             this.ToppingCBox.Name = "ToppingCBox";
             this.ToppingCBox.Size = new System.Drawing.Size(116, 24);
             this.ToppingCBox.TabIndex = 24;
@@ -321,7 +326,7 @@
             this.FlavorCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FlavorCBox.FormattingEnabled = true;
             this.FlavorCBox.Location = new System.Drawing.Point(497, 227);
-            this.FlavorCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FlavorCBox.Margin = new System.Windows.Forms.Padding(2);
             this.FlavorCBox.Name = "FlavorCBox";
             this.FlavorCBox.Size = new System.Drawing.Size(116, 24);
             this.FlavorCBox.TabIndex = 26;
@@ -333,7 +338,7 @@
             this.SyrupCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SyrupCBox.FormattingEnabled = true;
             this.SyrupCBox.Location = new System.Drawing.Point(497, 278);
-            this.SyrupCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SyrupCBox.Margin = new System.Windows.Forms.Padding(2);
             this.SyrupCBox.Name = "SyrupCBox";
             this.SyrupCBox.Size = new System.Drawing.Size(116, 24);
             this.SyrupCBox.TabIndex = 27;
@@ -345,7 +350,7 @@
             this.SizeCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SizeCBox.FormattingEnabled = true;
             this.SizeCBox.Location = new System.Drawing.Point(317, 323);
-            this.SizeCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SizeCBox.Margin = new System.Windows.Forms.Padding(2);
             this.SizeCBox.Name = "SizeCBox";
             this.SizeCBox.Size = new System.Drawing.Size(116, 24);
             this.SizeCBox.TabIndex = 28;
@@ -356,7 +361,7 @@
             // 
             this.AddOrderButton.Enabled = false;
             this.AddOrderButton.Location = new System.Drawing.Point(323, 412);
-            this.AddOrderButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddOrderButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddOrderButton.Name = "AddOrderButton";
             this.AddOrderButton.Size = new System.Drawing.Size(115, 26);
             this.AddOrderButton.TabIndex = 29;
@@ -369,7 +374,7 @@
             this.SideItemsListbox.FormattingEnabled = true;
             this.SideItemsListbox.ItemHeight = 16;
             this.SideItemsListbox.Location = new System.Drawing.Point(226, 177);
-            this.SideItemsListbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SideItemsListbox.Margin = new System.Windows.Forms.Padding(2);
             this.SideItemsListbox.Name = "SideItemsListbox";
             this.SideItemsListbox.Size = new System.Drawing.Size(213, 212);
             this.SideItemsListbox.TabIndex = 30;
@@ -402,7 +407,7 @@
             this.ContainerCBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContainerCBox.FormattingEnabled = true;
             this.ContainerCBox.Location = new System.Drawing.Point(317, 278);
-            this.ContainerCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ContainerCBox.Margin = new System.Windows.Forms.Padding(2);
             this.ContainerCBox.Name = "ContainerCBox";
             this.ContainerCBox.Size = new System.Drawing.Size(116, 24);
             this.ContainerCBox.TabIndex = 25;
@@ -413,7 +418,7 @@
             // 
             this.WhippedCreamCBox.AutoSize = true;
             this.WhippedCreamCBox.Location = new System.Drawing.Point(487, 325);
-            this.WhippedCreamCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WhippedCreamCBox.Margin = new System.Windows.Forms.Padding(2);
             this.WhippedCreamCBox.Name = "WhippedCreamCBox";
             this.WhippedCreamCBox.Size = new System.Drawing.Size(139, 21);
             this.WhippedCreamCBox.TabIndex = 31;
@@ -426,7 +431,7 @@
             // 
             this.CherryCBox.AutoSize = true;
             this.CherryCBox.Location = new System.Drawing.Point(487, 358);
-            this.CherryCBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CherryCBox.Margin = new System.Windows.Forms.Padding(2);
             this.CherryCBox.Name = "CherryCBox";
             this.CherryCBox.Size = new System.Drawing.Size(124, 21);
             this.CherryCBox.TabIndex = 32;
@@ -435,6 +440,32 @@
             this.CherryCBox.Visible = false;
             this.CherryCBox.CheckedChanged += new System.EventHandler(this.ValidateOrderItem);
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(487, 412);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(115, 26);
+            this.RefreshButton.TabIndex = 29;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshOrderWindowButton_Click);
+            // 
+            // TotalItemsBox
+            // 
+            this.TotalItemsBox.Location = new System.Drawing.Point(584, 33);
+            this.TotalItemsBox.Name = "TotalItemsBox";
+            this.TotalItemsBox.ReadOnly = true;
+            this.TotalItemsBox.Size = new System.Drawing.Size(64, 22);
+            this.TotalItemsBox.TabIndex = 33;
+            // 
+            // CostBox
+            // 
+            this.CostBox.Location = new System.Drawing.Point(584, 61);
+            this.CostBox.Name = "CostBox";
+            this.CostBox.ReadOnly = true;
+            this.CostBox.Size = new System.Drawing.Size(64, 22);
+            this.CostBox.TabIndex = 34;
+            // 
             // PlaceOrderView
             // 
             this.AcceptButton = this.PlaceOrderButton;
@@ -442,6 +473,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelOrderButton;
             this.ClientSize = new System.Drawing.Size(665, 446);
+            this.Controls.Add(this.CostBox);
+            this.Controls.Add(this.TotalItemsBox);
+            this.Controls.Add(this.RefreshButton);
             this.Controls.Add(this.CherryCBox);
             this.Controls.Add(this.WhippedCreamCBox);
             this.Controls.Add(this.AddOrderButton);
@@ -458,7 +492,7 @@
             this.Controls.Add(this.QuantityUD);
             this.Controls.Add(this.QuantityLabel);
             this.Controls.Add(this.CartListbox);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ClearItemButton);
             this.Controls.Add(this.RemoveItemButton);
             this.Controls.Add(this.CostLabel);
             this.Controls.Add(this.TotalItemLabel);
@@ -471,7 +505,7 @@
             this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.SideItemsListbox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PlaceOrderView";
             this.Text = "Smulder\'s Ice Cream Service - Place Order";
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -498,7 +532,7 @@
         private System.Windows.Forms.Label TotalItemLabel;
         private System.Windows.Forms.Label CostLabel;
         private System.Windows.Forms.Button RemoveItemButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ClearItemButton;
         private System.Windows.Forms.ListBox CartListbox;
         private System.Windows.Forms.Label QuantityLabel;
         private System.Windows.Forms.NumericUpDown QuantityUD;
@@ -516,5 +550,8 @@
         private System.Windows.Forms.ComboBox ContainerCBox;
         private System.Windows.Forms.CheckBox WhippedCreamCBox;
         private System.Windows.Forms.CheckBox CherryCBox;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.TextBox TotalItemsBox;
+        private System.Windows.Forms.TextBox CostBox;
     }
 }

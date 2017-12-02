@@ -50,6 +50,7 @@ namespace SmuldersIceCreamCart.Orders
         {
             if (this.shoppingCart.Contains( item ) )
             {
+                this.shoppingCart.Remove(item);
                 totalCost -= item.totalCostForItem();
             }
             else

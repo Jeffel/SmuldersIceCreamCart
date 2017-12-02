@@ -24,5 +24,7 @@ namespace SmuldersIceCreamCart.Orders
         {
             return this.item.Cost * this.quantity;
         }
+
+
     }
 }
