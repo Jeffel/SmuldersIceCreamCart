@@ -227,10 +227,10 @@ namespace SmuldersIceCreamCart
                     break;
                 case "Sundae":
                     result = new Sundae( FlavorCBox.SelectedItem.ToString(), ToppingCBox.SelectedItem.ToString(), 
-                        WhippedCreamCBox.Checked, CherryCBox.Checked, Connection.GetItemCost(type));
+                         CherryCBox.Checked, WhippedCreamCBox.Checked, Connection.GetItemCost(type));
                     break;
                 case "Milkshake":
-                    result = new Milkshake( SyrupCBox.SelectedItem.ToString(), WhippedCreamCBox.Checked, CherryCBox.Checked, 
+                    result = new Milkshake( SyrupCBox.SelectedItem.ToString(), CherryCBox.Checked, WhippedCreamCBox.Checked,
                         Connection.GetItemCost(type), FlavorCBox.SelectedItem.ToString());
                     break;
                 case "Sides":

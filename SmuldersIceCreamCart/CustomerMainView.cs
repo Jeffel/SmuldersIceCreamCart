@@ -159,7 +159,7 @@ namespace SmuldersIceCreamCart
         {
             //HistoryListbox.Items.Clear();
             //PopulateHistory();
-                if(string.IsNullOrEmpty(HistoryListbox.SelectedItem.ToString()))
+            if(HistoryListbox.SelectedItem is null)
             {
                 ViewHistoryItemButton.Enabled = false;
             } else
