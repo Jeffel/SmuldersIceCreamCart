@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,23 +24,10 @@ namespace SmuldersIceCreamCart.Menu
 
         public override string ToString()
         {
-            string label = Flavor + " Sundae with " + this.Topping;
-            if (this.cherry || this.whipped_cream)
-            {
-                if (this.whipped_cream && this.cherry)
-                {
-                    label += " and whipped cream with a cherry";
-                }
-                else if (this.cherry)
-                {
-                    label += " and whipped cream";
-                }
-                else
-                {
-                    label += " and a cherry";
-                }
-            }
-            label += ": $" + this.Cost;
+            string label = "Sundae   Topping: " + this.Topping;
+            label += this.cherry && this.whipped_cream ? " whip cream and a cherry"
+                : this.cherry ? " and a cherry" : " and whip cream ";
+            label += " " + this.Cost;
             return label;
         }
 
@@ -50,6 +37,5 @@ namespace SmuldersIceCreamCart.Menu
                 "whip cream: " + ( this.whipped_cream.ToString() ), "medium", this.Cost.ToString() };
             return result;
         }
-
     }
 }

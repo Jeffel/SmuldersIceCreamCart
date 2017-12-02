@@ -76,7 +76,19 @@ namespace SmuldersIceCreamCart
                 return null;
             }
             reader.Read();
-            Employee employee = new Employee(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetFloat(4), reader.GetFloat(5));
+            string[] attributes = new String[4];
+            for(int i = 0; i < attributes.Length; i++)
+            {
+                if (reader.IsDBNull(i))
+                {
+                    attributes[i] = "";
+                }
+                else
+                {
+                    attributes[i] = reader.GetString(i);
+                }
+            }
+            Employee employee = new Employee(attributes[0], attributes[1], attributes[2], attributes[3], reader.GetFloat(4), reader.GetFloat(5));
             reader.Close();
             return employee;
         }
