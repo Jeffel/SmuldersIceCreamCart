@@ -177,6 +177,10 @@ namespace SmuldersIceCreamCart
             cmd.Parameters[1].Value = DateTime.Now;
             int id = (int)cmd.ExecuteScalar();
 
+            //Inserting into order_contain_order_items is BROKEN
+            //TODO Fix this!!!
+
+            /**
             cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, container, size, whipped_cream, cherry, quantity, syrup, side_item) VALUES (@id, @item_name, @flavor, @topping, @container, @size, @whipped_cream, @cherry, @quantity, @syrup, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -208,7 +212,7 @@ namespace SmuldersIceCreamCart
                 cmd.ExecuteNonQuery();
 
             }
-
+    */
             cmd = new NpgsqlCommand("INSERT INTO customer_orders (customer_email, order_id) VALUES (@customer_email, @order_id);", connection);
             cmd.Parameters.Add("customer_email", NpgsqlTypes.NpgsqlDbType.Varchar);
             cmd.Parameters.Add("order_id", NpgsqlTypes.NpgsqlDbType.Integer);
@@ -285,7 +289,7 @@ namespace SmuldersIceCreamCart
         
         //this uses the orderID string selected by the customer from their list of orderIds
         // what is returned can be used to build the receipt
-        public static List<string> OrderFromOrderHistory(string orderID )
+        public static string[] OrderFromOrderHistory(string orderID )
         {
             List<string> orderHistory = new List<string>();
             string queryString = "SELECT * FROM order_contain_order_item WHERE orderID=" + orderID;
@@ -296,23 +300,24 @@ namespace SmuldersIceCreamCart
                 orderHistory.Add(reader.GetString(0));
             }
             reader.Close();
-            return orderHistory;
+            return orderHistory.ToArray();
         }
 
         //this is used to display a list of orders that a customer has made
-        public static List<string> OrderHistoryList( string customer_email )
+        public static string[] OrderHistoryList( string customer_email )
         {
             List<string> orderList = new List<string>();
             //lazy man's way of doing this
-            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=" + customer_email + " ORDER BY order_id DESC";
+            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=@customer_email ORDER BY order_id DESC";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
+            cmd.Parameters.AddWithValue("@customer_email", customer_email);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             while( reader.Read() )
             {
                 orderList.Add(reader.GetString(0));
             }
             reader.Close();
-            return orderList;
+            return orderList.ToArray();
         }
 
         // this is used to print order summary on receipt
