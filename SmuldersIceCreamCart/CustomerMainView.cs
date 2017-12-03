@@ -36,50 +36,9 @@ namespace SmuldersIceCreamCart
 
             PopulateHistory();
 
-            //Setup the form items now that they're ready and we have the data.
             usernameLabel.Text = Viewer.Email;
             NameTextbox.Text = Viewer.FirstName + " " + Viewer.LastName;
-            /*List<string> history = Connection.OrderHistoryList(Viewer.Email);
-            if (history.Count > 0)
-            {
-                List<string> history_status = new List<string>();
-                foreach (string id in history)
-                {
-                    List<String> order = Connection.OrderFromOrderHistory(id);
-                    history_status.Add(Connection.OrderStatusSummary(id)[3]);
-                    Order incoming = new Order();
-                    Menu.MenuItem result;
-                    switch (order[1])
-                    {
-                        case "Ice Cream Scoop":
-                            result = new IceCreamScoop("Ice Cream", order[2], order[4],
-                                int.Parse(order[5]), 2.00);
-                            break;
-                        case "Sundae":
-                            result = new Sundae(order[2], order[3],
-                                true, true, 5.00);
-                            break;
-                        case "Milkshake":
-                            result = new Milkshake(order[9], true, true,
-                                5.00);
-                            break;
-                        case "Sides":
-                            result = new SideItem(order[10],
-                                3.00);
-                            break;
-                        default:
-                            //should additional error checking be done here???
-                            result = null;
-                            break;
-                    }
-                    if (!result.Equals(null))
-                    {
-                        OrderItem add = new OrderItem(result, int.Parse(order[8]));
-                        incoming.AddItem(add);
-                    }
 
-                }
-            }*/
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -152,7 +111,54 @@ namespace SmuldersIceCreamCart
 
         private void PopulateHistory()
         {
-            HistoryListbox.Items.AddRange(Connection.OrderHistoryList(Viewer.Email));
+            //HistoryListbox.Items.AddRange(Connection.OrderHistoryList(Viewer.Email).ToArray());
+
+            //Setup the form items now that they're ready and we have the data.
+            List<string> history = Connection.OrderHistoryList(Viewer.Email);
+            if (history.Count > 0)
+            {
+                List<string> history_status = new List<string>();
+                foreach (string id in history)
+                {
+                    List<string[]> orderItems = Connection.OrderFromOrderHistory(id);
+                    List<string> orderstatus = Connection.OrderStatusSummary(id);
+                    history_status.Add(orderstatus[3]);
+                    Order incoming = new Order(orderstatus[3], orderstatus[1], orderstatus[2]);
+                    foreach (string[] order in orderItems)
+                    {
+                        Menu.MenuItem result;
+                        switch (order[1])
+                        {
+                            case "Ice Cream Scoop":
+                                result = new IceCreamScoop(order[1], order[2], order[4],
+                                    int.Parse(order[5]), Connection.GetItemCost(order[1]));
+                                break;
+                            case "Sundae":
+                                result = new Sundae(order[2], order[3],
+                                    true, true, Connection.GetItemCost(order[1]));
+                                break;
+                            case "Milkshake":
+                                result = new Milkshake(order[9], true, true,
+                                    Connection.GetItemCost(order[1]), order[2]);
+                                break;
+                            case "Side Item":
+                                result = new SideItem(order[10],
+                                    Connection.GetSideItemCost(order[10]));
+                                break;
+                            default:
+                                //should additional error checking be done here???
+                                result = null;
+                                break;
+                        }
+                        if (!result.Equals(null))
+                        {
+                            OrderItem add = new OrderItem(result, int.Parse(order[8]));
+                            incoming.AddItem(add);
+                        }
+                    }
+                    HistoryListbox.Items.Add(incoming.ToString());
+                }
+            }
         }
 
         private void HistoryListbox_SelectedIndexChanged(object sender, EventArgs e)

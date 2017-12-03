@@ -22,12 +22,23 @@ namespace SmuldersIceCreamCart.Orders
         double totalCost;
         public Status currentStatus { get; set; }
         //public DateTime orderDate { get; set; }
+        private string time_placed { get; set; }
+        private string time_complete { get; set; }
 
         public Order( )
         {
             shoppingCart = new List<OrderItem>();
             totalCost = 0.00;
             currentStatus = Status.HOLD;
+        }
+
+        public Order(string status, string timeplaced, string timecomplete)
+        {
+            currentStatus = (Status) Enum.Parse(typeof(Status), status);
+            time_placed = timeplaced;
+            time_complete = timecomplete;
+            shoppingCart = new List<OrderItem>();
+            totalCost = 0.00;
         }
 
         //what's the total cost of an order?
@@ -96,6 +107,14 @@ namespace SmuldersIceCreamCart.Orders
             this.totalCost = 0.00;
         }
 
-
+        public override string ToString()
+        {
+            string str = "Order:\n Placed:" + time_placed + "\n Complete:" + time_complete + "\n";
+            foreach (OrderItem item in shoppingCart)
+            {
+                str += "\t" + item.ToString() + "\n"; 
+            }
+            return str;
+        }
     }
 }
