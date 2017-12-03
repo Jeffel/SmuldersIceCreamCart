@@ -109,7 +109,7 @@ namespace SmuldersIceCreamCart.Orders
 
         public override string ToString()
         {
-            string str = "Order:\n Placed:" + time_placed + "\n Complete:" + time_complete + "\n";
+            string str = "Order:\n Placed:" + time_placed + "\n Complete:" + time_complete + "\n Cost: $" + this.totalCost;
             /*foreach (OrderItem item in shoppingCart)
             {
                 str += "\t" + item.ToString() + "\n"; 

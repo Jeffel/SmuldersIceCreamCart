@@ -113,6 +113,7 @@ namespace SmuldersIceCreamCart
             //HistoryListbox.Items.AddRange(Connection.OrderHistoryList(Viewer.Email).ToArray());
 
             //Setup the form items now that they're ready and we have the data.
+            HistoryTree.Nodes.Clear();
             List<string> history = Connection.OrderHistoryList(Viewer.Email);
             if (history.Count > 0)
             {
@@ -174,11 +175,6 @@ namespace SmuldersIceCreamCart
             //For now the button does nothing but say not implemented.
 
             MessageBox.Show("Detailed history view is not yet implemented.", "History Item");
-        }
-
-        private void HistoryRangeChange(object sender, EventArgs e)
-        {
-            //TODO refresh the list of orders in the given history range.
         }
     }
 }

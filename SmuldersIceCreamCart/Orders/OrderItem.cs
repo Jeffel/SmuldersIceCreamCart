@@ -27,7 +27,7 @@ namespace SmuldersIceCreamCart.Orders
 
         public override string ToString()
         {
-            return item.ToString() + "; Count: " + quantity + "; $" + totalCostForItem();
+            return "$" + totalCostForItem() + " : " + quantity + "x " + item.ToString();
         }
 
     }
