@@ -73,6 +73,7 @@ namespace SmuldersIceCreamCart
             NpgsqlDataReader reader = cmd.ExecuteReader();
             if (!reader.HasRows)
             {
+                reader.Close();
                 return null;
             }
             reader.Read();
@@ -101,6 +102,7 @@ namespace SmuldersIceCreamCart
             NpgsqlDataReader reader = cmd.ExecuteReader();
             if (!reader.HasRows)
             {
+                reader.Close();
                 return null;
             }
             reader.Read();
@@ -189,9 +191,6 @@ namespace SmuldersIceCreamCart
             cmd.Parameters[1].Value = DateTime.Now;
             int id = (int)cmd.ExecuteScalar();
 
-            //Inserting into order_contain_order_items is BROKEN
-            //TODO Fix this!!!
-
             cmd = new NpgsqlCommand("INSERT INTO order_contain_order_item (id, item_name, flavor, topping, container, size, whipped_cream, cherry, quantity, syrup, side_item) VALUES (@id, @item_name, @flavor, @topping, @container, @size, @whipped_cream, @cherry, @quantity, @syrup, @side_item);", connection);
             cmd.Parameters.Add("id", NpgsqlTypes.NpgsqlDbType.Integer);
             cmd.Parameters.Add("item_name", NpgsqlTypes.NpgsqlDbType.Varchar);
@@ -240,16 +239,6 @@ namespace SmuldersIceCreamCart
 
             int rows_changed = cmd.ExecuteNonQuery();
             return (rows_changed != 0);
-        }
-
-        public static int GetSideItemID( string name )
-        {
-            string queryString = "SELECT side_item_id FROM side_item WHERE item_name=" + name;
-            NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
-            NpgsqlDataReader reader = cmd.ExecuteReader();
-            int id = reader.GetInt32(0);
-            reader.Close();
-            return id;
         }
 
         public static string[] GetOptions(string optionTable)
@@ -342,7 +331,7 @@ namespace SmuldersIceCreamCart
         {
             List<string> orderList = new List<string>();
             //lazy man's way of doing this
-            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=@customer_email ORDER BY order_id DESC";
+            string queryString = "SELECT order_id FROM customer_orders WHERE customer_email=@customer_email ORDER BY order_id DESC;";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             cmd.Parameters.AddWithValue("@customer_email", customer_email);
             NpgsqlDataReader reader = cmd.ExecuteReader();
@@ -370,6 +359,7 @@ namespace SmuldersIceCreamCart
             NpgsqlDataReader reader = cmd.ExecuteReader();
             if (!reader.HasRows)
             {
+                reader.Close();
                 return order_summary;
             }
             reader.Read();
@@ -422,12 +412,12 @@ namespace SmuldersIceCreamCart
         public string GetCustomerPhoneNumber( string customer_email )
         {
             string phone;
-            string queryString = "SELECT person.phone_number FROM person WHERE email=" + customer_email;
+            string queryString = "SELECT person.phone_number FROM person WHERE email='" + customer_email + "';";
             NpgsqlCommand cmd = new NpgsqlCommand(queryString, connection);
             NpgsqlDataReader reader = cmd.ExecuteReader();
             phone = reader.GetString(0);
+            reader.Close();
             return phone;
         }
-
     }
 }
