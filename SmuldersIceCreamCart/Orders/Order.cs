@@ -110,10 +110,10 @@ namespace SmuldersIceCreamCart.Orders
         public override string ToString()
         {
             string str = "Order:\n Placed:" + time_placed + "\n Complete:" + time_complete + "\n";
-            foreach (OrderItem item in shoppingCart)
+            /*foreach (OrderItem item in shoppingCart)
             {
                 str += "\t" + item.ToString() + "\n"; 
-            }
+            } //We don't need this anymore, we can get each item in the history reload now. */
             return str;
         }
     }

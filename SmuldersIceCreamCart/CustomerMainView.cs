@@ -104,7 +104,6 @@ namespace SmuldersIceCreamCart
                 //TODO Order was not successfully placed. Error.
             }
             //HistoryToDatepick.Value = DateTime.Now; //Refresh the SQL listing of history as it may have changed.
-            HistoryListbox.Items.Clear();
             PopulateHistory();
             Show();
         }
@@ -156,21 +155,15 @@ namespace SmuldersIceCreamCart
                             incoming.AddItem(add);
                         }
                     }
-                    HistoryListbox.Items.Add(incoming.ToString());
+                    TreeNode top = HistoryTree.Nodes.Add(incoming.ToString());
+                    foreach (OrderItem item in incoming.shoppingCart)
+                    {
+                        top.Nodes.Add(item.ToString());
+                    }
                 }
-            }
-        }
-
-        private void HistoryListbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //HistoryListbox.Items.Clear();
-            //PopulateHistory();
-            if(HistoryListbox.SelectedItem is null)
-            {
-                ViewHistoryItemButton.Enabled = false;
             } else
             {
-                ViewHistoryItemButton.Enabled = true;
+                HistoryTree.Nodes.Add("No orders have been placed.");
             }
         }
 

@@ -229,7 +229,7 @@
     <value>6, 6, 6, 6</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>998, 52</value>
+    <value>1254, 52</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -244,7 +244,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -256,13 +256,13 @@
     <value>10, 59</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 37</value>
+    <value>218, 37</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Customer Information</value>
+    <value>Customer Info</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -274,7 +274,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -283,7 +283,7 @@
     <value>Microsoft Sans Serif, 12pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 107</value>
+    <value>307, 61</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 37</value>
@@ -304,10 +304,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="VertSplitLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>368, 52</value>
+    <value>295, 52</value>
   </data>
   <data name="VertSplitLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>2, 1000</value>
@@ -325,10 +325,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;VertSplitLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="PlaceOrderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>691, 61</value>
+    <value>558, 71</value>
   </data>
   <data name="PlaceOrderButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 83</value>
@@ -349,13 +349,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;PlaceOrderButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="NameLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="NameLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>38, 141</value>
+    <value>17, 141</value>
   </data>
   <data name="NameLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 25</value>
@@ -376,10 +376,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="UpdateInfoButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 622</value>
+    <value>76, 280</value>
   </data>
   <data name="UpdateInfoButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 41</value>
@@ -403,13 +403,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;UpdateInfoButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="NameTextbox.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="NameTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 141</value>
+    <value>97, 141</value>
   </data>
   <data name="NameTextbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 31</value>
@@ -430,57 +430,27 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NameTextbox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="HistoryListbox.ItemHeight" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="HistoryListbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 152</value>
-  </data>
-  <data name="HistoryListbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 479</value>
-  </data>
-  <data name="HistoryListbox.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;HistoryListbox.Name" xml:space="preserve">
-    <value>HistoryListbox</value>
-  </data>
-  <data name="&gt;&gt;HistoryListbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HistoryListbox.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HistoryListbox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ViewHistoryItemButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="HistoryTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>314, 170</value>
   </data>
-  <data name="ViewHistoryItemButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>843, 636</value>
+  <data name="HistoryTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>928, 511</value>
   </data>
-  <data name="ViewHistoryItemButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 48</value>
+  <data name="HistoryTree.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="ViewHistoryItemButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="&gt;&gt;HistoryTree.Name" xml:space="preserve">
+    <value>HistoryTree</value>
   </data>
-  <data name="ViewHistoryItemButton.Text" xml:space="preserve">
-    <value>View Item</value>
+  <data name="&gt;&gt;HistoryTree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ViewHistoryItemButton.Name" xml:space="preserve">
-    <value>ViewHistoryItemButton</value>
-  </data>
-  <data name="&gt;&gt;ViewHistoryItemButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ViewHistoryItemButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;HistoryTree.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;ViewHistoryItemButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;HistoryTree.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -490,7 +460,7 @@
     <value>12, 25</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>998, 697</value>
+    <value>1254, 693</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>

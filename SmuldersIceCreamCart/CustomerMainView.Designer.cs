@@ -40,8 +40,7 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.UpdateInfoButton = new System.Windows.Forms.Button();
             this.NameTextbox = new System.Windows.Forms.TextBox();
-            this.HistoryListbox = new System.Windows.Forms.ListBox();
-            this.ViewHistoryItemButton = new System.Windows.Forms.Button();
+            this.HistoryTree = new System.Windows.Forms.TreeView();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,26 +111,16 @@
             resources.ApplyResources(this.NameTextbox, "NameTextbox");
             this.NameTextbox.Name = "NameTextbox";
             // 
-            // HistoryListbox
+            // HistoryTree
             // 
-            this.HistoryListbox.FormattingEnabled = true;
-            resources.ApplyResources(this.HistoryListbox, "HistoryListbox");
-            this.HistoryListbox.Name = "HistoryListbox";
-            this.HistoryListbox.SelectedIndexChanged += new System.EventHandler(this.HistoryListbox_SelectedIndexChanged);
-            // 
-            // ViewHistoryItemButton
-            // 
-            resources.ApplyResources(this.ViewHistoryItemButton, "ViewHistoryItemButton");
-            this.ViewHistoryItemButton.Name = "ViewHistoryItemButton";
-            this.ViewHistoryItemButton.UseVisualStyleBackColor = true;
-            this.ViewHistoryItemButton.Click += new System.EventHandler(this.ViewHistoryItemButton_Click);
+            resources.ApplyResources(this.HistoryTree, "HistoryTree");
+            this.HistoryTree.Name = "HistoryTree";
             // 
             // CustomerMainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ViewHistoryItemButton);
-            this.Controls.Add(this.HistoryListbox);
+            this.Controls.Add(this.HistoryTree);
             this.Controls.Add(this.NameTextbox);
             this.Controls.Add(this.UpdateInfoButton);
             this.Controls.Add(this.NameLabel);
@@ -163,7 +152,6 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Button UpdateInfoButton;
         private System.Windows.Forms.TextBox NameTextbox;
-        private System.Windows.Forms.ListBox HistoryListbox;
-        private System.Windows.Forms.Button ViewHistoryItemButton;
+        private System.Windows.Forms.TreeView HistoryTree;
     }
 }
