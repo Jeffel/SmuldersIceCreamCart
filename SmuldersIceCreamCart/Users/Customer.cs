@@ -11,7 +11,7 @@ namespace SmuldersIceCreamCart.Users
         Address BillingAddress { get; set; }
         //OrderHistory orderHistory { get; set; } //We don't care about or have such things _AT THE MOMENT_
 
-        public Customer(string firstName, string lastName, string email, string phoneNum, Address billingAddress) 
+        public Customer(string email, string firstName, string lastName, string phoneNum, Address billingAddress) 
             : base(email, firstName, lastName, phoneNum)
         {
             BillingAddress = billingAddress;

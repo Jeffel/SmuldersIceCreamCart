@@ -13,11 +13,9 @@ namespace SmuldersIceCreamCart
 {
     public partial class Login : Form
     {
-        Connection conn;
-
-        public Login(Connection connection)
+        
+        public Login()
         {
-            conn = connection;
             InitializeComponent();
         }
 
@@ -28,28 +26,30 @@ namespace SmuldersIceCreamCart
 
             //Placeholder login query stuff here. Likely call some form of controller class to populate info and pass it onto the form.
 
-            LoginType loginType = conn.GetLoginType(login, password);
+            LoginType loginType = Connection.GetLoginType(login, password);
 
             if(loginType == LoginType.EMPLOYEE) {
-                Employee employee = conn.GetEmployeeFromEmail(login);
+                Employee employee = Connection.GetEmployeeFromEmail(login);
                 //We now want to show the admin/employee form. It doesn't exist yet. 
                 //Lets just show the other one that does exist, but not hide the login so we know!
 
-                EmployeeMainView customerView = new EmployeeMainView(employee);
-                DialogResult result = customerView.ShowDialog(); //Will answer 'Did the user logout?'           
+                EmployeeMainView employeeView = new EmployeeMainView(employee);
+                Hide();
+                DialogResult result = employeeView.ShowDialog(); //Will answer 'Did the user logout?'           
 
                 if (result == DialogResult.Yes)
                 {
                     loginBox.Text = "";
                     passwordBox.Text = "";
                 }
+                Show();
             }
 
             //Test Customer account.
             else if (loginType == LoginType.CUSTOMER)
             {
                 //Test User
-                Customer customer = conn.GetCustomerFromEmail(login);
+                Customer customer = Connection.GetCustomerFromEmail(login);
                 CustomerMainView customerView = new CustomerMainView(customer);
                 Hide();
                 DialogResult result = customerView.ShowDialog(); //Will answer 'Did the user logout?'           
@@ -65,6 +65,21 @@ namespace SmuldersIceCreamCart
             else
             {
                 MessageBox.Show("Username or Password is incorrect.", "Incorrect Login Info");
+                //Temporary info for broken server.
+                /*Customer customer = new Customer("Peasant", "Scum", "2poor5icecream@yahoo.com", "(585) 555-1234",
+                    new Address(true, "1600", "Pennsylvania Avenue", "Washington", "DC", "20500"));
+                CustomerMainView customerView = new CustomerMainView(customer);
+                Hide();
+                DialogResult result = customerView.ShowDialog(); //Will answer 'Did the user logout?'           
+
+                if (result == DialogResult.Yes)
+                {
+                    loginBox.Text = "";
+                    passwordBox.Text = "";
+                }
+
+                Show();
+                */
             }
         }
 
@@ -80,10 +95,11 @@ namespace SmuldersIceCreamCart
             {
                 loginBox.Text = createacctView.Username;
             }
-            else
-            {
-                MessageBox.Show("Invalid X item in your new account.\n(Not implemented)", "Not Implemented");
-            }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.Activate(); //Attempt to fix the weird non-focus issue with the window when it first comes up.
         }
     }
 }

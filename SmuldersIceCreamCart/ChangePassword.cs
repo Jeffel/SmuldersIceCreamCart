@@ -25,13 +25,13 @@ namespace SmuldersIceCreamCart
         {
             //Check if the current password is valid.
             string current = OldPassBox.Text;
+            string newPass = NewPassBox.Text;
+            bool successful = Connection.UpdatePassword(person, current, newPass);
 
-            bool validCurrent = true;
-
-            if (validCurrent)
+            if (successful)
             {
                 DialogResult = DialogResult.OK;
-                MessageBox.Show("Password change would have been successful if it were implemented.");
+                MessageBox.Show("Password change is successful.");
                 Close();
             } else
             {
