@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UsernameBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.EmailBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,102 +40,84 @@
             this.IsEmployeeCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // UsernameBox
-            // 
-            this.UsernameBox.Location = new System.Drawing.Point(110, 34);
-            this.UsernameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.UsernameBox.Name = "UsernameBox";
-            this.UsernameBox.Size = new System.Drawing.Size(140, 20);
-            this.UsernameBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Username: ";
-            // 
             // EmailBox
             // 
-            this.EmailBox.Location = new System.Drawing.Point(110, 87);
-            this.EmailBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EmailBox.Location = new System.Drawing.Point(220, 67);
+            this.EmailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EmailBox.Name = "EmailBox";
-            this.EmailBox.Size = new System.Drawing.Size(140, 20);
+            this.EmailBox.Size = new System.Drawing.Size(276, 31);
             this.EmailBox.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(62, 89);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(124, 71);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(85, 25);
             this.label5.TabIndex = 12;
             this.label5.Text = "E-Mail: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 58);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(92, 112);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
+            this.label3.Size = new System.Drawing.Size(118, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Password: ";
             // 
             // PasswordBox
             // 
-            this.PasswordBox.Location = new System.Drawing.Point(110, 57);
-            this.PasswordBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PasswordBox.Location = new System.Drawing.Point(220, 110);
+            this.PasswordBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PasswordBox.Name = "PasswordBox";
-            this.PasswordBox.Size = new System.Drawing.Size(140, 20);
+            this.PasswordBox.Size = new System.Drawing.Size(276, 31);
             this.PasswordBox.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 135);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(82, 260);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(128, 25);
             this.label2.TabIndex = 8;
             this.label2.Text = "First Name: ";
             // 
             // FirstNameBox
             // 
-            this.FirstNameBox.Location = new System.Drawing.Point(110, 135);
-            this.FirstNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FirstNameBox.Location = new System.Drawing.Point(220, 260);
+            this.FirstNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FirstNameBox.Name = "FirstNameBox";
-            this.FirstNameBox.Size = new System.Drawing.Size(140, 20);
+            this.FirstNameBox.Size = new System.Drawing.Size(276, 31);
             this.FirstNameBox.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 160);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(84, 308);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.Size = new System.Drawing.Size(127, 25);
             this.label4.TabIndex = 10;
             this.label4.Text = "Last Name: ";
             // 
             // LastNameBox
             // 
-            this.LastNameBox.Location = new System.Drawing.Point(110, 158);
-            this.LastNameBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LastNameBox.Location = new System.Drawing.Point(220, 304);
+            this.LastNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LastNameBox.Name = "LastNameBox";
-            this.LastNameBox.Size = new System.Drawing.Size(140, 20);
+            this.LastNameBox.Size = new System.Drawing.Size(276, 31);
             this.LastNameBox.TabIndex = 5;
             // 
             // CreateButton
             // 
-            this.CreateButton.Location = new System.Drawing.Point(116, 207);
-            this.CreateButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreateButton.Location = new System.Drawing.Point(232, 398);
+            this.CreateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(66, 25);
+            this.CreateButton.Size = new System.Drawing.Size(132, 48);
             this.CreateButton.TabIndex = 6;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = true;
@@ -146,9 +126,10 @@
             // IsEmployeeCheck
             // 
             this.IsEmployeeCheck.AutoSize = true;
-            this.IsEmployeeCheck.Location = new System.Drawing.Point(139, 113);
+            this.IsEmployeeCheck.Location = new System.Drawing.Point(256, 193);
+            this.IsEmployeeCheck.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.IsEmployeeCheck.Name = "IsEmployeeCheck";
-            this.IsEmployeeCheck.Size = new System.Drawing.Size(89, 17);
+            this.IsEmployeeCheck.Size = new System.Drawing.Size(173, 29);
             this.IsEmployeeCheck.TabIndex = 13;
             this.IsEmployeeCheck.Text = "Is Employee?";
             this.IsEmployeeCheck.UseVisualStyleBackColor = true;
@@ -156,9 +137,9 @@
             // 
             // CreateAccountView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 255);
+            this.ClientSize = new System.Drawing.Size(588, 490);
             this.Controls.Add(this.IsEmployeeCheck);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.EmailBox);
@@ -167,12 +148,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.FirstNameBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.UsernameBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CreateAccountView";
             this.Text = "Create Account";
             this.ResumeLayout(false);
@@ -181,8 +160,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox UsernameBox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox EmailBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;

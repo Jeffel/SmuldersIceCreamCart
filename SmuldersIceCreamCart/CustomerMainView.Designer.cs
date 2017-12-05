@@ -33,9 +33,14 @@
             this.logoutLabel = new System.Windows.Forms.LinkLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.manageAccountLabel = new System.Windows.Forms.LinkLabel();
-            this.OrderHistButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.VertSplitLabel = new System.Windows.Forms.Label();
             this.PlaceOrderButton = new System.Windows.Forms.Button();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.UpdateInfoButton = new System.Windows.Forms.Button();
+            this.NameTextbox = new System.Windows.Forms.TextBox();
+            this.HistoryTree = new System.Windows.Forms.TreeView();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,17 +71,21 @@
             this.manageAccountLabel.TabStop = true;
             this.manageAccountLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.manageAccountLabel_LinkClicked);
             // 
-            // OrderHistButton
-            // 
-            resources.ApplyResources(this.OrderHistButton, "OrderHistButton");
-            this.OrderHistButton.Name = "OrderHistButton";
-            this.OrderHistButton.UseVisualStyleBackColor = true;
-            this.OrderHistButton.Click += new System.EventHandler(this.OrderHistButton_Click);
-            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // VertSplitLabel
+            // 
+            this.VertSplitLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(this.VertSplitLabel, "VertSplitLabel");
+            this.VertSplitLabel.Name = "VertSplitLabel";
             // 
             // PlaceOrderButton
             // 
@@ -85,15 +94,43 @@
             this.PlaceOrderButton.UseVisualStyleBackColor = true;
             this.PlaceOrderButton.Click += new System.EventHandler(this.PlaceOrderButton_Click);
             // 
+            // NameLabel
+            // 
+            resources.ApplyResources(this.NameLabel, "NameLabel");
+            this.NameLabel.Name = "NameLabel";
+            // 
+            // UpdateInfoButton
+            // 
+            resources.ApplyResources(this.UpdateInfoButton, "UpdateInfoButton");
+            this.UpdateInfoButton.Name = "UpdateInfoButton";
+            this.UpdateInfoButton.UseVisualStyleBackColor = true;
+            this.UpdateInfoButton.Click += new System.EventHandler(this.UpdateInfoButton_Click);
+            // 
+            // NameTextbox
+            // 
+            resources.ApplyResources(this.NameTextbox, "NameTextbox");
+            this.NameTextbox.Name = "NameTextbox";
+            // 
+            // HistoryTree
+            // 
+            resources.ApplyResources(this.HistoryTree, "HistoryTree");
+            this.HistoryTree.Name = "HistoryTree";
+            // 
             // CustomerMainView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.HistoryTree);
+            this.Controls.Add(this.NameTextbox);
+            this.Controls.Add(this.UpdateInfoButton);
+            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.PlaceOrderButton);
+            this.Controls.Add(this.VertSplitLabel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.OrderHistButton);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "CustomerMainView";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -108,8 +145,13 @@
         private System.Windows.Forms.LinkLabel logoutLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.LinkLabel manageAccountLabel;
-        private System.Windows.Forms.Button OrderHistButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label VertSplitLabel;
         private System.Windows.Forms.Button PlaceOrderButton;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.Button UpdateInfoButton;
+        private System.Windows.Forms.TextBox NameTextbox;
+        private System.Windows.Forms.TreeView HistoryTree;
     }
 }
